@@ -1,0 +1,156 @@
+[gd_scene load_steps=13 format=3 uid="uid://dmp2imn0hr5b1"]
+
+[ext_resource type="Texture2D" uid="uid://bfe00aynpjxn6" path="res://firefox_zuy12N57mR.png" id="1_0lkje"]
+[ext_resource type="Texture2D" uid="uid://dehkh875at58l" path="res://icon.svg" id="2_x8kuo"]
+[ext_resource type="Texture2D" uid="uid://caff8e0egh5c7" path="res://firefox_372LeEstYm.png" id="3_x2vws"]
+[ext_resource type="Shader" path="res://scanner/crt.gdshader" id="4_g7s3a"]
+[ext_resource type="Texture2D" uid="uid://cr358ix1bubyx" path="res://splat09.png" id="5_fnd6x"]
+[ext_resource type="Script" path="res://addons/draggablesprite2d/src/draggablesprite2d.gd" id="6_j8ceo"]
+[ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="6_pu663"]
+[ext_resource type="Script" path="res://scanner_layer.gd" id="7_eldpv"]
+[ext_resource type="Script" path="res://scanner/layer_label.gd" id="7_t6o2y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ds78w"]
+shader = ExtResource("6_pu663")
+shader_parameter/resolution = Vector2(500, 500)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e44s3"]
+size = Vector2(252, 248)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_87flp"]
+shader = ExtResource("4_g7s3a")
+shader_parameter/fisheye_strength = 1.0
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [560.0]
+metadata/_edit_vertical_guides_ = [907.0]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(505, 305)
+texture = ExtResource("1_0lkje")
+
+[node name="Node2D" type="Node2D" parent="." groups=["passengers"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(343, 318)
+scale = Vector2(0.421875, 0.421875)
+texture = ExtResource("2_x8kuo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
+position = Vector2(451, 320)
+scale = Vector2(0.421875, 0.421875)
+texture = ExtResource("2_x8kuo")
+
+[node name="Node2D2" type="Node2D" parent="." groups=["cargo"]]
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D2"]
+self_modulate = Color(0.589009, 0.360455, 0.632182, 1)
+position = Vector2(590, 284)
+scale = Vector2(0.421875, 0.421875)
+texture = ExtResource("2_x8kuo")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Node2D2"]
+self_modulate = Color(0.589009, 0.360455, 0.632182, 1)
+position = Vector2(523, 355)
+scale = Vector2(0.421875, 0.421875)
+texture = ExtResource("2_x8kuo")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+position = Vector2(539, 319)
+copy_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="BackBufferCopy"]
+texture = ExtResource("3_x2vws")
+
+[node name="Area2D2" type="Area2D" parent="BackBufferCopy"]
+position = Vector2(96, -65)
+script = ExtResource("6_j8ceo")
+boundaries = Rect2(0, 0, 900, 600)
+
+[node name="Sprite2D3" type="Sprite2D" parent="BackBufferCopy/Area2D2"]
+material = SubResource("ShaderMaterial_ds78w")
+texture = ExtResource("5_fnd6x")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BackBufferCopy/Area2D2/Sprite2D3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x8kuo")
+draw_center = false
+region_rect = Rect2(14, 6, 101, 111)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+metadata/_edit_use_anchors_ = true
+
+[node name="LayerLabel" type="Label" parent="BackBufferCopy/Area2D2/Sprite2D3/NinePatchRect"]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 18.0
+offset_right = 62.0
+offset_bottom = 41.0
+text = "layer"
+script = ExtResource("7_t6o2y")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackBufferCopy/Area2D2"]
+shape = SubResource("RectangleShape2D_e44s3")
+
+[node name="Draggable" type="Area2D" parent="BackBufferCopy"]
+
+[node name="Sprite2D" type="Sprite2D" parent="BackBufferCopy/Draggable"]
+material = SubResource("ShaderMaterial_87flp")
+position = Vector2(-186, -36)
+texture = ExtResource("5_fnd6x")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BackBufferCopy/Draggable/Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x8kuo")
+draw_center = false
+region_rect = Rect2(14, 6, 101, 111)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+metadata/_edit_use_anchors_ = true
+
+[node name="ScannerLayer" type="Node2D" parent="."]
+script = ExtResource("7_eldpv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.786458
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2

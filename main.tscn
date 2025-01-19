@@ -1,0 +1,124 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6jsdaxy71qto"]
+
+[ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship.tscn" id="1_05mrr"]
+[ext_resource type="Script" path="res://shift_manager.gd" id="1_e2dyr"]
+[ext_resource type="Script" path="res://ui/panel.gd" id="4_to558"]
+[ext_resource type="PackedScene" uid="uid://ccnu0nds8r7jk" path="res://ui/choice_buttons.tscn" id="5_ypbns"]
+[ext_resource type="Script" path="res://scanner_layer.gd" id="8_kxkxv"]
+[ext_resource type="PackedScene" uid="uid://cgj0ts2edf1r5" path="res://ui/scanner_buttons.tscn" id="9_r58rm"]
+
+[sub_resource type="Animation" id="Animation_wwb0r"]
+resource_name = "float_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-967, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d6h4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7e5mx"]
+resource_name = "float_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1136, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vwmg2"]
+_data = {
+"RESET": SubResource("Animation_d6h4q"),
+"float_in": SubResource("Animation_wwb0r"),
+"float_out": SubResource("Animation_7e5mx")
+}
+
+[node name="Main" type="Node2D"]
+metadata/_edit_vertical_guides_ = [888.0]
+
+[node name="Shift Manager" type="Node2D" parent="."]
+script = ExtResource("1_e2dyr")
+
+[node name="Spaceship" parent="Shift Manager" instance=ExtResource("1_05mrr")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shift Manager"]
+libraries = {
+"": SubResource("AnimationLibrary_vwmg2")
+}
+
+[node name="ScannerLayer" type="Node2D" parent="."]
+script = ExtResource("8_kxkxv")
+
+[node name="HUD Canvas" type="CanvasLayer" parent="."]
+
+[node name="Scanner Buttons" parent="HUD Canvas" instance=ExtResource("9_r58rm")]
+anchor_right = 0.770833
+metadata/_edit_use_anchors_ = true
+
+[node name="Right Panel" type="Control" parent="HUD Canvas"]
+layout_mode = 3
+anchor_left = 0.770833
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Choice Buttons" parent="HUD Canvas/Right Panel" instance=ExtResource("5_ypbns")]
+layout_mode = 1
+
+[node name="EOD Canvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Panel" type="Panel" parent="EOD Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_to558")
+
+[node name="Start Button" type="Button" parent="EOD Canvas/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BEGIN SHIFT"
+
+[connection signal="pressed" from="EOD Canvas/Panel/Start Button" to="EOD Canvas/Panel" method="_on_start_button_pressed"]
