@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfgk6lb7osx3e"]
+
+[ext_resource type="Texture2D" uid="uid://bfe00aynpjxn6" path="res://spaceship/art/firefox_zuy12N57mR.png" id="1_180jj"]
+[ext_resource type="Texture2D" uid="uid://dehkh875at58l" path="res://icon.svg" id="2_j33b2"]
+[ext_resource type="Texture2D" uid="uid://caff8e0egh5c7" path="res://spaceship/art/firefox_372LeEstYm.png" id="3_px2w7"]
+[ext_resource type="Texture2D" uid="uid://cr358ix1bubyx" path="res://splat09.png" id="4_hrm46"]
+[ext_resource type="Shader" path="res://scanner/crt.gdshader" id="5_y7pwd"]
+[ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="6_jbak0"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ld2fd"]
+blend_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0tikl"]
+shader = ExtResource("5_y7pwd")
+shader_parameter/fisheye_strength = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6an8f"]
+shader = ExtResource("6_jbak0")
+shader_parameter/resolution = Vector2(500, 500)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-34, -14)
+texture = ExtResource("1_180jj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-196, -1)
+scale = Vector2(0.421875, 0.421875)
+texture = ExtResource("2_j33b2")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-88, 1)
+scale = Vector2(0.421875, 0.421875)
+texture = ExtResource("2_j33b2")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+self_modulate = Color(0.589009, 0.360455, 0.632182, 1)
+position = Vector2(51, -35)
+scale = Vector2(0.421875, 0.421875)
+texture = ExtResource("2_j33b2")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+self_modulate = Color(0.589009, 0.360455, 0.632182, 1)
+position = Vector2(-16, 36)
+scale = Vector2(0.421875, 0.421875)
+texture = ExtResource("2_j33b2")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+visible = false
+clip_children = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasGroup"]
+texture = ExtResource("3_px2w7")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup"]
+material = SubResource("CanvasItemMaterial_ld2fd")
+position = Vector2(-35, -1)
+texture = ExtResource("4_hrm46")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+visible = false
+copy_mode = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="BackBufferCopy"]
+texture = ExtResource("3_px2w7")
+
+[node name="Sprite2D" type="Sprite2D" parent="BackBufferCopy"]
+material = SubResource("ShaderMaterial_0tikl")
+position = Vector2(-186, -36)
+texture = ExtResource("4_hrm46")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BackBufferCopy/Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j33b2")
+draw_center = false
+region_rect = Rect2(14, 6, 101, 111)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Sprite2D3" type="Sprite2D" parent="BackBufferCopy"]
+material = SubResource("ShaderMaterial_6an8f")
+position = Vector2(95, -90)
+texture = ExtResource("4_hrm46")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BackBufferCopy/Sprite2D3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -128.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j33b2")
+draw_center = false
+region_rect = Rect2(14, 6, 101, 111)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16

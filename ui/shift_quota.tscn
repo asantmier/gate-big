@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://do2gwswyvta27"]
+
+[ext_resource type="Script" path="res://ui/quota.gd" id="1_x3osr"]
+
+[node name="Shift Quota" type="Control"]
+editor_description = "Adds quota function. Required to spawn new ships."
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Quota" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "quota"
+script = ExtResource("1_x3osr")

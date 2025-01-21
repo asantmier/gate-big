@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfb2uf5ywokxq"]
+
+[ext_resource type="Texture2D" uid="uid://dehkh875at58l" path="res://icon.svg" id="1_4fo8t"]
+[ext_resource type="Script" path="res://spaceship/characters/person.gd" id="1_ugxba"]
+
+[sub_resource type="Curve" id="Curve_wceam"]
+min_value = 0.5
+max_value = 2.0
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_x3upp"]
+resource_name = "bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -63), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_trecp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mn5ya"]
+_data = {
+"RESET": SubResource("Animation_trecp"),
+"bob": SubResource("Animation_x3upp")
+}
+
+[node name="Person" type="Node2D"]
+position = Vector2(469, 226)
+script = ExtResource("1_ugxba")
+v_anim_curve = SubResource("Curve_wceam")
+v_anim_max = 50.0
+
+[node name="Graphics" type="Sprite2D" parent="."]
+texture = ExtResource("1_4fo8t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mn5ya")
+}
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 240.0
+offset_top = -143.0
+offset_right = 448.0
+offset_bottom = -127.0
+min_value = -50.0
+max_value = 50.0
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

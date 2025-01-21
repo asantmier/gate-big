@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgj0ts2edf1r5"]
+
+[ext_resource type="Script" path="res://ui/layer_switcher.gd" id="1_5boje"]
+
+[node name="Scanner Buttons" type="Control"]
+layout_mode = 3
+anchor_top = 0.859568
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LayerSwitcher" type="Node" parent="."]
+script = ExtResource("1_5boje")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Passenger Button" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PASSENGER"
+
+[node name="Cargo Button" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CARGO"
+
+[node name="System Button" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SYSTEMS"
+
+[connection signal="pressed" from="HBoxContainer/Passenger Button" to="LayerSwitcher" method="_on_passenger_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Cargo Button" to="LayerSwitcher" method="_on_cargo_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/System Button" to="LayerSwitcher" method="_on_system_button_pressed"]
