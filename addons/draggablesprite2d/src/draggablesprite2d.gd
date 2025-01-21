@@ -56,6 +56,9 @@ func _ready() -> void:
 	child_entered_tree.connect(_on_child_entered_tree)
 	child_exiting_tree.connect(_on_child_exiting_tree)
 	input_event.connect(_on_input_event)
+	
+	EventBus.ship_focused.connect(_on_ship_focused)
+	EventBus.ship_unfocused.connect(_on_ship_unfocused)
 
 	add_child(sprite)
 
@@ -155,3 +158,11 @@ func _on_child_entered_tree(child) -> void:
 func _on_child_exiting_tree(child) -> void:
 	if (child is CollisionShape2D or child is CollisionPolygon2D) and child != default_collider:
 		toggle_default_collider(true)
+
+
+func _on_ship_focused():
+	show()
+
+
+func _on_ship_unfocused():
+	hide()

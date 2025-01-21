@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bfgk6lb7osx3e"]
 
-[ext_resource type="Texture2D" uid="uid://bfe00aynpjxn6" path="res://firefox_zuy12N57mR.png" id="1_180jj"]
+[ext_resource type="Texture2D" uid="uid://bfe00aynpjxn6" path="res://spaceship/art/firefox_zuy12N57mR.png" id="1_180jj"]
 [ext_resource type="Texture2D" uid="uid://dehkh875at58l" path="res://icon.svg" id="2_j33b2"]
-[ext_resource type="Texture2D" uid="uid://caff8e0egh5c7" path="res://firefox_372LeEstYm.png" id="3_px2w7"]
+[ext_resource type="Texture2D" uid="uid://caff8e0egh5c7" path="res://spaceship/art/firefox_372LeEstYm.png" id="3_px2w7"]
 [ext_resource type="Texture2D" uid="uid://cr358ix1bubyx" path="res://splat09.png" id="4_hrm46"]
 [ext_resource type="Shader" path="res://scanner/crt.gdshader" id="5_y7pwd"]
 [ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="6_jbak0"]

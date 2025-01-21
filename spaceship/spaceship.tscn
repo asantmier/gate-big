@@ -1,49 +1,48 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvj3h0821p1jp"]
 
-[ext_resource type="Texture2D" uid="uid://bfe00aynpjxn6" path="res://firefox_zuy12N57mR.png" id="1_cfhxq"]
-[ext_resource type="Texture2D" uid="uid://dehkh875at58l" path="res://icon.svg" id="2_dic17"]
-[ext_resource type="Texture2D" uid="uid://caff8e0egh5c7" path="res://firefox_372LeEstYm.png" id="3_tx4g1"]
-[ext_resource type="PackedScene" uid="uid://inws64726gsr" path="res://scanner/scanner.tscn" id="4_b68ub"]
+[ext_resource type="Texture2D" uid="uid://bfe00aynpjxn6" path="res://spaceship/art/firefox_zuy12N57mR.png" id="1_ainj6"]
+[ext_resource type="Texture2D" uid="uid://dehkh875at58l" path="res://icon.svg" id="2_4mkus"]
+[ext_resource type="Texture2D" uid="uid://caff8e0egh5c7" path="res://spaceship/art/firefox_372LeEstYm.png" id="3_nav2v"]
+[ext_resource type="PackedScene" uid="uid://inws64726gsr" path="res://scanner/scanner.tscn" id="4_gabmw"]
 
 [node name="Spaceship" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(505, 305)
-texture = ExtResource("1_cfhxq")
+texture = ExtResource("1_ainj6")
 
 [node name="Passengers" type="Node2D" parent="." groups=["passengers"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="Passengers"]
-position = Vector2(343, 318)
+position = Vector2(-194, 1)
 scale = Vector2(0.421875, 0.421875)
-texture = ExtResource("2_dic17")
+texture = ExtResource("2_4mkus")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Passengers"]
-position = Vector2(451, 320)
+position = Vector2(-86, 3)
 scale = Vector2(0.421875, 0.421875)
-texture = ExtResource("2_dic17")
+texture = ExtResource("2_4mkus")
 
 [node name="Cargo" type="Node2D" parent="." groups=["cargo"]]
 
 [node name="Sprite2D4" type="Sprite2D" parent="Cargo"]
 self_modulate = Color(0.589009, 0.360455, 0.632182, 1)
-position = Vector2(590, 284)
+position = Vector2(53, -33)
 scale = Vector2(0.421875, 0.421875)
-texture = ExtResource("2_dic17")
+texture = ExtResource("2_4mkus")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Cargo"]
 self_modulate = Color(0.589009, 0.360455, 0.632182, 1)
-position = Vector2(523, 355)
+position = Vector2(-14, 38)
 scale = Vector2(0.421875, 0.421875)
-texture = ExtResource("2_dic17")
+texture = ExtResource("2_4mkus")
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]
-position = Vector2(539, 319)
 copy_mode = 2
 
 [node name="Sight Blocker" type="Sprite2D" parent="BackBufferCopy"]
-texture = ExtResource("3_tx4g1")
+texture = ExtResource("3_nav2v")
 
 [node name="Scanner Inserter" type="Node2D" parent="BackBufferCopy"]
 
-[node name="Scanner" parent="BackBufferCopy" instance=ExtResource("4_b68ub")]
+[node name="Scanner" parent="BackBufferCopy" instance=ExtResource("4_gabmw")]
+position = Vector2(26, -4)

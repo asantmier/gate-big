@@ -1,4 +1,5 @@
 extends Node2D
+## Hides/displays content when the scanner's layer changes
 
 
 # Called when the node enters the scene tree for the first time.
