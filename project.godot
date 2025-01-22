@@ -20,10 +20,15 @@ config/icon="res://icon.svg"
 EventBus="*res://global/event_bus.gd"
 GameData="*res://global/game_data.gd"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
+
 [global_group]
 
 passengers=""
 cargo=""
+systems=""
 
 [rendering]
 

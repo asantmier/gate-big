@@ -8,7 +8,7 @@ var processed : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.pass_ship.connect(_on_pass_ship)
-	EventBus.ship_left_screen.connect(_on_ship_processed)
+	EventBus.ship_left_gate.connect(_on_ship_processed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

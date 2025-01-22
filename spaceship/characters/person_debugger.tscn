@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://coesqs6u78qb8"]
+
+[ext_resource type="Texture2D" uid="uid://dehkh875at58l" path="res://icon.svg" id="1_6m41t"]
+[ext_resource type="Script" path="res://spaceship/characters/person_debugger.gd" id="1_pt0i0"]
+[ext_resource type="Texture2D" uid="uid://cr358ix1bubyx" path="res://splat09.png" id="2_ab3h7"]
+
+[node name="Person Debugger" type="Node2D"]
+editor_description = "Displays person's AI target."
+script = ExtResource("1_pt0i0")
+
+[node name="Target" type="Sprite2D" parent="."]
+self_modulate = Color(0.946855, 0.341731, 0.95395, 1)
+position = Vector2(149, 88)
+scale = Vector2(0.0703125, 0.0703125)
+texture = ExtResource("2_ab3h7")
+
+[node name="Position" type="Sprite2D" parent="."]
+position = Vector2(125, 89)
+scale = Vector2(0.140625, 0.140625)
+texture = ExtResource("1_6m41t")

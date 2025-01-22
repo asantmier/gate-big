@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c6jsdaxy71qto"]
+[gd_scene load_steps=16 format=3 uid="uid://c6jsdaxy71qto"]
 
 [ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship/spaceship.tscn" id="1_05mrr"]
 [ext_resource type="Script" path="res://ship_animations.gd" id="2_lkoxi"]
+[ext_resource type="Texture2D" uid="uid://ns8lueen1kr0" path="res://effects/Explosion_002_Tile_8x8_256x256.png" id="3_hj608"]
 [ext_resource type="Script" path="res://ui/panel.gd" id="4_to558"]
+[ext_resource type="PackedScene" uid="uid://bcmk1c2cf8r6c" path="res://ui/manifest.tscn" id="5_01fqa"]
 [ext_resource type="PackedScene" uid="uid://ccnu0nds8r7jk" path="res://ui/choice_buttons.tscn" id="5_ypbns"]
 [ext_resource type="PackedScene" uid="uid://c4li4ei653p3y" path="res://ui/shift_timer.tscn" id="6_s522t"]
 [ext_resource type="PackedScene" uid="uid://do2gwswyvta27" path="res://ui/shift_quota.tscn" id="7_rmit7"]
@@ -34,6 +36,54 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Blind Canvas/ColorRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Blind Canvas/ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_wwb0r"]
@@ -92,9 +142,86 @@ tracks/1/keys = {
 "values": [Vector2(458, 258), Vector2(1336, 258)]
 }
 
+[sub_resource type="Animation" id="Animation_bh3g8"]
+resource_name = "explode"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.866667, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 63]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.866667, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blind Canvas/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blind Canvas/ColorRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 1, 1.1, 1.5),
+"transitions": PackedFloat32Array(0.5, -2, 2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Spaceship:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-474, 292)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Spaceship:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.38, 0.38)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vwmg2"]
 _data = {
 "RESET": SubResource("Animation_d6h4q"),
+"explode": SubResource("Animation_bh3g8"),
 "float_in": SubResource("Animation_wwb0r"),
 "float_out": SubResource("Animation_7e5mx")
 }
@@ -110,6 +237,14 @@ libraries = {
 "": SubResource("AnimationLibrary_vwmg2")
 }
 script = ExtResource("2_lkoxi")
+
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(433, 254)
+scale = Vector2(2.67969, 2.67969)
+texture = ExtResource("3_hj608")
+hframes = 8
+vframes = 8
 
 [node name="ScannerLayer" type="Node2D" parent="."]
 editor_description = "Enables switching scanner layer visiblity."
@@ -138,19 +273,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Manifest" type="Control" parent="HUD Canvas/Right Panel/VBoxContainer"]
+[node name="Manifest" parent="HUD Canvas/Right Panel/VBoxContainer" instance=ExtResource("5_01fqa")]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HUD Canvas/Right Panel/VBoxContainer/Manifest"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "this is where the manifest information will be"
-autowrap_mode = 2
 
 [node name="Rules" type="Control" parent="HUD Canvas/Right Panel/VBoxContainer"]
 layout_mode = 2
@@ -176,6 +300,7 @@ size_flags_vertical = 3
 
 [node name="EOD Canvas" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 
 [node name="Panel" type="Panel" parent="EOD Canvas"]
 anchors_preset = 15
@@ -199,5 +324,16 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "BEGIN SHIFT"
+
+[node name="Blind Canvas" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Blind Canvas"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="EOD Canvas/Panel/Start Button" to="EOD Canvas/Panel" method="_on_start_button_pressed"]
