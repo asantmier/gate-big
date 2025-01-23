@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccnu0nds8r7jk"]
+[gd_scene load_steps=8 format=3 uid="uid://ccnu0nds8r7jk"]
 
 [ext_resource type="Script" path="res://ui/chooser.gd" id="1_7mn0g"]
+[ext_resource type="Texture2D" uid="uid://bnxnrs67xo533" path="res://ui/textures/switchOff-export.png" id="2_xju2m"]
+[ext_resource type="Texture2D" uid="uid://c5f2agneo1iis" path="res://ui/textures/switchOn-export.png" id="3_0ig3i"]
+[ext_resource type="Texture2D" uid="uid://dwkfej8imm8cu" path="res://ui/textures/redUnpressed.png" id="4_gq0cc"]
+[ext_resource type="Texture2D" uid="uid://brmavgfarlp13" path="res://ui/textures/redPressed.png" id="5_8ceao"]
+[ext_resource type="Texture2D" uid="uid://bni1yttgjmy70" path="res://ui/textures/blueUnpressed.png" id="6_t1xvn"]
+[ext_resource type="Texture2D" uid="uid://c2wxeq3g8d41l" path="res://ui/textures/bluePressed.png" id="7_5yhh6"]
 
 [node name="Choice Buttons" type="Control"]
 layout_mode = 3
+anchor_left = 0.782118
 anchor_top = 0.712963
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,24 +21,49 @@ metadata/_edit_use_anchors_ = true
 [node name="Chooser" type="Node" parent="."]
 script = ExtResource("1_7mn0g")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Eliminate Button" type="Button" parent="VBoxContainer"]
+[node name="Safety" type="TextureButton" parent="VBoxContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
-text = "ELIMINATE"
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+toggle_mode = true
+texture_normal = ExtResource("2_xju2m")
+texture_pressed = ExtResource("3_0ig3i")
+texture_disabled = ExtResource("3_0ig3i")
+stretch_mode = 5
 
-[node name="Pass Button" type="Button" parent="VBoxContainer"]
+[node name="Eliminate Button" type="TextureButton" parent="VBoxContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
-text = "PASS"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("4_gq0cc")
+texture_pressed = ExtResource("5_8ceao")
+texture_disabled = ExtResource("5_8ceao")
+stretch_mode = 5
 
+[node name="Pass Button" type="TextureButton" parent="VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("6_t1xvn")
+texture_pressed = ExtResource("7_5yhh6")
+texture_disabled = ExtResource("7_5yhh6")
+stretch_mode = 5
+
+[connection signal="toggled" from="VBoxContainer/Safety" to="Chooser" method="_on_safety_toggled"]
 [connection signal="pressed" from="VBoxContainer/Eliminate Button" to="Chooser" method="_on_eliminate_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Pass Button" to="Chooser" method="_on_pass_button_pressed"]

@@ -13,7 +13,7 @@ var processed := 0
 var shift_rules := {
 	1: {
 		liars = 1,
-		quota = 1
+		quota = 3
 	}
 }
 

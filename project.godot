@@ -21,6 +21,10 @@ EventBus="*res://global/event_bus.gd"
 GameData="*res://global/game_data.gd"
 GameConstants="*res://global/game_constants.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")

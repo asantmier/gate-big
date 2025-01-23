@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://hi8g11mb62fp"]
+
+[ext_resource type="PackedScene" uid="uid://jbpi4jptr7be" path="res://blasterD.glb" id="1_dsl54"]
+[ext_resource type="Shader" path="res://shaders/acrpod.gdshader" id="2_pj5gq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ux7ws"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_t5b3w"]
+sky_material = SubResource("ProceduralSkyMaterial_ux7ws")
+
+[sub_resource type="Environment" id="Environment_2lugm"]
+background_mode = 2
+sky = SubResource("Sky_t5b3w")
+tonemap_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cc0lu"]
+shader = ExtResource("2_pj5gq")
+shader_parameter/quantize_size = 4.0
+shader_parameter/handle_scale = false
+shader_parameter/handle_subpixels = false
+shader_parameter/dither_enabled = true
+shader_parameter/bayer_pattern = 3.0
+shader_parameter/divisions = 16.0
+shader_parameter/contrast = 1.0
+shader_parameter/shift = 0.0
+shader_parameter/grayscale = false
+shader_parameter/use_palette = null
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2lugm")
+
+[node name="blasterD2" parent="." instance=ExtResource("1_dsl54")]
+transform = Transform3D(0.279175, 0, -0.96024, 0, 1, 0, 0.96024, 0, 0.279175, 0.0369003, 0.0927857, 0.0751634)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_cc0lu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.938258, 0.345937, 0, -0.345937, 0.938258, 0, 0.71189, 2.2768)
+projection = 1
+fov = 49.4353
