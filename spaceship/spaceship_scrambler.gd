@@ -7,7 +7,7 @@ var passengers : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	EventBus.summon_ship.connect(scramble_ship)
+	EventBus.ship_summoned.connect(scramble_ship)
 	scramble_ship()
 
 

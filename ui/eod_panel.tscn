@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2hnd1pwc8lfw"]
+
+[ext_resource type="Script" path="res://ui/eod_panel.gd" id="1_owx02"]
+[ext_resource type="PackedScene" uid="uid://bq20r02rb6i1u" path="res://ui/report.tscn" id="2_eab7v"]
+[ext_resource type="Script" path="res://ui/brief.gd" id="3_gvip3"]
+[ext_resource type="PackedScene" uid="uid://rsrg7p7j464o" path="res://ui/start_button.tscn" id="3_tc2ga"]
+
+[node name="EOD Panel" type="Panel" node_paths=PackedStringArray("report", "brief", "start_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_owx02")
+report = NodePath("Report")
+brief = NodePath("Brief")
+start_button = NodePath("Start Button")
+
+[node name="Report" parent="." instance=ExtResource("2_eab7v")]
+layout_mode = 1
+offset_left = -97.0
+offset_top = -64.0
+offset_right = 97.0
+offset_bottom = 64.0
+
+[node name="Brief" type="VBoxContainer" parent="." node_paths=PackedStringArray("show_on_finish")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -36.5
+offset_right = 125.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_gvip3")
+show_on_finish = NodePath("../Start Button")
+
+[node name="title" type="Label" parent="Brief"]
+layout_mode = 2
+text = "BRIEFING"
+
+[node name="News" type="RichTextLabel" parent="Brief"]
+layout_mode = 2
+text = "He'res todays news briefing and new rules"
+fit_content = true
+
+[node name="Start Button" parent="." instance=ExtResource("3_tc2ga")]
+layout_mode = 1
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -92.0
+offset_right = 52.0
+offset_bottom = -61.0
+grow_vertical = 0

@@ -8,7 +8,10 @@ func _ready():
 
 
 func _on_ship_focused():
-	text = "Passengers: %d" % GameData.ship_info.Passengers
+	var lies := {}
+	if GameData.is_liar:
+		lies = GameData.get_lies()
+	text = "Passengers: %d" % (GameData.ship_info.Passengers + lies.get("Passengers", 0))
 
 
 func _on_ship_left_gate():

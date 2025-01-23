@@ -5,23 +5,22 @@ extends AnimationPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animation_finished.connect(_on_animation_finished)
-	EventBus.start_shift.connect(summon_ship)
-	EventBus.summon_ship.connect(summon_ship)
-	EventBus.pass_ship.connect(_on_pass_ship)
-	EventBus.kill_ship.connect(_on_kill_ship)
+	EventBus.ship_summoned.connect(ship_summoned)
+	EventBus.ship_passed.connect(_on_ship_passed)
+	EventBus.ship_killed.connect(_on_ship_killed)
 
 
-func summon_ship():
+func ship_summoned():
 	EventBus.ship_unfocused.emit()
 	play("float_in")
 
 
-func _on_pass_ship():
+func _on_ship_passed():
 	EventBus.ship_unfocused.emit()
 	play("float_out")
 
 
-func _on_kill_ship():
+func _on_ship_killed():
 	EventBus.ship_unfocused.emit()
 	play("explode")
 

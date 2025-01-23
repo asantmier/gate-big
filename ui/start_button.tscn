@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://rsrg7p7j464o"]
+
+[ext_resource type="Script" path="res://ui/start_button.gd" id="1_xcb5d"]
+
+[node name="Start Button" type="Button"]
+editor_description = "Press to start shift"
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BEGIN SHIFT"
+script = ExtResource("1_xcb5d")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
