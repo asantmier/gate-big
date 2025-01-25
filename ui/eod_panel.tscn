@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2hnd1pwc8lfw"]
+[gd_scene load_steps=8 format=3 uid="uid://b2hnd1pwc8lfw"]
 
 [ext_resource type="Script" path="res://ui/eod_panel.gd" id="1_owx02"]
 [ext_resource type="PackedScene" uid="uid://bq20r02rb6i1u" path="res://ui/report.tscn" id="2_eab7v"]
+[ext_resource type="Shader" path="res://shaders/retro_tv.gdshader" id="2_nep1p"]
+[ext_resource type="Texture2D" uid="uid://dehkh875at58l" path="res://icon.svg" id="2_rw3s8"]
 [ext_resource type="Script" path="res://ui/brief.gd" id="3_gvip3"]
 [ext_resource type="PackedScene" uid="uid://rsrg7p7j464o" path="res://ui/start_button.tscn" id="3_tc2ga"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68tt5"]
+shader = ExtResource("2_nep1p")
+shader_parameter/scanline_count = 50.0
 
 [node name="EOD Panel" type="Panel" node_paths=PackedStringArray("report", "brief", "start_button")]
 anchors_preset = 15
@@ -15,6 +21,19 @@ script = ExtResource("1_owx02")
 report = NodePath("Report")
 brief = NodePath("Brief")
 start_button = NodePath("Start Button")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_68tt5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rw3s8")
 
 [node name="Report" parent="." instance=ExtResource("2_eab7v")]
 layout_mode = 1

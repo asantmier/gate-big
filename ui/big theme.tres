@@ -1,0 +1,12 @@
+[gd_resource type="Theme" format=3 uid="uid://bqum1d2nu4x12"]
+
+[resource]
+AlertLabel/base_type = &"Label"
+AlertLabel/colors/font_color = Color(1, 0.147694, 0.13901, 1)
+AlertLabel/font_sizes/font_size = 48
+AlertSublabel/base_type = &"Label"
+AlertSublabel/colors/font_color = Color(0.981657, 0.518297, 0.354656, 1)
+AlertSublabel/font_sizes/font_size = 32
+ReprimandLabel/base_type = &"Label"
+ReprimandLabel/colors/font_color = Color(0.695274, 0.157582, 0.1445, 1)
+ReprimandLabel/font_sizes/font_size = 64

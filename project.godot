@@ -34,7 +34,13 @@ enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
 passengers=""
 cargo=""
 systems=""
+warn_light=""
+
+[gui]
+
+theme/custom="res://ui/big theme.tres"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"

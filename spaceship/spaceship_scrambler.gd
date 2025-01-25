@@ -1,28 +1,41 @@
 extends Node2D
 
 @export var floors : Array[Floor]
+@export var cargo_bays : Array[Cargo]
 
 var passengers : int
+var cargo : int
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.ship_summoned.connect(scramble_ship)
-	scramble_ship()
+	#scramble_ship()
 
 
 func submit_manifest():
 	var info_dict : Dictionary
 	info_dict.Passengers = passengers
+	info_dict.Cargo = cargo
 	
 	GameData.ship_info = info_dict
 
 
 func scramble_ship():
 	randomize_passengers()
+	randomize_cargo()
 	submit_manifest()
 
 
+func randomize_cargo():
+	cargo = 0
+	for bay in cargo_bays:
+		bay.randomify()
+		var num = bay.quantity
+		cargo += num
+
+
+# Adds a random amount of passengers to each floor
 func randomize_passengers():
 	passengers = 0
 	for floor in floors:
@@ -32,6 +45,7 @@ func randomize_passengers():
 		populate_floor(floor, num)
 
 
+# Places a bunch of people on a floor
 func populate_floor(floor: Floor, quantity):
 	for pi in range(quantity):
 		var person = preload("res://spaceship/characters/person.tscn").instantiate()
@@ -40,6 +54,7 @@ func populate_floor(floor: Floor, quantity):
 		person.position = floor.get_random_point()
 
 
+# Deletes all the people on a floor
 func clear_floor(floor: Floor):
 	for child in floor.get_children():
 		child.queue_free()

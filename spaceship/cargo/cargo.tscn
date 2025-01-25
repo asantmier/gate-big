@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://byxfcrlbsthwg"]
+
+[ext_resource type="Script" path="res://spaceship/cargo/cargo.gd" id="1_bs7gi"]
+[ext_resource type="Texture2D" uid="uid://btq3hkmciulxj" path="res://spaceship/cargo/art/box_plain.png" id="2_2atxd"]
+[ext_resource type="PackedScene" uid="uid://dqhavyaibby83" path="res://spaceship/cargo/draw_order.tscn" id="3_h1ymn"]
+[ext_resource type="PackedScene" uid="uid://bwm3282ujrvt1" path="res://spaceship/cargo/crate_tester.tscn" id="4_1b4fh"]
+
+[node name="Cargo" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_bs7gi")
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(0.342579, 0.342579)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("2_2atxd")
+
+[node name="BoxPlain" type="Sprite2D" parent="Node2D"]
+position = Vector2(99, 0)
+texture = ExtResource("2_2atxd")
+
+[node name="BoxPlain2" type="Sprite2D" parent="Node2D"]
+position = Vector2(-102, 0)
+texture = ExtResource("2_2atxd")
+
+[node name="BoxPlain4" type="Sprite2D" parent="Node2D"]
+position = Vector2(-101, -97)
+texture = ExtResource("2_2atxd")
+
+[node name="BoxPlain3" type="Sprite2D" parent="Node2D"]
+position = Vector2(200, 0)
+texture = ExtResource("2_2atxd")
+
+[node name="BoxPlain6" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, -96)
+texture = ExtResource("2_2atxd")
+
+[node name="BoxPlain5" type="Sprite2D" parent="Node2D"]
+position = Vector2(97, -96)
+texture = ExtResource("2_2atxd")
+
+[node name="BoxPlain8" type="Sprite2D" parent="Node2D"]
+position = Vector2(-54, -195)
+texture = ExtResource("2_2atxd")
+
+[node name="BoxPlain9" type="Sprite2D" parent="Node2D"]
+position = Vector2(51, -193)
+texture = ExtResource("2_2atxd")
+
+[node name="BoxPlain7" type="Sprite2D" parent="Node2D"]
+position = Vector2(196, -95)
+texture = ExtResource("2_2atxd")
+
+[node name="BoxPlain10" type="Sprite2D" parent="Node2D"]
+position = Vector2(153, -193)
+texture = ExtResource("2_2atxd")
+
+[node name="Draw Order" parent="." node_paths=PackedStringArray("observed") instance=ExtResource("3_h1ymn")]
+enabled = false
+observed = NodePath("../Node2D")
+
+[node name="Crate Tester" parent="." node_paths=PackedStringArray("observed") instance=ExtResource("4_1b4fh")]
+observed = NodePath("../Node2D")

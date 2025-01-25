@@ -24,7 +24,7 @@ func add_strike():
 		1: animator = $"Strike One/AnimationPlayer"
 		2: animator = $"Strike Two/AnimationPlayer"
 		3: animator = $"Strike Three/AnimationPlayer"
-	animator.play("illuminate")
+	#animator.play("illuminate")
 
 
 func _on_reprimand_issued():

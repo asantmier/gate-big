@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btq3hkmciulxj"
-path="res://.godot/imported/box_plain.png-d48ceb3be9acf82c8f6b9ff75fb6dbe3.ctex"
+uid="uid://bo5xwhxcsyn74"
+path="res://.godot/imported/box_var1.png-3ac57de573341e17c321c630e6bbe8ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/textures/box_plain.png"
-dest_files=["res://.godot/imported/box_plain.png-d48ceb3be9acf82c8f6b9ff75fb6dbe3.ctex"]
+source_file="res://spaceship/cargo/art/box_var1.png"
+dest_files=["res://.godot/imported/box_var1.png-3ac57de573341e17c321c630e6bbe8ce.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6jsdaxy71qto"]
+[gd_scene load_steps=23 format=3 uid="uid://c6jsdaxy71qto"]
 
 [ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship/spaceship.tscn" id="1_05mrr"]
 [ext_resource type="Script" path="res://ship_animations.gd" id="2_lkoxi"]
@@ -12,6 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://cgj0ts2edf1r5" path="res://ui/scanner_buttons.tscn" id="9_r58rm"]
 [ext_resource type="PackedScene" uid="uid://d3bbrcv5a8sb5" path="res://game_debugger.tscn" id="10_6uy2d"]
 [ext_resource type="PackedScene" uid="uid://b2hnd1pwc8lfw" path="res://ui/eod_panel.tscn" id="12_8bmx5"]
+[ext_resource type="PackedScene" uid="uid://b6t5m8euq2j0f" path="res://ui/settings.tscn" id="13_oaq32"]
+[ext_resource type="Script" path="res://effects/warning_lights.gd" id="13_qk848"]
+[ext_resource type="PackedScene" uid="uid://dglx7vtn56qmp" path="res://ui/start_screen.tscn" id="14_h3ekp"]
+[ext_resource type="PackedScene" uid="uid://cxxklybhjyqnk" path="res://effects/warning_light.tscn" id="14_kpccf"]
+[ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alert_toast.tscn" id="14_n7f0v"]
 
 [sub_resource type="Animation" id="Animation_d6h4q"]
 length = 0.001
@@ -66,7 +71,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Blind Canvas/ColorRect:visible")
+tracks/4/path = NodePath("Ship Animations/Blind Canvas/ColorRect:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -78,7 +83,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Blind Canvas/ColorRect:modulate")
+tracks/5/path = NodePath("Ship Animations/Blind Canvas/ColorRect:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -118,7 +123,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Blind Canvas/ColorRect:visible")
+tracks/2/path = NodePath("Ship Animations/Blind Canvas/ColorRect:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -130,7 +135,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Blind Canvas/ColorRect:modulate")
+tracks/3/path = NodePath("Ship Animations/Blind Canvas/ColorRect:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -240,6 +245,18 @@ libraries = {
 }
 script = ExtResource("2_lkoxi")
 
+[node name="Blind Canvas" type="CanvasLayer" parent="Ship Animations"]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="Ship Animations/Blind Canvas"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Explosion" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(433, 254)
@@ -303,6 +320,8 @@ size_flags_vertical = 3
 [node name="Shift Timer" parent="HUD Canvas" instance=ExtResource("6_s522t")]
 
 [node name="Shift Quota" parent="HUD Canvas" instance=ExtResource("7_rmit7")]
+offset_left = 64.0
+offset_right = 104.0
 
 [node name="Ship Debugger" parent="HUD Canvas" instance=ExtResource("10_6uy2d")]
 offset_left = 4.0
@@ -310,18 +329,73 @@ offset_top = 208.0
 offset_right = -1001.0
 offset_bottom = -262.0
 
-[node name="EOD Canvas" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="EOD Panel" parent="EOD Canvas" instance=ExtResource("12_8bmx5")]
-
-[node name="Blind Canvas" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Blind Canvas"]
+[node name="Warning Lights" type="Control" parent="HUD Canvas"]
 visible = false
-modulate = Color(1, 1, 1, 0)
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("13_qk848")
+
+[node name="Control" type="Control" parent="HUD Canvas/Warning Lights"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Warning Light" parent="HUD Canvas/Warning Lights/Control" instance=ExtResource("14_kpccf")]
+
+[node name="Control2" type="Control" parent="HUD Canvas/Warning Lights"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Warning Light" parent="HUD Canvas/Warning Lights/Control2" instance=ExtResource("14_kpccf")]
+
+[node name="Control3" type="Control" parent="HUD Canvas/Warning Lights"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Warning Light" parent="HUD Canvas/Warning Lights/Control3" instance=ExtResource("14_kpccf")]
+
+[node name="Control4" type="Control" parent="HUD Canvas/Warning Lights"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Warning Light" parent="HUD Canvas/Warning Lights/Control4" instance=ExtResource("14_kpccf")]
+
+[node name="Alert Toast" parent="HUD Canvas" instance=ExtResource("14_n7f0v")]
+anchors_preset = -1
+anchor_right = 0.770833
+metadata/_edit_use_anchors_ = true
+
+[node name="EOD Canvas" type="CanvasLayer" parent="."]
+
+[node name="EOD Panel" parent="EOD Canvas" instance=ExtResource("12_8bmx5")]
+visible = false
+
+[node name="Menu Canvas" type="CanvasLayer" parent="."]
+
+[node name="StartScreen" parent="Menu Canvas" instance=ExtResource("14_h3ekp")]
+visible = false
+
+[node name="Settings" parent="Menu Canvas" instance=ExtResource("13_oaq32")]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk3r3klk1up4e"]
+
+[ext_resource type="PackedScene" uid="uid://byxfcrlbsthwg" path="res://spaceship/cargo/cargo.tscn" id="1_irfde"]
+[ext_resource type="Script" path="res://spaceship/cargo/cargo_test.gd" id="1_y3d1q"]
+
+[node name="cargo test" type="Node2D"]
+script = ExtResource("1_y3d1q")
+
+[node name="Cargo" parent="." instance=ExtResource("1_irfde")]
+position = Vector2(388, 296)

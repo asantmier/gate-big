@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqhavyaibby83"]
+
+[ext_resource type="Script" path="res://spaceship/cargo/draw_order.gd" id="1_8bfhq"]
+
+[node name="Draw Order" type="Node2D" node_paths=PackedStringArray("observed")]
+z_index = 1
+script = ExtResource("1_8bfhq")
+observed = NodePath("")
