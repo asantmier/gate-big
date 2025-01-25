@@ -12,4 +12,4 @@ func alert_reprimand():
 
 
 func alert_game_over():
-	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.queue("toast2")

@@ -8,7 +8,7 @@ func _ready():
 
 
 func _on_reprimand_issued():
-	%RepCount.text = str(GameData.reprimands)
+	%RepCount.text = str(GameData.max_reprimands - GameData.reprimands)
 	show()
 
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://gu8os0cv80kw"]
+[gd_scene load_steps=8 format=3 uid="uid://gu8os0cv80kw"]
 
 [ext_resource type="Script" path="res://ui/alert_toast.gd" id="1_iqnk8"]
 [ext_resource type="PackedScene" uid="uid://1sn5e5qodq1h" path="res://ui/reprimand_alert.tscn" id="2_22rhs"]
+[ext_resource type="PackedScene" uid="uid://c2x1qlec4fdgi" path="res://ui/game_over_alert.tscn" id="3_ul83m"]
 
 [sub_resource type="Animation" id="Animation_gmmwl"]
 length = 0.001
@@ -16,6 +17,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(556, 304)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, -221)]
 }
 
 [sub_resource type="Animation" id="Animation_0khts"]
@@ -34,10 +47,26 @@ tracks/0/keys = {
 "values": [Vector2(555, -200), Vector2(556, 304), Vector2(556, 304), Vector2(556, 1000)]
 }
 
+[sub_resource type="Animation" id="Animation_5j8dy"]
+resource_name = "toast2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(556, 299)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1u2lb"]
 _data = {
 "RESET": SubResource("Animation_gmmwl"),
-"toast": SubResource("Animation_0khts")
+"toast": SubResource("Animation_0khts"),
+"toast2": SubResource("Animation_5j8dy")
 }
 
 [node name="Alert Toast" type="Control"]
@@ -66,6 +95,24 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Reprimand Alert" parent="Control" instance=ExtResource("2_22rhs")]
+layout_mode = 1
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -545.0
+offset_right = 20.0
+offset_bottom = -505.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Game Over Alert" parent="Control2" instance=ExtResource("3_ul83m")]
 layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -84,3 +84,10 @@ func rand_sign():
 		return 1
 	else:
 		return -1
+
+
+func issue_reprimand():
+	reprimands += 1
+	EventBus.reprimand_issued.emit()
+	if GameData.reprimands >= GameData.max_reprimands:
+		EventBus.reprimand_limit_reached.emit()

@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://hi8g11mb62fp"]
 
-[ext_resource type="PackedScene" uid="uid://jbpi4jptr7be" path="res://blasterD.glb" id="1_dsl54"]
-[ext_resource type="ArrayMesh" uid="uid://bsvgl6nja1rwk" path="res://TurretDesign.obj" id="1_qnqo7"]
-[ext_resource type="Shader" path="res://shaders/acrpod.gdshader" id="2_pj5gq"]
-[ext_resource type="Shader" path="res://shaders/melt.gdshader" id="2_ye08v"]
-[ext_resource type="PackedScene" uid="uid://dbfyaqldwxd5j" path="res://TurretDesign-v1.gltf" id="5_taowo"]
+[ext_resource type="ArrayMesh" uid="uid://bsvgl6nja1rwk" path="res://TurretDesign.obj" id="1_4cb8m"]
+[ext_resource type="PackedScene" uid="uid://jbpi4jptr7be" path="res://blasterD.glb" id="2_0xqr5"]
+[ext_resource type="Shader" path="res://shaders/melt.gdshader" id="3_mavqu"]
+[ext_resource type="Shader" path="res://shaders/acrpod.gdshader" id="4_rwgae"]
+[ext_resource type="PackedScene" uid="uid://dbfyaqldwxd5j" path="res://TurretDesign-v1.gltf" id="5_fb6oy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ux7ws"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,13 +19,13 @@ sky = SubResource("Sky_t5b3w")
 tonemap_mode = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y2en1"]
-shader = ExtResource("2_ye08v")
+shader = ExtResource("3_mavqu")
 shader_parameter/mask_softness = 2.8
 shader_parameter/mask_threshold = 0.71
 shader_parameter/sort = 0.282
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cc0lu"]
-shader = ExtResource("2_pj5gq")
+shader = ExtResource("4_rwgae")
 shader_parameter/quantize_size = 2.0
 shader_parameter/handle_scale = false
 shader_parameter/handle_subpixels = false
@@ -42,7 +42,7 @@ shader_parameter/use_palette = null
 [node name="TurretDesign" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -2.01638, 2.16067, 0.967474)
 visible = false
-mesh = ExtResource("1_qnqo7")
+mesh = ExtResource("1_4cb8m")
 skeleton = NodePath("../CanvasLayer")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -52,7 +52,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2lugm")
 
-[node name="blasterD2" parent="." instance=ExtResource("1_dsl54")]
+[node name="blasterD2" parent="." instance=ExtResource("2_0xqr5")]
 transform = Transform3D(0.279175, 0, -0.96024, 0, 1, 0, 0.96024, 0, 0.279175, 0.0369003, 0.0927857, 0.0751634)
 visible = false
 
@@ -81,5 +81,5 @@ grow_vertical = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71189, 2.2768)
 fov = 49.4353
 
-[node name="blockbench_export" parent="." instance=ExtResource("5_taowo")]
+[node name="blockbench_export" parent="." instance=ExtResource("5_fb6oy")]
 transform = Transform3D(4.37114e-08, -1.31134e-07, 1, 1, 1.91069e-15, -4.37114e-08, 3.82137e-15, 1, 1.31134e-07, -1.36453, -0.680713, -4.71839)

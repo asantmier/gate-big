@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b6t5m8euq2j0f" path="res://ui/settings.tscn" id="1_aahy1"]
 [ext_resource type="AudioStream" uid="uid://cspe1y42o3xec" path="res://Planet_Explosion_High-12.wav" id="2_3b08s"]
-[ext_resource type="Script" path="res://test_sound.gd" id="3_blmmq"]
+[ext_resource type="Script" path="res://testing/test_sound.gd" id="3_blmmq"]
 
 [node name="sound test" type="Node2D"]
 

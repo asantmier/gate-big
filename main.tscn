@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c6jsdaxy71qto"]
+[gd_scene load_steps=24 format=3 uid="uid://c6jsdaxy71qto"]
 
 [ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship/spaceship.tscn" id="1_05mrr"]
 [ext_resource type="Script" path="res://ship_animations.gd" id="2_lkoxi"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dglx7vtn56qmp" path="res://ui/start_screen.tscn" id="14_h3ekp"]
 [ext_resource type="PackedScene" uid="uid://cxxklybhjyqnk" path="res://effects/warning_light.tscn" id="14_kpccf"]
 [ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alert_toast.tscn" id="14_n7f0v"]
+[ext_resource type="PackedScene" uid="uid://d2pyxpuyinvfm" path="res://effects/melt_effect.tscn" id="18_4xoj3"]
 
 [sub_resource type="Animation" id="Animation_d6h4q"]
 length = 0.001
@@ -337,6 +338,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("13_qk848")
 
 [node name="Control" type="Control" parent="HUD Canvas/Warning Lights"]
@@ -344,6 +346,7 @@ layout_mode = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Warning Light" parent="HUD Canvas/Warning Lights/Control" instance=ExtResource("14_kpccf")]
 
@@ -355,6 +358,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
+mouse_filter = 2
 
 [node name="Warning Light" parent="HUD Canvas/Warning Lights/Control2" instance=ExtResource("14_kpccf")]
 
@@ -366,6 +370,7 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Warning Light" parent="HUD Canvas/Warning Lights/Control3" instance=ExtResource("14_kpccf")]
 
@@ -380,6 +385,7 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Warning Light" parent="HUD Canvas/Warning Lights/Control4" instance=ExtResource("14_kpccf")]
 
@@ -399,3 +405,5 @@ visible = false
 visible = false
 
 [node name="Settings" parent="Menu Canvas" instance=ExtResource("13_oaq32")]
+
+[node name="MeltEffect" parent="." instance=ExtResource("18_4xoj3")]

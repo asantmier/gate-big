@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckhlv1tqwkegp"]
+
+[ext_resource type="PackedScene" uid="uid://b5gbaxvrkxdxu" path="res://spaceship/floor.tscn" id="1_ho7kb"]
+[ext_resource type="PackedScene" uid="uid://cfb2uf5ywokxq" path="res://spaceship/characters/person.tscn" id="2_1w41c"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="3_po4iq"]
+[ext_resource type="PackedScene" uid="uid://coesqs6u78qb8" path="res://spaceship/characters/person_debugger.tscn" id="4_ip317"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_ho7kb")]
+
+[node name="Person" parent="Floor" node_paths=PackedStringArray("floor") instance=ExtResource("2_1w41c")]
+floor = NodePath("..")
+
+[node name="StateChartDebugger" parent="." instance=ExtResource("3_po4iq")]
+offset_left = 31.0
+offset_top = 239.0
+offset_right = 313.0
+offset_bottom = 530.0
+initial_node_to_watch = NodePath("../Floor/Person")
+
+[node name="Person Debugger" parent="." node_paths=PackedStringArray("person") instance=ExtResource("4_ip317")]
+person = NodePath("../Floor/Person")
