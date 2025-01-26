@@ -20,3 +20,7 @@ PanelContainer/styles/panel = SubResource("StyleBoxTexture_0bq7r")
 ReprimandLabel/base_type = &"Label"
 ReprimandLabel/colors/font_color = Color(0.695274, 0.157582, 0.1445, 1)
 ReprimandLabel/font_sizes/font_size = 64
+SubtitleLabel/base_type = &"Label"
+SubtitleLabel/font_sizes/font_size = 16
+TitleLabel/base_type = &"Label"
+TitleLabel/font_sizes/font_size = 24

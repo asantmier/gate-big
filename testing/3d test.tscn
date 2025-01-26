@@ -1,14 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://hi8g11mb62fp"]
+[gd_scene load_steps=11 format=3 uid="uid://hi8g11mb62fp"]
 
 [ext_resource type="ArrayMesh" uid="uid://bsvgl6nja1rwk" path="res://testing/resources/TurretDesign.obj" id="1_4cb8m"]
 [ext_resource type="PackedScene" uid="uid://jbpi4jptr7be" path="res://testing/resources/blasterD.glb" id="2_0xqr5"]
 [ext_resource type="Shader" path="res://shaders/melt.gdshader" id="3_mavqu"]
 [ext_resource type="Shader" path="res://shaders/acrpod.gdshader" id="4_rwgae"]
 [ext_resource type="PackedScene" uid="uid://dbfyaqldwxd5j" path="res://testing/resources/TurretDesign-v1.gltf" id="5_fb6oy"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krfqx"]
-transparency = 1
-albedo_color = Color(1, 0.15, 0.773334, 0.721569)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ux7ws"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,7 +43,6 @@ shader_parameter/use_palette = null
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -2.01638, 2.16067, 0.967474)
 mesh = ExtResource("1_4cb8m")
 skeleton = NodePath("../CanvasLayer")
-surface_material_override/0 = SubResource("StandardMaterial3D_krfqx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)

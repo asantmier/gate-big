@@ -16,6 +16,7 @@ var shift_rules := {
 		quota = 3,
 		criminals = [GameConstants.RED_FACTION, GameConstants.ORANGE_FACTION],
 		contraband = [GameConstants.GRIN, GameConstants.OMINOUS_MOO_DENG],
+		smugglers = 1, # Smugglers carry contraband or criminals
 	}
 }
 
@@ -78,6 +79,16 @@ func get_quota():
 
 func get_liars_quota():
 	return shift_rules[shift].liars
+
+
+## Returns criminals array
+func get_criminal_factions():
+	return shift_rules[shift].criminals
+
+
+## Returns contraband array
+func get_contraband():
+	return shift_rules[shift].contraband
 
 
 ## Randomly returns 1 or -1

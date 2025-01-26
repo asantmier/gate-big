@@ -1,4 +1,48 @@
-[gd_scene format=3 uid="uid://bum8ktu74fq31"]
+[gd_scene load_steps=23 format=3 uid="uid://bum8ktu74fq31"]
+
+[ext_resource type="Script" path="res://ui/gameplay/laws_display.gd" id="1_8q1xl"]
+[ext_resource type="Texture2D" uid="uid://chvn8q6sf8k8o" path="res://spaceship/characters/textures/npc1.png" id="2_4dqby"]
+[ext_resource type="Texture2D" uid="uid://bwgm2gpqmm7de" path="res://spaceship/characters/textures/npc2.png" id="3_fpdhl"]
+[ext_resource type="Texture2D" uid="uid://bml4abmcoay31" path="res://spaceship/characters/textures/npc3.png" id="4_rgga1"]
+[ext_resource type="Texture2D" uid="uid://dq11agxyiqjxh" path="res://spaceship/characters/textures/npc4.png" id="5_xaxvm"]
+[ext_resource type="Texture2D" uid="uid://cr2b60ko4av2m" path="res://spaceship/characters/textures/npc5.png" id="6_nevqy"]
+[ext_resource type="Texture2D" uid="uid://dmvh1grqsa5pe" path="res://spaceship/characters/textures/npc6.png" id="7_7jt0f"]
+[ext_resource type="Texture2D" uid="uid://fykb7qva3yhp" path="res://spaceship/characters/textures/npc7.png" id="8_abx2h"]
+[ext_resource type="Texture2D" uid="uid://bo5xwhxcsyn74" path="res://spaceship/cargo/art/box_var1.png" id="9_vf2gs"]
+[ext_resource type="Texture2D" uid="uid://beg10fkop3mb4" path="res://spaceship/cargo/art/box_var2.png" id="10_2440i"]
+[ext_resource type="Texture2D" uid="uid://cuh8u4v8y5akp" path="res://spaceship/cargo/art/box_var3.png" id="11_av5cr"]
+[ext_resource type="Texture2D" uid="uid://dpr0soo477wa0" path="res://spaceship/cargo/art/box_var4.png" id="12_dqmui"]
+[ext_resource type="Texture2D" uid="uid://byu4p4ceft1pd" path="res://spaceship/cargo/art/box_var5.png" id="13_lvrvo"]
+[ext_resource type="Texture2D" uid="uid://dvtf6ytc38xwy" path="res://spaceship/cargo/art/box_var6.png" id="14_xut7u"]
+[ext_resource type="Texture2D" uid="uid://dpqvn34mxsrkg" path="res://spaceship/cargo/art/box_var7.png" id="15_rd36l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp4yr"]
+atlas = ExtResource("2_4dqby")
+region = Rect2(28, 8, 72, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f13fi"]
+atlas = ExtResource("3_fpdhl")
+region = Rect2(28, 8, 72, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4onq8"]
+atlas = ExtResource("4_rgga1")
+region = Rect2(28, 8, 72, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n1q6"]
+atlas = ExtResource("5_xaxvm")
+region = Rect2(28, 8, 72, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebnug"]
+atlas = ExtResource("6_nevqy")
+region = Rect2(28, 8, 72, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kfig"]
+atlas = ExtResource("7_7jt0f")
+region = Rect2(28, 8, 72, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdceb"]
+atlas = ExtResource("8_abx2h")
+region = Rect2(28, 8, 72, 120)
 
 [node name="Rules" type="Control"]
 layout_mode = 3
@@ -9,12 +53,169 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="."]
+[node name="Laws Display" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "This is where the general rules will be"
-autowrap_mode = 2
+script = ExtResource("1_8q1xl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Laws Display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="Laws Display/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "TODAY'S LAWS"
+
+[node name="subtitle" type="Label" parent="Laws Display/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"SubtitleLabel"
+text = "KILL ON SIGHT"
+
+[node name="FactionsSection" type="VBoxContainer" parent="Laws Display/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="section title" type="Label" parent="Laws Display/VBoxContainer/FactionsSection"]
+layout_mode = 2
+text = "Banned Factions"
+
+[node name="CriminalList" type="HBoxContainer" parent="Laws Display/VBoxContainer/FactionsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("AtlasTexture_sp4yr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("AtlasTexture_f13fi")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("AtlasTexture_4onq8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("AtlasTexture_1n1q6")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect5" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ebnug")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect6" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("AtlasTexture_6kfig")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect7" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = SubResource("AtlasTexture_tdceb")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ContrabandSection" type="VBoxContainer" parent="Laws Display/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="section title" type="Label" parent="Laws Display/VBoxContainer/ContrabandSection"]
+layout_mode = 2
+text = "Banned Goods"
+
+[node name="ContrabandList" type="HBoxContainer" parent="Laws Display/VBoxContainer/ContrabandSection"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_vf2gs")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_2440i")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
+visible = false
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("11_av5cr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("12_dqmui")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect5" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("13_lvrvo")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect6" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("14_xut7u")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect7" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_rd36l")
+expand_mode = 1
+stretch_mode = 4

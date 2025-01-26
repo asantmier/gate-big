@@ -268,17 +268,21 @@ layout_mode = 2
 
 [node name="Manifest" parent="HUD Canvas/Right Panel/VBoxContainer" instance=ExtResource("5_01fqa")]
 layout_mode = 2
+size_flags_stretch_ratio = 0.7
 
 [node name="Rules" parent="HUD Canvas/Right Panel/VBoxContainer" instance=ExtResource("5_3yfl6")]
 layout_mode = 2
+size_flags_stretch_ratio = 1.16
 
 [node name="Choice Buttons" parent="HUD Canvas/Right Panel/VBoxContainer" instance=ExtResource("5_ypbns")]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.37
 
 [node name="Reprimand Counter" parent="HUD Canvas/Right Panel/VBoxContainer" instance=ExtResource("8_oxk48")]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.36
 
 [node name="Shift Timer" parent="HUD Canvas" instance=ExtResource("6_s522t")]
 
