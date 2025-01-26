@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwm3282ujrvt1"]
+
+[ext_resource type="Script" path="res://spaceship/cargo/crate_tester.gd" id="1_6p5fh"]
+
+[node name="Crate Tester" type="Node2D" node_paths=PackedStringArray("observed")]
+script = ExtResource("1_6p5fh")
+enabled = false
+observed = NodePath("")
+crates_visible = 11

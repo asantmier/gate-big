@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=3 uid="uid://djed4dy36fm3r"]
+
+[ext_resource type="PackedScene" uid="uid://bl5krru57e30e" path="res://ui/gameplay/reprimand_counter.tscn" id="1_cnhtt"]
+[ext_resource type="Script" path="res://testing/reprimand_test.gd" id="1_mn30a"]
+[ext_resource type="Script" path="res://effects/warning_lights.gd" id="2_pou4u"]
+[ext_resource type="PackedScene" uid="uid://cxxklybhjyqnk" path="res://effects/warning_light.tscn" id="3_3k2cm"]
+[ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alerts/alert_toast.tscn" id="4_3i015"]
+[ext_resource type="PackedScene" uid="uid://d2pyxpuyinvfm" path="res://effects/melt_effect.tscn" id="6_s7avl"]
+
+[node name="reprimand test" type="Node2D"]
+script = ExtResource("1_mn30a")
+
+[node name="HUD Canvas" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="HUD Canvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.419813, 0.419813, 0.419813, 0.501961)
+
+[node name="Reprimand Counter" parent="HUD Canvas" instance=ExtResource("1_cnhtt")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 888.0
+offset_top = 489.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_vertical = 3
+
+[node name="Warning Lights" type="Control" parent="HUD Canvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_pou4u")
+
+[node name="Control" type="Control" parent="HUD Canvas/Warning Lights"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Warning Light" parent="HUD Canvas/Warning Lights/Control" instance=ExtResource("3_3k2cm")]
+
+[node name="Control2" type="Control" parent="HUD Canvas/Warning Lights"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="Warning Light" parent="HUD Canvas/Warning Lights/Control2" instance=ExtResource("3_3k2cm")]
+
+[node name="Control3" type="Control" parent="HUD Canvas/Warning Lights"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Warning Light" parent="HUD Canvas/Warning Lights/Control3" instance=ExtResource("3_3k2cm")]
+
+[node name="Control4" type="Control" parent="HUD Canvas/Warning Lights"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Warning Light" parent="HUD Canvas/Warning Lights/Control4" instance=ExtResource("3_3k2cm")]
+
+[node name="Alert Toast" parent="HUD Canvas" instance=ExtResource("4_3i015")]
+anchors_preset = -1
+anchor_right = 0.770833
+metadata/_edit_use_anchors_ = true
+
+[node name="reprimand" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "reprimand"
+
+[node name="revoke" type="Button" parent="."]
+offset_left = 5.0
+offset_top = 51.0
+offset_right = 66.0
+offset_bottom = 82.0
+text = "revoke"
+
+[node name="status" type="Label" parent="."]
+offset_left = 11.0
+offset_top = 113.0
+offset_right = 51.0
+offset_bottom = 136.0
+
+[node name="MeltEffect" parent="." instance=ExtResource("6_s7avl")]
+
+[connection signal="pressed" from="reprimand" to="." method="_on_reprimand_pressed"]
+[connection signal="pressed" from="revoke" to="." method="_on_revoke_pressed"]

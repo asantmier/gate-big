@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cr358ix1bubyx" path="res://splat09.png" id="5_fnd6x"]
 [ext_resource type="Script" path="res://addons/draggablesprite2d/src/draggablesprite2d.gd" id="6_j8ceo"]
 [ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="6_pu663"]
-[ext_resource type="Script" path="res://scanner_layer.gd" id="7_eldpv"]
+[ext_resource type="Script" path="res://scanner/scanner_layer.gd" id="7_eldpv"]
 [ext_resource type="Script" path="res://scanner/layer_label.gd" id="7_t6o2y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ds78w"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://drrl5ulf45bg7"]
+
+[ext_resource type="Texture2D" uid="uid://bfe00aynpjxn6" path="res://spaceship/art/firefox_zuy12N57mR.png" id="1_ym3ef"]
+[ext_resource type="Script" path="res://addons/draggablesprite2d/src/draggablesprite2d.gd" id="2_t7uqg"]
+[ext_resource type="Shader" path="res://testing/resources/screen quantize.gdshader" id="3_utiws"]
+[ext_resource type="Texture2D" uid="uid://cr358ix1bubyx" path="res://splat09.png" id="4_i2tts"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6lbx"]
+shader = ExtResource("3_utiws")
+shader_parameter/x_pixel_size = 8
+shader_parameter/y_pixel_size = 8
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 440.0
+offset_top = 197.0
+offset_right = 641.0
+offset_bottom = 291.0
+text = "test test test test test"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(496, 282)
+texture = ExtResource("1_ym3ef")
+
+[node name="Scanner" type="Area2D" parent="."]
+position = Vector2(519, 232)
+script = ExtResource("2_t7uqg")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Scanner"]
+material = SubResource("ShaderMaterial_f6lbx")
+position = Vector2(68, 51)
+texture = ExtResource("4_i2tts")

@@ -1,0 +1,246 @@
+[gd_scene load_steps=9 format=3 uid="uid://bl5krru57e30e"]
+
+[ext_resource type="Script" path="res://ui/gameplay/reprimands.gd" id="1_8tqw8"]
+[ext_resource type="Texture2D" uid="uid://qymhsv6rrxwl" path="res://ui/textures/lifeCounter1.png" id="2_bj7wu"]
+[ext_resource type="Texture2D" uid="uid://janijl4qrydh" path="res://effects/2d_lights_and_shadows_neutral_point_light.webp" id="3_xfli0"]
+[ext_resource type="Texture2D" uid="uid://c2ux0orcnlc35" path="res://ui/textures/lifeCounter2.png" id="4_wrdkg"]
+
+[sub_resource type="Animation" id="Animation_7el1g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_umo73"]
+resource_name = "die_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8aa2b"]
+resource_name = "illuminate"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3rou0"]
+_data = {
+"RESET": SubResource("Animation_7el1g"),
+"die_out": SubResource("Animation_umo73"),
+"illuminate": SubResource("Animation_8aa2b")
+}
+
+[node name="Reprimand Counter" type="Control"]
+layout_mode = 3
+anchor_right = 0.211806
+anchor_bottom = 0.21142
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Reprimands" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8tqw8")
+
+[node name="Strike Three" type="TextureRect" parent="Reprimands"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_bj7wu")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Reprimands/Strike Three"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wrdkg")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reprimands/Strike Three"]
+libraries = {
+"": SubResource("AnimationLibrary_3rou0")
+}
+
+[node name="Control" type="Control" parent="Reprimands/Strike Three"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 0.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="Reprimands/Strike Three/Control"]
+scale = Vector2(0.875, 1.2)
+color = Color(0.058245, 0.557389, 3.85046e-07, 1)
+energy = 2.0
+range_layer_min = -4
+range_layer_max = 5
+texture = ExtResource("3_xfli0")
+texture_scale = 0.5
+
+[node name="Strike Two" type="TextureRect" parent="Reprimands"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_bj7wu")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Reprimands/Strike Two"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wrdkg")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reprimands/Strike Two"]
+libraries = {
+"": SubResource("AnimationLibrary_3rou0")
+}
+
+[node name="Control" type="Control" parent="Reprimands/Strike Two"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = 0.5
+offset_right = 0.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="Reprimands/Strike Two/Control"]
+scale = Vector2(0.875, 1.2)
+color = Color(0.058245, 0.557389, 3.85046e-07, 1)
+energy = 2.0
+range_layer_min = -4
+range_layer_max = 5
+texture = ExtResource("3_xfli0")
+texture_scale = 0.5
+
+[node name="Strike One" type="TextureRect" parent="Reprimands"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_bj7wu")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Reprimands/Strike One"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wrdkg")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reprimands/Strike One"]
+libraries = {
+"": SubResource("AnimationLibrary_3rou0")
+}
+
+[node name="Control" type="Control" parent="Reprimands/Strike One"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.5
+offset_top = 0.5
+offset_right = 0.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="Reprimands/Strike One/Control"]
+scale = Vector2(0.875, 1.2)
+color = Color(0.058245, 0.557389, 3.85046e-07, 1)
+energy = 2.0
+range_layer_min = -4
+range_layer_max = 5
+texture = ExtResource("3_xfli0")
+texture_scale = 0.5

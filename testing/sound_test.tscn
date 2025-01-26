@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://oqgycefy78j7"]
+
+[ext_resource type="PackedScene" uid="uid://b6t5m8euq2j0f" path="res://ui/settings/settings.tscn" id="1_aahy1"]
+[ext_resource type="AudioStream" uid="uid://cspe1y42o3xec" path="res://testing/resources/Planet_Explosion_High-12.wav" id="2_3b08s"]
+[ext_resource type="Script" path="res://testing/test_sound.gd" id="3_blmmq"]
+
+[node name="sound test" type="Node2D"]
+
+[node name="Menu Canvas" type="CanvasLayer" parent="."]
+
+[node name="Settings" parent="Menu Canvas" instance=ExtResource("1_aahy1")]
+
+[node name="test sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3b08s")
+autoplay = true
+script = ExtResource("3_blmmq")

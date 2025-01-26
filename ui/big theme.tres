@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bqum1d2nu4x12"]
+
+[ext_resource type="Texture2D" uid="uid://casqdq4dw3m4d" path="res://ui/textures/interfaceBorder.png" id="1_lbmvc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0bq7r"]
+texture = ExtResource("1_lbmvc")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[resource]
+AlertLabel/base_type = &"Label"
+AlertLabel/colors/font_color = Color(1, 0.147694, 0.13901, 1)
+AlertLabel/font_sizes/font_size = 48
+AlertSublabel/base_type = &"Label"
+AlertSublabel/colors/font_color = Color(0.981657, 0.518297, 0.354656, 1)
+AlertSublabel/font_sizes/font_size = 32
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_0bq7r")
+ReprimandLabel/base_type = &"Label"
+ReprimandLabel/colors/font_color = Color(0.695274, 0.157582, 0.1445, 1)
+ReprimandLabel/font_sizes/font_size = 64
+SubtitleLabel/base_type = &"Label"
+SubtitleLabel/font_sizes/font_size = 16
+TitleLabel/base_type = &"Label"
+TitleLabel/font_sizes/font_size = 24

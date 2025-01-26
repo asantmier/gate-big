@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5gbaxvrkxdxu"]
+
+[ext_resource type="Script" path="res://spaceship/floor.gd" id="1_1lodg"]
+
+[sub_resource type="Curve2D" id="Curve2D_1ns1m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 35, 22, 0, 0, 0, 0, 728, 22)
+}
+point_count = 2
+
+[node name="Floor" type="Path2D"]
+editor_description = "Marks the path passengers can walk on."
+curve = SubResource("Curve2D_1ns1m")
+script = ExtResource("1_1lodg")

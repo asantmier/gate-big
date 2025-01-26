@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4li4ei653p3y"]
+
+[ext_resource type="Script" path="res://ui/gameplay/timer.gd" id="1_cf3ol"]
+
+[node name="Shift Timer" type="Control"]
+editor_description = "Adds time limit."
+layout_mode = 3
+anchor_right = 0.770833
+anchor_bottom = 0.0401235
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "time"
+script = ExtResource("1_cf3ol")
+
+[node name="Clock" type="Timer" parent="CenterContainer/Timer"]
+
+[connection signal="timeout" from="CenterContainer/Timer/Clock" to="CenterContainer/Timer" method="_on_clock_timeout"]
