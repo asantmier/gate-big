@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://ccnu0nds8r7jk" path="res://ui/choice_buttons.tscn" id="5_ypbns"]
 [ext_resource type="PackedScene" uid="uid://c4li4ei653p3y" path="res://ui/shift_timer.tscn" id="6_s522t"]
 [ext_resource type="PackedScene" uid="uid://do2gwswyvta27" path="res://ui/shift_quota.tscn" id="7_rmit7"]
-[ext_resource type="Script" path="res://scanner_layer.gd" id="8_kxkxv"]
 [ext_resource type="PackedScene" uid="uid://bl5krru57e30e" path="res://ui/reprimand_counter.tscn" id="8_oxk48"]
 [ext_resource type="PackedScene" uid="uid://cgj0ts2edf1r5" path="res://ui/scanner_buttons.tscn" id="9_r58rm"]
 [ext_resource type="PackedScene" uid="uid://d3bbrcv5a8sb5" path="res://game_debugger.tscn" id="10_6uy2d"]
@@ -17,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dglx7vtn56qmp" path="res://ui/start_screen.tscn" id="14_h3ekp"]
 [ext_resource type="PackedScene" uid="uid://cxxklybhjyqnk" path="res://effects/warning_light.tscn" id="14_kpccf"]
 [ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alert_toast.tscn" id="14_n7f0v"]
+[ext_resource type="PackedScene" uid="uid://d8rwc8vp2xyf" path="res://scanner/scanner_layer.tscn" id="17_oofxi"]
 [ext_resource type="PackedScene" uid="uid://d2pyxpuyinvfm" path="res://effects/melt_effect.tscn" id="18_4xoj3"]
 
 [sub_resource type="Animation" id="Animation_d6h4q"]
@@ -237,48 +237,25 @@ _data = {
 [node name="Main" type="Node2D"]
 metadata/_edit_vertical_guides_ = [888.0]
 
-[node name="Spaceship" parent="." instance=ExtResource("1_05mrr")]
-position = Vector2(431, 249)
+[node name="Menu Canvas" type="CanvasLayer" parent="."]
+layer = 6
 
-[node name="Ship Animations" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_vwmg2")
-}
-script = ExtResource("2_lkoxi")
-
-[node name="Blind Canvas" type="CanvasLayer" parent="Ship Animations"]
-layer = 5
-
-[node name="ColorRect" type="ColorRect" parent="Ship Animations/Blind Canvas"]
+[node name="StartScreen" parent="Menu Canvas" instance=ExtResource("14_h3ekp")]
 visible = false
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+hide_in_debug = true
 
-[node name="Explosion" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(433, 254)
-scale = Vector2(2.67969, 2.67969)
-texture = ExtResource("3_hj608")
-hframes = 8
-vframes = 8
-
-[node name="ScannerLayer" type="Node2D" parent="."]
-editor_description = "Enables switching scanner layer visiblity."
-script = ExtResource("8_kxkxv")
+[node name="Settings" parent="Menu Canvas" instance=ExtResource("13_oaq32")]
 
 [node name="HUD Canvas" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Scanner Buttons" parent="HUD Canvas" instance=ExtResource("9_r58rm")]
-anchor_right = 0.770833
-metadata/_edit_use_anchors_ = true
+anchor_left = 0.271701
+anchor_right = 0.549479
 
-[node name="Right Panel" type="Control" parent="HUD Canvas"]
-layout_mode = 3
-anchor_left = 0.770833
+[node name="Right Panel" type="PanelContainer" parent="HUD Canvas"]
+anchors_preset = -1
+anchor_left = 0.748264
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
@@ -286,12 +263,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD Canvas/Right Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="Manifest" parent="HUD Canvas/Right Panel/VBoxContainer" instance=ExtResource("5_01fqa")]
 layout_mode = 2
@@ -395,15 +367,41 @@ anchor_right = 0.770833
 metadata/_edit_use_anchors_ = true
 
 [node name="EOD Canvas" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="EOD Panel" parent="EOD Canvas" instance=ExtResource("12_8bmx5")]
 visible = false
 
-[node name="Menu Canvas" type="CanvasLayer" parent="."]
+[node name="Spaceship" parent="." instance=ExtResource("1_05mrr")]
+position = Vector2(431, 249)
 
-[node name="StartScreen" parent="Menu Canvas" instance=ExtResource("14_h3ekp")]
+[node name="Ship Animations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vwmg2")
+}
+script = ExtResource("2_lkoxi")
+
+[node name="Blind Canvas" type="CanvasLayer" parent="Ship Animations"]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="Ship Animations/Blind Canvas"]
 visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Settings" parent="Menu Canvas" instance=ExtResource("13_oaq32")]
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(433, 254)
+scale = Vector2(2.67969, 2.67969)
+texture = ExtResource("3_hj608")
+hframes = 8
+vframes = 8
+
+[node name="ScannerLayer" parent="." instance=ExtResource("17_oofxi")]
 
 [node name="MeltEffect" parent="." instance=ExtResource("18_4xoj3")]
+layer = 5

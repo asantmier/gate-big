@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bfe00aynpjxn6" path="res://spaceship/art/firefox_zuy12N57mR.png" id="1_ym3ef"]
 [ext_resource type="Script" path="res://addons/draggablesprite2d/src/draggablesprite2d.gd" id="2_t7uqg"]
-[ext_resource type="Shader" path="res://screen quantize.gdshader" id="3_utiws"]
+[ext_resource type="Shader" path="res://testing/resources/screen quantize.gdshader" id="3_utiws"]
 [ext_resource type="Texture2D" uid="uid://cr358ix1bubyx" path="res://splat09.png" id="4_i2tts"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f6lbx"]

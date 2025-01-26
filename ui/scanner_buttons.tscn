@@ -1,14 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgj0ts2edf1r5"]
+[gd_scene load_steps=4 format=3 uid="uid://cgj0ts2edf1r5"]
 
 [ext_resource type="Script" path="res://ui/layer_switcher.gd" id="1_5boje"]
+[ext_resource type="Texture2D" uid="uid://bovttt0f6ncmj" path="res://ui/textures/cameraNPC.png" id="2_vm45y"]
+[ext_resource type="Texture2D" uid="uid://bh4wvf6qs8yn" path="res://ui/textures/cameraCargo.png" id="3_rgkr5"]
 
 [node name="Scanner Buttons" type="Control"]
 layout_mode = 3
+anchor_left = 0.355903
 anchor_top = 0.859568
-anchor_right = 1.0
+anchor_right = 0.644097
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="LayerSwitcher" type="Node" parent="."]
 script = ExtResource("1_5boje")
@@ -25,15 +29,22 @@ alignment = 1
 [node name="Passenger Button" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "PASSENGER"
+icon = ExtResource("2_vm45y")
+expand_icon = true
 
 [node name="Cargo Button" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "CARGO"
+icon = ExtResource("3_rgkr5")
+expand_icon = true
 
 [node name="System Button" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "SYSTEMS"
 

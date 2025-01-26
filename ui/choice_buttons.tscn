@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccnu0nds8r7jk"]
+[gd_scene load_steps=9 format=3 uid="uid://ccnu0nds8r7jk"]
 
 [ext_resource type="Script" path="res://ui/chooser.gd" id="1_7mn0g"]
-[ext_resource type="Texture2D" uid="uid://bnxnrs67xo533" path="res://ui/textures/switchOff-export.png" id="2_xju2m"]
-[ext_resource type="Texture2D" uid="uid://c5f2agneo1iis" path="res://ui/textures/switchOn-export.png" id="3_0ig3i"]
-[ext_resource type="Texture2D" uid="uid://dwkfej8imm8cu" path="res://ui/textures/redUnpressed.png" id="4_gq0cc"]
-[ext_resource type="Texture2D" uid="uid://brmavgfarlp13" path="res://ui/textures/redPressed.png" id="5_8ceao"]
-[ext_resource type="Texture2D" uid="uid://bni1yttgjmy70" path="res://ui/textures/blueUnpressed.png" id="6_t1xvn"]
-[ext_resource type="Texture2D" uid="uid://c2wxeq3g8d41l" path="res://ui/textures/bluePressed.png" id="7_5yhh6"]
+[ext_resource type="Texture2D" uid="uid://cxio020uwhrpp" path="res://ui/textures/weapon controls/switchOff.png" id="2_c4gmu"]
+[ext_resource type="Texture2D" uid="uid://celjylpcl6xfe" path="res://ui/textures/weapon controls/switchOn.png" id="3_esqnf"]
+[ext_resource type="Texture2D" uid="uid://dwkfej8imm8cu" path="res://ui/textures/weapon controls/redUnpressed.png" id="4_gq0cc"]
+[ext_resource type="Texture2D" uid="uid://rtflbig63isy" path="res://ui/textures/weapon controls/switchOnBlink.png" id="4_pcr1q"]
+[ext_resource type="Texture2D" uid="uid://brmavgfarlp13" path="res://ui/textures/weapon controls/redPressed.png" id="5_8ceao"]
+[ext_resource type="Texture2D" uid="uid://bni1yttgjmy70" path="res://ui/textures/weapon controls/blueUnpressed.png" id="6_t1xvn"]
+[ext_resource type="Texture2D" uid="uid://c2wxeq3g8d41l" path="res://ui/textures/weapon controls/bluePressed.png" id="7_5yhh6"]
 
 [node name="Choice Buttons" type="Control"]
 layout_mode = 3
@@ -36,11 +37,10 @@ unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
 toggle_mode = true
-texture_normal = ExtResource("2_xju2m")
-texture_pressed = ExtResource("3_0ig3i")
-texture_disabled = ExtResource("3_0ig3i")
+texture_normal = ExtResource("2_c4gmu")
+texture_pressed = ExtResource("3_esqnf")
+texture_disabled = ExtResource("4_pcr1q")
 stretch_mode = 5
 
 [node name="Eliminate Button" type="TextureButton" parent="VBoxContainer"]

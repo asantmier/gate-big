@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(556, 304)]
+"values": [Vector2(556, -220)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -87,9 +87,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -20.0
+offset_top = -544.0
 offset_right = 20.0
-offset_bottom = 20.0
+offset_bottom = -504.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

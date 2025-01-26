@@ -1,8 +1,11 @@
 extends Control
 
+@export var volume_slider : Control
 
 func _ready():
 	close()
+	if volume_slider:
+		volume_slider.visible = false
 
 
 func toggle():
@@ -28,3 +31,7 @@ func _on_resume_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_volume_button_pressed():
+	volume_slider.visible = not volume_slider.visible

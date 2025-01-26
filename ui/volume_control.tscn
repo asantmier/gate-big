@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cvd26too57o7i"]
 
 [ext_resource type="Script" path="res://ui/volume_control.gd" id="1_wvvnt"]
-[ext_resource type="Texture2D" uid="uid://v6d6wvdi0kps" path="res://ui/textures/volumeSlider.png" id="2_b7i3i"]
-[ext_resource type="Texture2D" uid="uid://cmsfbjpyduj07" path="res://ui/textures/volumeMin.png" id="3_8vwt1"]
+[ext_resource type="Texture2D" uid="uid://v6d6wvdi0kps" path="res://ui/textures/settings/volumeSlider.png" id="2_b7i3i"]
+[ext_resource type="Texture2D" uid="uid://cmsfbjpyduj07" path="res://ui/textures/settings/volumeMin.png" id="3_8vwt1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lkhce"]
 content_margin_left = 0.0
@@ -26,11 +26,13 @@ bg_color = Color(0, 0.722609, 0.279542, 1)
 bg_color = Color(0.269114, 0.87312, 0.450679, 1)
 
 [node name="Volume Control" type="VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
 size_flags_vertical = 3
 alignment = 1
 script = ExtResource("1_wvvnt")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 2
 size_flags_vertical = 6
 text = "Volume"

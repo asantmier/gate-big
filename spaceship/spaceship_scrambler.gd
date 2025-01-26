@@ -5,6 +5,8 @@ extends Node2D
 
 var passengers : int
 var cargo : int
+var factions : Array[int]
+var cargo_types : Array[int]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +19,8 @@ func submit_manifest():
 	var info_dict : Dictionary
 	info_dict.Passengers = passengers
 	info_dict.Cargo = cargo
+	info_dict.Factions = factions
+	info_dict.CargoTypes = cargo_types
 	
 	GameData.ship_info = info_dict
 
@@ -31,6 +35,7 @@ func randomize_cargo():
 	cargo = 0
 	for bay in cargo_bays:
 		bay.randomify()
+		bay.set_types(bay.random_types(3))
 		var num = bay.quantity
 		cargo += num
 
@@ -52,6 +57,7 @@ func populate_floor(floor: Floor, quantity):
 		person.floor = floor
 		floor.add_child(person)
 		person.position = floor.get_random_point()
+		person.set_faction(person.random_faction())
 
 
 # Deletes all the people on a floor

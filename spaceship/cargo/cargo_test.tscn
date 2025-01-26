@@ -8,3 +8,15 @@ script = ExtResource("1_y3d1q")
 
 [node name="Cargo" parent="." instance=ExtResource("1_irfde")]
 position = Vector2(388, 296)
+
+[node name="type" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "randomize types"
+
+[node name="SpinBox" type="SpinBox" parent="."]
+offset_top = 47.0
+offset_right = 83.0625
+offset_bottom = 78.0
+
+[connection signal="pressed" from="type" to="." method="_on_type_pressed"]
