@@ -1,21 +1,22 @@
-[gd_scene load_steps=24 format=3 uid="uid://c6jsdaxy71qto"]
+[gd_scene load_steps=25 format=3 uid="uid://c6jsdaxy71qto"]
 
 [ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship/spaceship.tscn" id="1_05mrr"]
 [ext_resource type="Script" path="res://ship_animations.gd" id="2_lkoxi"]
 [ext_resource type="Texture2D" uid="uid://ns8lueen1kr0" path="res://effects/Explosion_002_Tile_8x8_256x256.png" id="3_hj608"]
-[ext_resource type="PackedScene" uid="uid://bcmk1c2cf8r6c" path="res://ui/manifest.tscn" id="5_01fqa"]
-[ext_resource type="PackedScene" uid="uid://ccnu0nds8r7jk" path="res://ui/choice_buttons.tscn" id="5_ypbns"]
-[ext_resource type="PackedScene" uid="uid://c4li4ei653p3y" path="res://ui/shift_timer.tscn" id="6_s522t"]
-[ext_resource type="PackedScene" uid="uid://do2gwswyvta27" path="res://ui/shift_quota.tscn" id="7_rmit7"]
-[ext_resource type="PackedScene" uid="uid://bl5krru57e30e" path="res://ui/reprimand_counter.tscn" id="8_oxk48"]
-[ext_resource type="PackedScene" uid="uid://cgj0ts2edf1r5" path="res://ui/scanner_buttons.tscn" id="9_r58rm"]
+[ext_resource type="PackedScene" uid="uid://bcmk1c2cf8r6c" path="res://ui/gameplay/manifest.tscn" id="5_01fqa"]
+[ext_resource type="PackedScene" uid="uid://bum8ktu74fq31" path="res://ui/gameplay/rules.tscn" id="5_3yfl6"]
+[ext_resource type="PackedScene" uid="uid://ccnu0nds8r7jk" path="res://ui/gameplay/choice_buttons.tscn" id="5_ypbns"]
+[ext_resource type="PackedScene" uid="uid://c4li4ei653p3y" path="res://ui/gameplay/shift_timer.tscn" id="6_s522t"]
+[ext_resource type="PackedScene" uid="uid://do2gwswyvta27" path="res://ui/gameplay/shift_quota.tscn" id="7_rmit7"]
+[ext_resource type="PackedScene" uid="uid://bl5krru57e30e" path="res://ui/gameplay/reprimand_counter.tscn" id="8_oxk48"]
+[ext_resource type="PackedScene" uid="uid://cgj0ts2edf1r5" path="res://ui/gameplay/scanner_buttons.tscn" id="9_r58rm"]
 [ext_resource type="PackedScene" uid="uid://d3bbrcv5a8sb5" path="res://game_debugger.tscn" id="10_6uy2d"]
-[ext_resource type="PackedScene" uid="uid://b2hnd1pwc8lfw" path="res://ui/eod_panel.tscn" id="12_8bmx5"]
-[ext_resource type="PackedScene" uid="uid://b6t5m8euq2j0f" path="res://ui/settings.tscn" id="13_oaq32"]
+[ext_resource type="PackedScene" uid="uid://b2hnd1pwc8lfw" path="res://ui/gameplay/eod_panel.tscn" id="12_8bmx5"]
+[ext_resource type="PackedScene" uid="uid://b6t5m8euq2j0f" path="res://ui/settings/settings.tscn" id="13_oaq32"]
 [ext_resource type="Script" path="res://effects/warning_lights.gd" id="13_qk848"]
-[ext_resource type="PackedScene" uid="uid://dglx7vtn56qmp" path="res://ui/start_screen.tscn" id="14_h3ekp"]
+[ext_resource type="PackedScene" uid="uid://dglx7vtn56qmp" path="res://ui/title/start_screen.tscn" id="14_h3ekp"]
 [ext_resource type="PackedScene" uid="uid://cxxklybhjyqnk" path="res://effects/warning_light.tscn" id="14_kpccf"]
-[ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alert_toast.tscn" id="14_n7f0v"]
+[ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alerts/alert_toast.tscn" id="14_n7f0v"]
 [ext_resource type="PackedScene" uid="uid://d8rwc8vp2xyf" path="res://scanner/scanner_layer.tscn" id="17_oofxi"]
 [ext_resource type="PackedScene" uid="uid://d2pyxpuyinvfm" path="res://effects/melt_effect.tscn" id="18_4xoj3"]
 
@@ -268,19 +269,8 @@ layout_mode = 2
 [node name="Manifest" parent="HUD Canvas/Right Panel/VBoxContainer" instance=ExtResource("5_01fqa")]
 layout_mode = 2
 
-[node name="Rules" type="Control" parent="HUD Canvas/Right Panel/VBoxContainer"]
+[node name="Rules" parent="HUD Canvas/Right Panel/VBoxContainer" instance=ExtResource("5_3yfl6")]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="HUD Canvas/Right Panel/VBoxContainer/Rules"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "This is where the general rules will be"
-autowrap_mode = 2
 
 [node name="Choice Buttons" parent="HUD Canvas/Right Panel/VBoxContainer" instance=ExtResource("5_ypbns")]
 layout_mode = 2

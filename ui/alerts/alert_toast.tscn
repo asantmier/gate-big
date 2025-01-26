@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://gu8os0cv80kw"]
 
-[ext_resource type="Script" path="res://ui/alert_toast.gd" id="1_iqnk8"]
-[ext_resource type="PackedScene" uid="uid://1sn5e5qodq1h" path="res://ui/reprimand_alert.tscn" id="2_22rhs"]
-[ext_resource type="PackedScene" uid="uid://c2x1qlec4fdgi" path="res://ui/game_over_alert.tscn" id="3_ul83m"]
+[ext_resource type="Script" path="res://ui/alerts/alert_toast.gd" id="1_iqnk8"]
+[ext_resource type="PackedScene" uid="uid://1sn5e5qodq1h" path="res://ui/alerts/reprimand_alert.tscn" id="2_22rhs"]
+[ext_resource type="PackedScene" uid="uid://c2x1qlec4fdgi" path="res://ui/alerts/game_over_alert.tscn" id="3_ul83m"]
 
 [sub_resource type="Animation" id="Animation_gmmwl"]
 length = 0.001

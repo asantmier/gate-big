@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://joippmkja8hn"]
 
-[ext_resource type="Script" path="res://ui/settings_menu.gd" id="1_87x2t"]
-[ext_resource type="PackedScene" uid="uid://cvd26too57o7i" path="res://ui/volume_control.tscn" id="2_lo44w"]
+[ext_resource type="Script" path="res://ui/settings/settings_menu.gd" id="1_87x2t"]
+[ext_resource type="PackedScene" uid="uid://cvd26too57o7i" path="res://ui/settings/volume_control.tscn" id="2_lo44w"]
 
 [node name="Settings Menu" type="Control"]
 process_mode = 3

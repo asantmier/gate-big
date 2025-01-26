@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bq20r02rb6i1u"]
 
-[ext_resource type="Script" path="res://ui/report.gd" id="1_2hw74"]
+[ext_resource type="Script" path="res://ui/gameplay/report.gd" id="1_2hw74"]
 
 [node name="Report" type="VBoxContainer"]
 anchors_preset = 8

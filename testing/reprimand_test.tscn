@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://djed4dy36fm3r"]
 
-[ext_resource type="PackedScene" uid="uid://bl5krru57e30e" path="res://ui/reprimand_counter.tscn" id="1_cnhtt"]
+[ext_resource type="PackedScene" uid="uid://bl5krru57e30e" path="res://ui/gameplay/reprimand_counter.tscn" id="1_cnhtt"]
 [ext_resource type="Script" path="res://testing/reprimand_test.gd" id="1_mn30a"]
 [ext_resource type="Script" path="res://effects/warning_lights.gd" id="2_pou4u"]
 [ext_resource type="PackedScene" uid="uid://cxxklybhjyqnk" path="res://effects/warning_light.tscn" id="3_3k2cm"]
-[ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alert_toast.tscn" id="4_3i015"]
+[ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alerts/alert_toast.tscn" id="4_3i015"]
 [ext_resource type="PackedScene" uid="uid://d2pyxpuyinvfm" path="res://effects/melt_effect.tscn" id="6_s7avl"]
 
 [node name="reprimand test" type="Node2D"]

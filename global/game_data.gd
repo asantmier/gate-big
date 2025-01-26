@@ -13,7 +13,9 @@ var processed := 0
 var shift_rules := {
 	1: {
 		liars = 1,
-		quota = 3
+		quota = 3,
+		criminals = [GameConstants.RED_FACTION, GameConstants.ORANGE_FACTION],
+		contraband = [GameConstants.GRIN, GameConstants.OMINOUS_MOO_DENG],
 	}
 }
 

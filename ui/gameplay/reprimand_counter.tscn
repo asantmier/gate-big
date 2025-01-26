@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bl5krru57e30e"]
 
-[ext_resource type="Script" path="res://ui/reprimands.gd" id="1_8tqw8"]
+[ext_resource type="Script" path="res://ui/gameplay/reprimands.gd" id="1_8tqw8"]
 [ext_resource type="Texture2D" uid="uid://qymhsv6rrxwl" path="res://ui/textures/lifeCounter1.png" id="2_bj7wu"]
 [ext_resource type="Texture2D" uid="uid://janijl4qrydh" path="res://effects/2d_lights_and_shadows_neutral_point_light.webp" id="3_xfli0"]
 [ext_resource type="Texture2D" uid="uid://c2ux0orcnlc35" path="res://ui/textures/lifeCounter2.png" id="4_wrdkg"]

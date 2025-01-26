@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccnu0nds8r7jk"]
 
-[ext_resource type="Script" path="res://ui/chooser.gd" id="1_7mn0g"]
+[ext_resource type="Script" path="res://ui/gameplay/chooser.gd" id="1_7mn0g"]
 [ext_resource type="Texture2D" uid="uid://cxio020uwhrpp" path="res://ui/textures/weapon controls/switchOff.png" id="2_c4gmu"]
 [ext_resource type="Texture2D" uid="uid://celjylpcl6xfe" path="res://ui/textures/weapon controls/switchOn.png" id="3_esqnf"]
 [ext_resource type="Texture2D" uid="uid://dwkfej8imm8cu" path="res://ui/textures/weapon controls/redUnpressed.png" id="4_gq0cc"]

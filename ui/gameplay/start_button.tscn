@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rsrg7p7j464o"]
 
-[ext_resource type="Script" path="res://ui/start_button.gd" id="1_xcb5d"]
+[ext_resource type="Script" path="res://ui/gameplay/start_button.gd" id="1_xcb5d"]
 
 [node name="Start Button" type="Button"]
 editor_description = "Press to start shift"

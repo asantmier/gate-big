@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2x1qlec4fdgi"]
 
-[ext_resource type="Script" path="res://ui/game_over_alert.gd" id="1_owfi8"]
+[ext_resource type="Script" path="res://ui/alerts/game_over_alert.gd" id="1_owfi8"]
 
 [node name="Game Over Alert" type="Control"]
 layout_mode = 3

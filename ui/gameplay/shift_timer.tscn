@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4li4ei653p3y"]
 
-[ext_resource type="Script" path="res://ui/timer.gd" id="1_cf3ol"]
+[ext_resource type="Script" path="res://ui/gameplay/timer.gd" id="1_cf3ol"]
 
 [node name="Shift Timer" type="Control"]
 editor_description = "Adds time limit."

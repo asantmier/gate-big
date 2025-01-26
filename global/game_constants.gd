@@ -2,7 +2,8 @@ extends Node
 
 signal volume_changed(percent)
 
-
+enum {GRIN, FLUFF, ZAPPLE, GREEN_ZAPPLE, AUSPICIOUS_MOO_DENG, OMINOUS_MOO_DENG, EGGPLANT}
+enum {RED_FACTION, ORANGE_FACTION, YELLOW_FACTION, GREEN_FACTION, BLUE_FACTION, INDIGO_FACTION, PURPLE_FACTION}
 
 
 # Time it takes to type out one letter
