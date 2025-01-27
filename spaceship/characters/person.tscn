@@ -1,24 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://cfb2uf5ywokxq"]
+[gd_scene load_steps=17 format=3 uid="uid://cfb2uf5ywokxq"]
 
 [ext_resource type="Script" path="res://spaceship/characters/person.gd" id="1_ugxba"]
+[ext_resource type="Texture2D" uid="uid://b5hb6lwiln0en" path="res://spaceship/characters/textures/npc-rc.png" id="2_1m360"]
 [ext_resource type="Texture2D" uid="uid://chvn8q6sf8k8o" path="res://spaceship/characters/textures/npc1.png" id="2_lqwyb"]
+[ext_resource type="Texture2D" uid="uid://dtwax6b4ifh0q" path="res://spaceship/characters/textures/npc-rm.png" id="3_ocd6v"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_qobso"]
-[ext_resource type="Texture2D" uid="uid://bwgm2gpqmm7de" path="res://spaceship/characters/textures/npc2.png" id="3_v7snl"]
-[ext_resource type="Texture2D" uid="uid://bml4abmcoay31" path="res://spaceship/characters/textures/npc3.png" id="4_5cpfm"]
+[ext_resource type="Texture2D" uid="uid://c7sargdmlhkg2" path="res://spaceship/characters/textures/npc-ry.png" id="4_8nshy"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_uba05"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_k865u"]
-[ext_resource type="Texture2D" uid="uid://dq11agxyiqjxh" path="res://spaceship/characters/textures/npc4.png" id="5_mu6yc"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_1svn6"]
-[ext_resource type="Texture2D" uid="uid://cr2b60ko4av2m" path="res://spaceship/characters/textures/npc5.png" id="6_854wp"]
-[ext_resource type="Texture2D" uid="uid://dmvh1grqsa5pe" path="res://spaceship/characters/textures/npc6.png" id="7_8nk4a"]
-[ext_resource type="Texture2D" uid="uid://fykb7qva3yhp" path="res://spaceship/characters/textures/npc7.png" id="8_0col5"]
-[ext_resource type="Texture2D" uid="uid://cf457p6hgttup" path="res://spaceship/characters/textures/npc8.png" id="9_cpq8u"]
-[ext_resource type="Texture2D" uid="uid://bqtyiexyoajb7" path="res://spaceship/characters/textures/npc9.png" id="10_5lwsn"]
-[ext_resource type="Texture2D" uid="uid://dx461pj1v77rc" path="res://spaceship/characters/textures/npc10.png" id="11_xl6jl"]
-[ext_resource type="Texture2D" uid="uid://cotjn1kh0xder" path="res://spaceship/characters/textures/npc11.png" id="12_ei7iw"]
-[ext_resource type="Texture2D" uid="uid://cfm8cek820mkl" path="res://spaceship/characters/textures/npc12.png" id="13_c2ul2"]
-[ext_resource type="Texture2D" uid="uid://dds8qw237pu20" path="res://spaceship/characters/textures/npc13.png" id="14_6j67v"]
-[ext_resource type="Texture2D" uid="uid://cof3actqby8p4" path="res://spaceship/characters/textures/npc14.png" id="15_5tvb6"]
 
 [sub_resource type="Curve" id="Curve_wceam"]
 min_value = 0.5
@@ -191,11 +181,11 @@ _data = {
 [node name="Person" type="Node2D"]
 script = ExtResource("1_ugxba")
 v_anim_curve = SubResource("Curve_wceam")
-sprites1 = Array[Texture2D]([ExtResource("2_lqwyb"), ExtResource("3_v7snl"), ExtResource("4_5cpfm"), ExtResource("5_mu6yc"), ExtResource("6_854wp"), ExtResource("7_8nk4a"), ExtResource("8_0col5")])
-sprites2 = Array[Texture2D]([ExtResource("9_cpq8u"), ExtResource("10_5lwsn"), ExtResource("11_xl6jl"), ExtResource("12_ei7iw"), ExtResource("13_c2ul2"), ExtResource("14_6j67v"), ExtResource("15_5tvb6")])
+sprites1 = Array[Texture2D]([ExtResource("2_1m360"), ExtResource("3_ocd6v"), ExtResource("4_8nshy")])
+sprites2 = Array[Texture2D]([ExtResource("2_1m360"), ExtResource("3_ocd6v"), ExtResource("4_8nshy")])
 
 [node name="Graphics" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_lqwyb")
 hframes = 4
 region_enabled = true

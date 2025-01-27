@@ -7,8 +7,8 @@ func _ready():
 
 
 func update_laws():
-	var criminals = GameData.get_criminal_factions()
-	var contraband = GameData.get_contraband()
+	var criminals = GameData.get_illegal_factions()
+	var contraband = GameData.get_illegal_cargo()
 	%FactionsSection.visible = not criminals.is_empty()
 	for i in %CriminalList.get_child_count():
 		%CriminalList.get_child(i).visible = i in criminals

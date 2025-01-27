@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2hnd1pwc8lfw"]
+[gd_scene load_steps=9 format=3 uid="uid://b2hnd1pwc8lfw"]
 
 [ext_resource type="Script" path="res://ui/gameplay/eod_panel.gd" id="1_owx02"]
 [ext_resource type="PackedScene" uid="uid://bq20r02rb6i1u" path="res://ui/gameplay/report.tscn" id="2_eab7v"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dehkh875at58l" path="res://icon.svg" id="2_rw3s8"]
 [ext_resource type="Script" path="res://ui/gameplay/brief.gd" id="3_gvip3"]
 [ext_resource type="PackedScene" uid="uid://rsrg7p7j464o" path="res://ui/gameplay/start_button.tscn" id="3_tc2ga"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vijx1"]
+bg_color = Color(0.14, 0.14, 0.14, 0.733333)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_68tt5"]
 shader = ExtResource("2_nep1p")
@@ -17,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vijx1")
 script = ExtResource("1_owx02")
 report = NodePath("Report")
 brief = NodePath("Brief")

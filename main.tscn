@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://c6jsdaxy71qto"]
+[gd_scene load_steps=28 format=3 uid="uid://c6jsdaxy71qto"]
 
 [ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship/spaceship.tscn" id="1_05mrr"]
 [ext_resource type="Script" path="res://ship_animations.gd" id="2_lkoxi"]
 [ext_resource type="Texture2D" uid="uid://ns8lueen1kr0" path="res://effects/Explosion_002_Tile_8x8_256x256.png" id="3_hj608"]
+[ext_resource type="Texture2D" uid="uid://vuitxo2j6q3g" path="res://ui/textures/interfaceBorderThick.png" id="4_qpee6"]
 [ext_resource type="PackedScene" uid="uid://bcmk1c2cf8r6c" path="res://ui/gameplay/manifest.tscn" id="5_01fqa"]
 [ext_resource type="PackedScene" uid="uid://bum8ktu74fq31" path="res://ui/gameplay/rules.tscn" id="5_3yfl6"]
 [ext_resource type="PackedScene" uid="uid://ccnu0nds8r7jk" path="res://ui/gameplay/choice_buttons.tscn" id="5_ypbns"]
@@ -19,6 +20,16 @@
 [ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alerts/alert_toast.tscn" id="14_n7f0v"]
 [ext_resource type="PackedScene" uid="uid://d8rwc8vp2xyf" path="res://scanner/scanner_layer.tscn" id="17_oofxi"]
 [ext_resource type="PackedScene" uid="uid://d2pyxpuyinvfm" path="res://effects/melt_effect.tscn" id="18_4xoj3"]
+[ext_resource type="PackedScene" uid="uid://cau15v47xi5kl" path="res://3d/3d_background.tscn" id="20_p7qnr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5sr7t"]
+texture = ExtResource("4_qpee6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="Animation" id="Animation_d6h4q"]
 length = 0.001
@@ -254,17 +265,22 @@ layer = 2
 anchor_left = 0.271701
 anchor_right = 0.549479
 
-[node name="Right Panel" type="PanelContainer" parent="HUD Canvas"]
+[node name="Right Panel" type="Panel" parent="HUD Canvas"]
 anchors_preset = -1
 anchor_left = 0.748264
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5sr7t")
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD Canvas/Right Panel"]
 layout_mode = 2
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 258.0
+offset_bottom = 616.0
 
 [node name="Manifest" parent="HUD Canvas/Right Panel/VBoxContainer" instance=ExtResource("5_01fqa")]
 layout_mode = 2
@@ -399,3 +415,17 @@ vframes = 8
 
 [node name="MeltEffect" parent="." instance=ExtResource("18_4xoj3")]
 layer = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.746528
+anchor_bottom = 0.998457
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+size = Vector2i(867, 622)
+
+[node name="3D Background" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("20_p7qnr")]

@@ -21,10 +21,25 @@ offset_bottom = 40.0
 
 [node name="Shift" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+text = "s"
 
 [node name="LiedProcessed" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+text = "lp"
 
 [node name="IsLiar" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "is liar"
+
+[node name="IsSmuggler" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "smuggler"
+
+[node name="Factions" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "f
+"
+
+[node name="Cargos" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "c"
