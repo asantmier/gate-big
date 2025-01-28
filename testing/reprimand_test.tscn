@@ -86,10 +86,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="HUD Canvas"]
 clip_contents = true
-offset_left = 292.0
-offset_top = 127.0
-offset_right = 605.0
-offset_bottom = 479.0
+offset_left = 659.0
+offset_top = 133.0
+offset_right = 972.0
+offset_bottom = 485.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

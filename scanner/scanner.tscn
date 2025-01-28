@@ -30,6 +30,7 @@ shader_parameter/pixel_strength = -2.0
 size = Vector2(252, 248)
 
 [node name="Scanner" type="Area2D"]
+z_index = 3
 position = Vector2(96, -65)
 script = ExtResource("1_8wqry")
 boundaries = Rect2(0, 0, 900, 600)

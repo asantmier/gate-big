@@ -21,3 +21,5 @@ signal time_up # Emitted when the timer runs out
 signal quota_filled # Emitted when the quota is filled
 signal reprimand_issued
 signal reprimand_limit_reached
+
+signal game_lost # Emitted when the failure animation completes
