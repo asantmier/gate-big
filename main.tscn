@@ -185,7 +185,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(-373, 252), Vector2(458, 258)]
+"values": [Vector2(-373, 252), Vector2(363, 271)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -225,7 +225,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(1, 4),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(458, 258), Vector2(1336, 258)]
+"values": [Vector2(363, 271), Vector2(1336, 258)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vwmg2"]
@@ -237,7 +237,6 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
-metadata/_edit_vertical_guides_ = [862.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -246,23 +245,28 @@ layer = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -290.0
+offset_right = -232.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(862, 648)
+size = Vector2i(728, 540)
 render_target_update_mode = 4
 
 [node name="3D Background" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("20_p7qnr")]
 
 [node name="Menu Canvas" type="CanvasLayer" parent="."]
 layer = 6
+visible = false
 
 [node name="StartScreen" parent="Menu Canvas" instance=ExtResource("14_h3ekp")]
-visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 hide_in_debug = true
 
 [node name="Settings" parent="Menu Canvas" instance=ExtResource("13_oaq32")]
@@ -271,13 +275,14 @@ hide_in_debug = true
 layer = 2
 
 [node name="Scanner Buttons" parent="HUD Canvas" instance=ExtResource("9_r58rm")]
-anchor_left = 0.282986
-anchor_right = 0.538194
-anchor_bottom = 0.972222
+anchor_left = 0.371875
+anchor_top = 0.794444
+anchor_right = 0.639583
+anchor_bottom = 0.974074
 
 [node name="Right Panel" type="Panel" parent="HUD Canvas"]
 anchors_preset = -1
-anchor_left = 0.748264
+anchor_left = 0.758333
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
@@ -318,16 +323,23 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.36
 
 [node name="Shift Timer" parent="HUD Canvas" instance=ExtResource("6_s522t")]
+anchor_right = 0.758333
+anchor_bottom = 0.0407407
 
 [node name="Shift Quota" parent="HUD Canvas" instance=ExtResource("7_rmit7")]
 offset_left = 139.0
 offset_right = 179.0
 
 [node name="Ship Debugger" parent="HUD Canvas" instance=ExtResource("10_6uy2d")]
-offset_left = 4.0
-offset_top = 208.0
-offset_right = -1001.0
-offset_bottom = -262.0
+anchors_preset = -1
+anchor_left = 0.00625
+anchor_top = 0.308333
+anchor_right = 0.00625
+anchor_bottom = 0.308333
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Warning Lights" type="Control" parent="HUD Canvas"]
 visible = false
@@ -390,7 +402,7 @@ mouse_filter = 2
 
 [node name="Alert Toast" parent="HUD Canvas" instance=ExtResource("14_n7f0v")]
 anchors_preset = -1
-anchor_right = 0.770833
+anchor_right = 0.758333
 metadata/_edit_use_anchors_ = true
 
 [node name="EOD Canvas" type="CanvasLayer" parent="."]
