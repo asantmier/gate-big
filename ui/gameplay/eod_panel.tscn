@@ -64,6 +64,7 @@ show_on_finish = NodePath("../Start Button")
 
 [node name="title" type="Label" parent="Brief"]
 layout_mode = 2
+theme_type_variation = &"TitleLabel"
 text = "BRIEFING"
 
 [node name="News" type="RichTextLabel" parent="Brief"]

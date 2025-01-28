@@ -1,0 +1,12 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dr7hjfke4f7br"]
+
+[ext_resource type="Texture2D" uid="uid://53sg3df1yqxt" path="res://ui/textures/interface border better.png" id="1_p2l2y"]
+
+[resource]
+texture = ExtResource("1_p2l2y")
+texture_margin_left = 31.0
+texture_margin_top = 31.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2

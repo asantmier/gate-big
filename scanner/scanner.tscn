@@ -82,6 +82,7 @@ offset_top = 22.0
 offset_right = -23.0
 offset_bottom = 45.0
 grow_horizontal = 0
+theme_type_variation = &"LabelRobotic"
 text = "layer"
 script = ExtResource("5_jx86f")
 

@@ -1,5 +1,6 @@
 extends Control
 
+@export var settings_animation : AnimationPlayer
 @export var volume_slider : Control
 
 func _ready():
@@ -18,11 +19,13 @@ func toggle():
 func open():
 	get_tree().paused = true
 	show()
+	settings_animation.play("blink")
 
 
 func close():
 	get_tree().paused = false
 	hide()
+	settings_animation.play("RESET")
 
 
 func _on_resume_pressed():

@@ -1,6 +1,18 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bqum1d2nu4x12"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bqum1d2nu4x12"]
 
-[ext_resource type="StyleBox" uid="uid://b1lbg4518k2le" path="res://ui/StyleElements/panel_style_box.tres" id="1_l65x1"]
+[ext_resource type="StyleBox" uid="uid://dr7hjfke4f7br" path="res://ui/StyleElements/panel2_style_box.tres" id="1_6ymca"]
+[ext_resource type="Texture2D" uid="uid://dvqvki26yits5" path="res://ui/textures/interfaceBorderSteel.png" id="1_k3vmo"]
+[ext_resource type="FontFile" uid="uid://b0bcoqynrj7jy" path="res://ui/fonts/m6x11.ttf" id="2_2yq5j"]
+[ext_resource type="FontFile" uid="uid://cpawuwps20xda" path="res://ui/fonts/Jersey_15/Jersey15-Regular.ttf" id="2_615y5"]
+[ext_resource type="FontFile" uid="uid://cxfv6ufsnqvf0" path="res://ui/fonts/Jersey_20/Jersey20-Regular.ttf" id="4_2tb1o"]
+[ext_resource type="FontFile" uid="uid://dbv4k43tfdodo" path="res://ui/fonts/Jersey_25/Jersey25-Regular.ttf" id="5_o4ubx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nme0y"]
+texture = ExtResource("1_k3vmo")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
 [resource]
 AlertLabel/base_type = &"Label"
@@ -9,12 +21,22 @@ AlertLabel/font_sizes/font_size = 48
 AlertSublabel/base_type = &"Label"
 AlertSublabel/colors/font_color = Color(0.981657, 0.518297, 0.354656, 1)
 AlertSublabel/font_sizes/font_size = 32
-Panel/styles/panel = ExtResource("1_l65x1")
-PanelContainer/styles/panel = ExtResource("1_l65x1")
+BodyLabel/base_type = &"Label"
+BodyLabel/fonts/font = ExtResource("2_615y5")
+Button/styles/normal = SubResource("StyleBoxTexture_nme0y")
+HeaderLabel/base_type = &"Label"
+HeaderLabel/font_sizes/font_size = 20
+HeaderLabel/fonts/font = ExtResource("4_2tb1o")
+LabelRobotic/base_type = &"Label"
+LabelRobotic/fonts/font = ExtResource("2_2yq5j")
+Panel/styles/panel = ExtResource("1_6ymca")
+PanelContainer/styles/panel = ExtResource("1_6ymca")
 ReprimandLabel/base_type = &"Label"
 ReprimandLabel/colors/font_color = Color(0.695274, 0.157582, 0.1445, 1)
 ReprimandLabel/font_sizes/font_size = 64
 SubtitleLabel/base_type = &"Label"
-SubtitleLabel/font_sizes/font_size = 16
+SubtitleLabel/font_sizes/font_size = 24
+SubtitleLabel/fonts/font = ExtResource("5_o4ubx")
 TitleLabel/base_type = &"Label"
-TitleLabel/font_sizes/font_size = 24
+TitleLabel/font_sizes/font_size = 30
+TitleLabel/fonts/font = ExtResource("5_o4ubx")

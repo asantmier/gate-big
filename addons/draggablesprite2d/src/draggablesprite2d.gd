@@ -57,9 +57,6 @@ func _ready() -> void:
 	child_exiting_tree.connect(_on_child_exiting_tree)
 	input_event.connect(_on_input_event)
 	
-	EventBus.ship_focused.connect(_on_ship_focused)
-	EventBus.ship_unfocused.connect(_on_ship_unfocused)
-
 	add_child(sprite)
 
 	default_collider = CollisionShape2D.new()
@@ -74,6 +71,12 @@ func _ready() -> void:
 	# Set the starting origin if necessary
 	if return_to_origin:
 		origin = position
+	
+	
+	if not Engine.is_editor_hint():
+		EventBus.ship_focused.connect(_on_ship_focused)
+		EventBus.ship_unfocused.connect(_on_ship_unfocused)
+		
 
 
 func _process(delta) -> void:
@@ -129,8 +132,9 @@ func has_custom_collider() -> bool:
 
 ## Shortcut to toggle on or off the default collider functionality
 func toggle_default_collider(on: bool) -> void:
-	default_collider.visible = on
-	default_collider.disabled = not on
+	if default_collider:
+		default_collider.visible = on
+		default_collider.disabled = not on
 
 
 ## Updates the default collider to match the size of the sprite

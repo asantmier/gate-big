@@ -39,6 +39,7 @@ warn_light=""
 [gui]
 
 theme/custom="res://ui/big theme.tres"
+theme/custom_font="res://ui/fonts/Jersey_20/Jersey20-Regular.ttf"
 
 [rendering]
 

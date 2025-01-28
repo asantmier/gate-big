@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dglx7vtn56qmp"]
+[gd_scene load_steps=5 format=3 uid="uid://dglx7vtn56qmp"]
 
 [ext_resource type="PackedScene" uid="uid://cvd26too57o7i" path="res://ui/settings/volume_control.tscn" id="1_jf7gg"]
 [ext_resource type="Script" path="res://ui/title/start_screen.gd" id="1_lxddx"]
+[ext_resource type="FontFile" uid="uid://dl35yckdfyvv2" path="res://ui/fonts/Sixtyfour/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="2_437so"]
+
+[sub_resource type="FontVariation" id="FontVariation_2jhol"]
+base_font = ExtResource("2_437so")
+variation_opentype = {
+1112294724: 0,
+1396916558: 0
+}
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -23,6 +31,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_2jhol")
 theme_override_font_sizes/font_size = 80
 text = "GATE B.I.G."
 

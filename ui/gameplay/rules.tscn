@@ -86,6 +86,7 @@ layout_mode = 2
 
 [node name="section title" type="Label" parent="Laws Display/VBoxContainer/FactionsSection"]
 layout_mode = 2
+theme_type_variation = &"HeaderLabel"
 text = "Banned Factions"
 
 [node name="CriminalList" type="HBoxContainer" parent="Laws Display/VBoxContainer/FactionsSection"]
@@ -153,6 +154,7 @@ size_flags_vertical = 3
 
 [node name="section title" type="Label" parent="Laws Display/VBoxContainer/ContrabandSection"]
 layout_mode = 2
+theme_type_variation = &"HeaderLabel"
 text = "Banned Goods"
 
 [node name="ContrabandList" type="HBoxContainer" parent="Laws Display/VBoxContainer/ContrabandSection"]
