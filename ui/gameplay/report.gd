@@ -39,11 +39,13 @@ func _on_shift_start():
 
 
 func _on_ship_passed():
-	passed_this_shift += 1
+	if not GameData.is_ship_bad():
+		passed_this_shift += 1
 
 
 func _on_ship_killed():
-	killed_this_shift += 1
+	if GameData.is_ship_bad():
+		killed_this_shift += 1
 
 
 func _on_mistake():

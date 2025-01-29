@@ -15,7 +15,7 @@ var shift_rules := {
 	1: {
 		liars = 1, # Liars lie on their manifest
 		quota = 3,
-		criminals = [GameConstants.RED_FACTION],
+		criminals = [GameConstants.BLUE_CY_FACTION, GameConstants.BLUE_MG_FACTION, GameConstants.BLUE_YL_FACTION],
 		contraband = [GameConstants.GRIN, GameConstants.OMINOUS_MOO_DENG],
 		smugglers = 1, # Smugglers carry contraband or criminals
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler

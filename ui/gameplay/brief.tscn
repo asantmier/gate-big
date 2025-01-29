@@ -9,10 +9,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -170.0
-offset_top = -145.0
-offset_right = 170.0
-offset_bottom = 146.0
+offset_left = -256.0
+offset_top = -191.0
+offset_right = 256.0
+offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d3nwd")
@@ -24,7 +24,8 @@ layout_mode = 2
 [node name="title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"BigTitleLabel"
-text = "BRIEFING"
+theme_override_font_sizes/font_size = 40
+text = "[Message to all B.I.G personnel]"
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
@@ -33,12 +34,12 @@ layout_mode = 2
 [node name="News" type="RichTextLabel" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Breaking news!
+theme_type_variation = &"BodyRichTextLabel"
+text = "Rate of newcomers has lessened thanks to the new regulations, and the Empire is slowly eliminating all threats in the planet. However, our spies have reported that some ship operators are bringing in more cargo than they should be, or even smuggling in illegal items.
 
-Yo momma so fat even the BIG cannon couldn't destroy her!
+Starting from today, check the cargo of each ship, and ensure that no illegal goods are onboard, or that they are not carrying anymore cargo than stated in their manifest. If any ship does not abide with either of these regulations:
 
-Gottem!
--- Esteemed Grand Emperor Jeff"
+Eliminate them."
 fit_content = true
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]

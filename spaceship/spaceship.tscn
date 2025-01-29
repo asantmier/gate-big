@@ -1,16 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvj3h0821p1jp"]
+[gd_scene load_steps=8 format=3 uid="uid://bvj3h0821p1jp"]
 
-[ext_resource type="Texture2D" uid="uid://bfe00aynpjxn6" path="res://spaceship/art/firefox_zuy12N57mR.png" id="1_ainj6"]
 [ext_resource type="Script" path="res://spaceship/spaceship_scrambler.gd" id="1_djm5r"]
+[ext_resource type="Texture2D" uid="uid://bpgaba4w2nsx" path="res://spaceship/art/ship.png" id="2_p5hg0"]
 [ext_resource type="Script" path="res://spaceship/floor.gd" id="3_k2ox5"]
-[ext_resource type="Texture2D" uid="uid://caff8e0egh5c7" path="res://spaceship/art/firefox_372LeEstYm.png" id="3_nav2v"]
 [ext_resource type="PackedScene" uid="uid://cfb2uf5ywokxq" path="res://spaceship/characters/person.tscn" id="4_1eh4u"]
 [ext_resource type="PackedScene" uid="uid://inws64726gsr" path="res://scanner/scanner.tscn" id="4_gabmw"]
 [ext_resource type="PackedScene" uid="uid://byxfcrlbsthwg" path="res://spaceship/cargo/cargo.tscn" id="5_2vomd"]
 
 [sub_resource type="Curve2D" id="Curve2D_21jmi"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -228, 7, 0, 0, 0, 0, 291, 6)
+"points": PackedVector2Array(0, 0, 0, 0, -142, -32, 0, 0, 0, 0, 183, -30)
 }
 point_count = 2
 
@@ -23,12 +22,13 @@ floors = [NodePath("../Passengers/Floor")]
 cargo_bays = [NodePath("../Cargo/Cargo"), NodePath("../Cargo/Cargo2")]
 
 [node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(0.76198, 0.76198)
-texture = ExtResource("1_ainj6")
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_p5hg0")
 
 [node name="Passengers" type="Node2D" parent="." groups=["passengers"]]
 
 [node name="Floor" type="Path2D" parent="Passengers"]
+position = Vector2(9, -25)
 curve = SubResource("Curve2D_21jmi")
 script = ExtResource("3_k2ox5")
 
@@ -38,10 +38,10 @@ floor = NodePath("..")
 [node name="Cargo" type="Node2D" parent="." groups=["cargo"]]
 
 [node name="Cargo" parent="Cargo" instance=ExtResource("5_2vomd")]
-position = Vector2(-142, 65)
+position = Vector2(-101, 83)
 
 [node name="Cargo2" parent="Cargo" instance=ExtResource("5_2vomd")]
-position = Vector2(35, 62)
+position = Vector2(173, 79)
 
 [node name="Systems" type="Node2D" parent="." groups=["systems"]]
 
@@ -49,10 +49,11 @@ position = Vector2(35, 62)
 copy_mode = 2
 
 [node name="Sight Blocker" type="Sprite2D" parent="BackBufferCopy"]
-scale = Vector2(0.71343, 0.71343)
-texture = ExtResource("3_nav2v")
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_p5hg0")
 
 [node name="Scanner Inserter" type="Node2D" parent="BackBufferCopy"]
 
 [node name="Scanner" parent="BackBufferCopy" instance=ExtResource("4_gabmw")]
-position = Vector2(26, -4)
+position = Vector2(0, 0)
+scale = Vector2(0.517328, 0.517328)

@@ -165,6 +165,7 @@ func _on_child_exiting_tree(child) -> void:
 
 
 func _on_ship_focused():
+	position = Vector2.ZERO
 	show()
 
 

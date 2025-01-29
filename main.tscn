@@ -1,11 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://c6jsdaxy71qto"]
+[gd_scene load_steps=43 format=3 uid="uid://c6jsdaxy71qto"]
 
 [ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship/spaceship.tscn" id="1_05mrr"]
+[ext_resource type="Script" path="res://start_animation.gd" id="1_lusjx"]
 [ext_resource type="Script" path="res://ship_animations.gd" id="2_lkoxi"]
 [ext_resource type="Texture2D" uid="uid://ns8lueen1kr0" path="res://effects/Explosion_002_Tile_8x8_256x256.png" id="3_hj608"]
 [ext_resource type="PackedScene" uid="uid://bcmk1c2cf8r6c" path="res://ui/gameplay/manifest.tscn" id="5_01fqa"]
 [ext_resource type="PackedScene" uid="uid://bum8ktu74fq31" path="res://ui/gameplay/rules.tscn" id="5_3yfl6"]
 [ext_resource type="PackedScene" uid="uid://ccnu0nds8r7jk" path="res://ui/gameplay/choice_buttons.tscn" id="5_ypbns"]
+[ext_resource type="PackedScene" uid="uid://cddviapsby3u" path="res://ui/gameplay/shift_counter.tscn" id="6_nkemw"]
 [ext_resource type="PackedScene" uid="uid://c4li4ei653p3y" path="res://ui/gameplay/shift_timer.tscn" id="6_s522t"]
 [ext_resource type="PackedScene" uid="uid://do2gwswyvta27" path="res://ui/gameplay/shift_quota.tscn" id="7_rmit7"]
 [ext_resource type="PackedScene" uid="uid://bl5krru57e30e" path="res://ui/gameplay/reprimand_counter.tscn" id="8_oxk48"]
@@ -17,12 +19,272 @@
 [ext_resource type="PackedScene" uid="uid://dglx7vtn56qmp" path="res://ui/title/start_screen.tscn" id="14_h3ekp"]
 [ext_resource type="PackedScene" uid="uid://cxxklybhjyqnk" path="res://effects/warning_light.tscn" id="14_kpccf"]
 [ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alerts/alert_toast.tscn" id="14_n7f0v"]
+[ext_resource type="Script" path="res://eod_anim.gd" id="16_21155"]
 [ext_resource type="PackedScene" uid="uid://d8rwc8vp2xyf" path="res://scanner/scanner_layer.tscn" id="17_oofxi"]
 [ext_resource type="PackedScene" uid="uid://d2pyxpuyinvfm" path="res://effects/melt_effect.tscn" id="18_4xoj3"]
 [ext_resource type="Texture2D" uid="uid://dlv82m7aytnrb" path="res://ui/textures/interfaceBorderChain.png" id="18_47dfa"]
 [ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="19_o0nrv"]
 [ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="20_axhhb"]
 [ext_resource type="PackedScene" uid="uid://cau15v47xi5kl" path="res://3d/3d_background.tscn" id="20_p7qnr"]
+
+[sub_resource type="Animation" id="Animation_4srhk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HUD Canvas:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../EOD Canvas:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Spaceship:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(728, 540)]
+}
+
+[sub_resource type="Animation" id="Animation_hjb8g"]
+resource_name = "prep"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HUD Canvas:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../EOD Canvas:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Spaceship:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 540)]
+}
+
+[sub_resource type="Animation" id="Animation_n0uwe"]
+resource_name = "startup"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HUD Canvas:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../EOD Canvas:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Spaceship:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(960, 540), Vector2(960, 540), Vector2(728, 540)]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../EOD Canvas/EODAnim")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("end_day"),
+"times": PackedFloat32Array(2.56667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ay45"]
+_data = {
+"RESET": SubResource("Animation_4srhk"),
+"prep_title": SubResource("Animation_hjb8g"),
+"startup": SubResource("Animation_n0uwe")
+}
+
+[sub_resource type="Animation" id="Animation_7twtr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -598)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../EOD Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m5rqr"]
+resource_name = "end_day"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.166667, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -666), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../EOD Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -765), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtl6d"]
+_data = {
+"RESET": SubResource("Animation_7twtr"),
+"end_day": SubResource("Animation_m5rqr")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rqsff"]
+light_mode = 1
 
 [sub_resource type="Animation" id="Animation_d6h4q"]
 length = 0.001
@@ -108,7 +370,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(63, 63)]
+"values": [Vector2(63, -449)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -236,7 +498,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(-373, 252), Vector2(363, 271)]
+"values": [Vector2(-373, 271), Vector2(363, 271)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -324,7 +586,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(1.63333, 4),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(363, 271), Vector2(1100, 258)]
+"values": [Vector2(363, 271), Vector2(1100, 271)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -412,11 +674,19 @@ shader_parameter/shake_block_size = 19.82
 shader_parameter/shake_color_rate = 0.02
 
 [node name="Main" type="Node2D"]
+metadata/_edit_vertical_guides_ = [728.0]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="StartAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../3D Canvas")
+libraries = {
+"": SubResource("AnimationLibrary_3ay45")
+}
+script = ExtResource("1_lusjx")
+
+[node name="3D Canvas" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="3D Canvas"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -425,35 +695,28 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="3D Canvas/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(728, 540)
 render_target_update_mode = 4
 
-[node name="3D Background" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("20_p7qnr")]
+[node name="3D Background" parent="3D Canvas/SubViewportContainer/SubViewport" instance=ExtResource("20_p7qnr")]
 
 [node name="Menu Canvas" type="CanvasLayer" parent="."]
 layer = 6
-visible = false
 
 [node name="StartScreen" parent="Menu Canvas" instance=ExtResource("14_h3ekp")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-hide_in_debug = true
 
 [node name="Settings" parent="Menu Canvas" instance=ExtResource("13_oaq32")]
+visible = false
 
 [node name="HUD Canvas" type="CanvasLayer" parent="."]
 layer = 2
 
 [node name="Scanner Buttons" parent="HUD Canvas" instance=ExtResource("9_r58rm")]
-anchor_left = 0.371875
-anchor_top = 0.794444
-anchor_right = 0.639583
-anchor_bottom = 0.974074
+anchor_left = 0.25
+anchor_top = 0.825926
+anchor_right = 0.509375
 
 [node name="Right Panel" type="Panel" parent="HUD Canvas"]
 anchors_preset = -1
@@ -479,36 +742,37 @@ theme_override_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD Canvas/Right Panel/MarginContainer"]
 layout_mode = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD Canvas/Right Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Shift Counter" parent="HUD Canvas/Right Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("6_nkemw")]
+layout_mode = 2
+
+[node name="Shift Quota" parent="HUD Canvas/Right Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("7_rmit7")]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="Manifest" parent="HUD Canvas/Right Panel/MarginContainer/VBoxContainer" instance=ExtResource("5_01fqa")]
 layout_mode = 2
-size_flags_stretch_ratio = 0.7
+size_flags_stretch_ratio = 0.5
 
 [node name="Rules" parent="HUD Canvas/Right Panel/MarginContainer/VBoxContainer" instance=ExtResource("5_3yfl6")]
 layout_mode = 2
-size_flags_stretch_ratio = 1.16
 
 [node name="Choice Buttons" parent="HUD Canvas/Right Panel/MarginContainer/VBoxContainer" instance=ExtResource("5_ypbns")]
+custom_minimum_size = Vector2(0, 75.91)
 layout_mode = 2
-size_flags_vertical = 3
 size_flags_stretch_ratio = 0.37
 
 [node name="Reprimand Counter" parent="HUD Canvas/Right Panel/MarginContainer/VBoxContainer" instance=ExtResource("8_oxk48")]
+custom_minimum_size = Vector2(0, 62.78)
 layout_mode = 2
-size_flags_vertical = 3
 size_flags_stretch_ratio = 0.36
 
 [node name="Shift Timer" parent="HUD Canvas" instance=ExtResource("6_s522t")]
 anchor_right = 0.758333
 anchor_bottom = 0.0722222
-
-[node name="Shift Quota" parent="HUD Canvas" instance=ExtResource("7_rmit7")]
-anchors_preset = -1
-anchor_left = 0.670833
-anchor_right = 0.758333
-anchor_bottom = 0.0740741
-offset_right = 0.0
-offset_bottom = 0.0
-metadata/_edit_use_anchors_ = true
 
 [node name="Ship Debugger" parent="HUD Canvas" instance=ExtResource("10_6uy2d")]
 anchors_preset = -1
@@ -588,10 +852,30 @@ metadata/_edit_use_anchors_ = true
 [node name="EOD Canvas" type="CanvasLayer" parent="."]
 layer = 3
 
+[node name="EODAnim" type="AnimationPlayer" parent="EOD Canvas"]
+root_node = NodePath("../ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_qtl6d")
+}
+script = ExtResource("16_21155")
+
 [node name="EOD Panel" parent="EOD Canvas" instance=ExtResource("12_8bmx5")]
 visible = false
 
+[node name="ColorRect" type="ColorRect" parent="EOD Canvas"]
+visible = false
+material = SubResource("CanvasItemMaterial_rqsff")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -598.0
+offset_bottom = -598.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.176419, 0.176419, 0.176419, 1)
+
 [node name="Spaceship" parent="." instance=ExtResource("1_05mrr")]
+visible = false
 position = Vector2(363, 271)
 
 [node name="Ship Animations" type="AnimationPlayer" parent="."]
@@ -618,8 +902,8 @@ anchor_left = 0.065625
 anchor_top = 0.109259
 anchor_right = 0.694792
 anchor_bottom = 0.861111
-offset_top = -489.0
-offset_bottom = -489.0
+offset_top = -508.0
+offset_bottom = -508.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("18_47dfa")

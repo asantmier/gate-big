@@ -11,29 +11,28 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sswo8"]
 shader = ExtResource("2_yb01j")
-shader_parameter/resolution = Vector2(500, 500)
-shader_parameter/scan_line_amount = 1.0
+shader_parameter/resolution = Vector2(700, 700)
+shader_parameter/scan_line_amount = 0.5
 shader_parameter/warp_amount = 0.1
-shader_parameter/noise_amount = 0.03
-shader_parameter/interference_amount = 0.2
-shader_parameter/grille_amount = 0.1
+shader_parameter/noise_amount = 0.058
+shader_parameter/interference_amount = 0.43
+shader_parameter/grille_amount = 0.195
 shader_parameter/grille_size = 1.0
 shader_parameter/vignette_amount = 0.6
 shader_parameter/vignette_intensity = 0.4
-shader_parameter/aberation_amount = 0.5
-shader_parameter/roll_line_amount = 0.3
-shader_parameter/roll_speed = 1.0
+shader_parameter/aberation_amount = 0.414
+shader_parameter/roll_line_amount = 0.513
+shader_parameter/roll_speed = 1.705
 shader_parameter/scan_line_strength = -8.0
-shader_parameter/pixel_strength = -2.0
+shader_parameter/pixel_strength = -3.246
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3khj"]
 size = Vector2(252, 248)
 
 [node name="Scanner" type="Area2D"]
 z_index = 3
-position = Vector2(96, -65)
 script = ExtResource("1_8wqry")
-boundaries = Rect2(0, 0, 900, 600)
+boundaries = Rect2(0, 0, 728, 540)
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_sswo8")

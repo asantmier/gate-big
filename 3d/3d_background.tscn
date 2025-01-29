@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dnku8w6e3gouj" path="res://3d/PlanetMaterialv2.png" id="1_7hhkd"]
 [ext_resource type="Shader" path="res://shaders/acrpod.gdshader" id="2_govp3"]
 [ext_resource type="Script" path="res://3d/spin_component.gd" id="2_jsht0"]
-[ext_resource type="PackedScene" uid="uid://cd3h2t610o7k" path="res://ui/big_gun.tscn" id="4_vbv50"]
+[ext_resource type="PackedScene" uid="uid://cd3h2t610o7k" path="res://3d/big_gun.tscn" id="4_vbv50"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a1b8j"]
 panorama = ExtResource("1_5ikid")
@@ -21,6 +21,7 @@ ambient_light_source = 2
 ambient_light_color = Color(0.446777, 0.446777, 0.446777, 1)
 ambient_light_energy = 3.59
 tonemap_mode = 2
+volumetric_fog_density = 0.1594
 
 [sub_resource type="SphereMesh" id="SphereMesh_bbno0"]
 

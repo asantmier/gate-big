@@ -47,3 +47,4 @@ theme/custom_font="res://ui/fonts/Jersey_20/Jersey20-Regular.ttf"
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
+limits/opengl/max_lights_per_object=12

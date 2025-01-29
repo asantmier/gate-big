@@ -37,19 +37,19 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"HeaderLabel"
-text = "Threats Eliminated"
+text = "Criminals eliminated"
 
 [node name="PassedTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"HeaderLabel"
-text = "Inspections Passed"
+text = "Civilians passed"
 
 [node name="MistakesTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"HeaderLabel"
-text = "Mistakes"
+text = "Errors in judgement"
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2

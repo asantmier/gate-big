@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmvh1grqsa5pe"
-path="res://.godot/imported/npc6.png-e3b26348208137749f416c6e8348117f.ctex"
+uid="uid://bxcsu5ow5a3wm"
+path="res://.godot/imported/npc-by.png-e06892edf5a616d2de85d83a263fd33c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spaceship/characters/textures/npc6.png"
-dest_files=["res://.godot/imported/npc6.png-e3b26348208137749f416c6e8348117f.ctex"]
+source_file="res://spaceship/characters/textures/npc-by.png"
+dest_files=["res://.godot/imported/npc-by.png-e06892edf5a616d2de85d83a263fd33c.ctex"]
 
 [params]
 

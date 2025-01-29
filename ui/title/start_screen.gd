@@ -10,10 +10,8 @@ func _ready():
 		hide()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_button_pressed():
-	hide()
+	EventBus.game_begun.emit()
+	$AnimationPlayer.play("fade_out")
+	#hide()
