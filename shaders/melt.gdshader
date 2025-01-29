@@ -26,14 +26,16 @@ void fragment(){
 	vec2 transition_uv = uv;
 	float turbulance = fract(sin(dot(vec2(transition_uv.x), vec2(12.9, 78.2)))* 437.5);
 	transition_uv.y += pow(sort, 2.0 + (sort * 2.0)) * mask * turbulance;
-	COLOR = texture(screen_texture, transition_uv);
+	vec4 color = texture(screen_texture, transition_uv) * 0.5;
+	//COLOR = texture(screen_texture, transition_uv);
 	
 	// Draw pixel sorting effect behind the melting transition
 	if(transition_uv.y > 1.){
-		COLOR = texture(screen_texture, sort_uv);
+		color += texture(screen_texture, sort_uv) * 0.5;
 	}else{
-		COLOR = texture(screen_texture, uv);
+		color += texture(screen_texture, uv) * 0.5;
 	}
+	COLOR = color;
 	
-//	COLOR = vec4(mask, mask, mask, 1.0); // Uncomment this to check mask
+	//COLOR = vec4(mask, mask, mask, 1.0); // Uncomment this to check mask
 }

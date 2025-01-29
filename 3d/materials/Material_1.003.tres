@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://denele5mwt8vh"]
+
+[ext_resource type="Texture2D" uid="uid://d3rl42t2d6qd0" path="res://3d/TurretDesign-v2_Image_1.png" id="1_k7em5"]
+
+[resource]
+resource_name = "Material_1.003"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_k7em5")
+texture_filter = 2
+texture_repeat = false

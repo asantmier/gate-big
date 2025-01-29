@@ -47,6 +47,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"HeaderLabel"
 text = "Volume"
 
 [node name="Volume Control" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_lo44w")]

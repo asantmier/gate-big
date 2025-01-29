@@ -14,8 +14,8 @@ var types: Array[int] = []
 
 
 ## Changes type of crates allowed to spawn. Guaranteed to spawn one of each type
-func set_types(array: Array[int]):
-	types = array
+func set_types(array: Array):
+	types.assign(array)
 	if quantity < types.size():
 		quantity = types.size()
 	update_crates_type()
@@ -23,6 +23,12 @@ func set_types(array: Array[int]):
 
 func type_count():
 	return variants.size()
+
+
+func get_types_list() -> Array[int]:
+	var array : Array[int]
+	array.assign(range(type_count()))
+	return array
 
 
 func random_type() -> int:

@@ -1,6 +1,7 @@
 // https://godotshaders.com/shader/retro-tv-shader/
 //---CRT Shader---
 shader_type canvas_item;
+render_mode unshaded;
 
 uniform float scanline_count : hint_range(0, 1800) = 50.0;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, repeat_disable, filter_nearest;

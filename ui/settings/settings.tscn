@@ -1,8 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6t5m8euq2j0f"]
+[gd_scene load_steps=9 format=3 uid="uid://b6t5m8euq2j0f"]
 
+[ext_resource type="Texture2D" uid="uid://b18nq43yegev" path="res://ui/textures/settings/pauseIconBlink.png" id="1_hkljg"]
 [ext_resource type="PackedScene" uid="uid://joippmkja8hn" path="res://ui/settings/settings_menu.tscn" id="1_lsbsr"]
 [ext_resource type="Texture2D" uid="uid://bglc5tklisags" path="res://ui/textures/settings/volume3.png" id="1_mkw26"]
 [ext_resource type="PackedScene" uid="uid://cvd26too57o7i" path="res://ui/settings/volume_control.tscn" id="2_ady04"]
+[ext_resource type="Texture2D" uid="uid://c3lepnlmdpmvr" path="res://ui/textures/settings/pauseIcon.png" id="2_oqhx5"]
+
+[sub_resource type="Animation" id="Animation_y42me"]
+resource_name = "blink"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_hkljg"), ExtResource("2_oqhx5")]
+}
+
+[sub_resource type="Animation" id="Animation_2f5tt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_hkljg")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o228p"]
+_data = {
+"RESET": SubResource("Animation_2f5tt"),
+"blink": SubResource("Animation_y42me")
+}
 
 [node name="Settings" type="Control"]
 process_mode = 3
@@ -18,11 +58,19 @@ mouse_filter = 2
 layout_mode = 0
 offset_right = 59.0
 offset_bottom = 135.0
+theme_override_constants/separation = 0
 
-[node name="Settings Button" type="Button" parent="VBoxContainer"]
+[node name="Settings Button" type="TextureButton" parent="VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-text = "PAUSE"
+texture_normal = ExtResource("1_hkljg")
+texture_pressed = ExtResource("2_oqhx5")
+texture_hover = ExtResource("2_oqhx5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Settings Button"]
+libraries = {
+"": SubResource("AnimationLibrary_o228p")
+}
 
 [node name="Volume Button" type="TextureButton" parent="VBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
@@ -45,9 +93,9 @@ offset_bottom = 82.0
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="Settings Menu" parent="." node_paths=PackedStringArray("volume_slider") instance=ExtResource("1_lsbsr")]
-visible = false
+[node name="Settings Menu" parent="." node_paths=PackedStringArray("settings_animation", "volume_slider") instance=ExtResource("1_lsbsr")]
 layout_mode = 1
+settings_animation = NodePath("../VBoxContainer/Settings Button/AnimationPlayer")
 volume_slider = NodePath("../VBoxContainer/Volume Button/Volume Control")
 
 [connection signal="pressed" from="VBoxContainer/Settings Button" to="Settings Menu" method="toggle"]

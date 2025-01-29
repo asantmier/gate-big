@@ -10,3 +10,14 @@ func do_thing():
 	show()
 	$AnimationPlayer.play("wait")
 	$AnimationPlayer.queue("melt")
+
+
+func _input(event):
+	if OS.is_debug_build() and event is InputEventKey:
+		if event.keycode == KEY_F9:
+			do_thing()
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "melt":
+		EventBus.game_lost.emit()

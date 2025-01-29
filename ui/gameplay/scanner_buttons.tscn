@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgj0ts2edf1r5"]
+[gd_scene load_steps=5 format=3 uid="uid://cgj0ts2edf1r5"]
 
 [ext_resource type="Script" path="res://ui/gameplay/layer_switcher.gd" id="1_5boje"]
+[ext_resource type="Script" path="res://ui/blinking_caret_component.gd" id="2_c4mb7"]
 [ext_resource type="Texture2D" uid="uid://bovttt0f6ncmj" path="res://ui/textures/cameraNPC.png" id="2_vm45y"]
 [ext_resource type="Texture2D" uid="uid://bh4wvf6qs8yn" path="res://ui/textures/cameraCargo.png" id="3_rgkr5"]
 
@@ -17,16 +18,29 @@ metadata/_edit_use_anchors_ = true
 [node name="LayerSwitcher" type="Node" parent="."]
 script = ExtResource("1_5boje")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"LabelRobotic"
+text = "SCAN_MODE_"
+
+[node name="Blinking Caret Component" type="Node" parent="VBoxContainer/Label"]
+script = ExtResource("2_c4mb7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 alignment = 1
 
-[node name="Passenger Button" type="Button" parent="HBoxContainer"]
+[node name="Passenger Button" type="Button" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -34,7 +48,7 @@ text = "PASSENGER"
 icon = ExtResource("2_vm45y")
 expand_icon = true
 
-[node name="Cargo Button" type="Button" parent="HBoxContainer"]
+[node name="Cargo Button" type="Button" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -42,12 +56,12 @@ text = "CARGO"
 icon = ExtResource("3_rgkr5")
 expand_icon = true
 
-[node name="System Button" type="Button" parent="HBoxContainer"]
+[node name="System Button" type="Button" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "SYSTEMS"
 
-[connection signal="pressed" from="HBoxContainer/Passenger Button" to="LayerSwitcher" method="_on_passenger_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/Cargo Button" to="LayerSwitcher" method="_on_cargo_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/System Button" to="LayerSwitcher" method="_on_system_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Passenger Button" to="LayerSwitcher" method="_on_passenger_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Cargo Button" to="LayerSwitcher" method="_on_cargo_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/System Button" to="LayerSwitcher" method="_on_system_button_pressed"]

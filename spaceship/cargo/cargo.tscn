@@ -19,7 +19,7 @@ default_variant = ExtResource("2_2atxd")
 variants = Array[Texture2D]([ExtResource("2_ax3ha"), ExtResource("3_02ijy"), ExtResource("4_d0no0"), ExtResource("5_3f5ri"), ExtResource("6_n4t0a"), ExtResource("7_kglre"), ExtResource("8_4rdg2")])
 
 [node name="Node2D" type="Node2D" parent="."]
-scale = Vector2(0.342579, 0.342579)
+scale = Vector2(0.35, 0.35)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 texture = ExtResource("2_2atxd")

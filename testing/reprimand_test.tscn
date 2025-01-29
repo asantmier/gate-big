@@ -21,18 +21,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.419813, 0.419813, 0.419813, 0.501961)
 
-[node name="Reprimand Counter" parent="HUD Canvas" instance=ExtResource("1_cnhtt")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 888.0
-offset_top = 489.0
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 1
-grow_vertical = 1
-size_flags_vertical = 3
-
 [node name="Warning Lights" type="Control" parent="HUD Canvas"]
 layout_mode = 3
 anchors_preset = 15
@@ -95,6 +83,22 @@ mouse_filter = 2
 anchors_preset = -1
 anchor_right = 0.770833
 metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD Canvas"]
+clip_contents = true
+offset_left = 659.0
+offset_top = 133.0
+offset_right = 972.0
+offset_bottom = 485.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD Canvas/PanelContainer"]
+layout_mode = 2
+
+[node name="Reprimand Counter" parent="HUD Canvas/PanelContainer/VBoxContainer" instance=ExtResource("1_cnhtt")]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="reprimand" type="Button" parent="."]
 offset_right = 8.0

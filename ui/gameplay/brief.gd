@@ -10,8 +10,9 @@ func _ready():
 
 
 func display():
+	show_on_finish.hide()
 	var tween = get_tree().create_tween()
-	tween.tween_property($News, "visible_ratio", 1, GameConstants.get_typing_length($News.text)).from(0)
+	tween.tween_property(%News, "visible_ratio", 1, GameConstants.get_typing_length(%News.text)).from(0)
 	tween.tween_callback(show_on_finish.show).set_delay(0.5)
 
 

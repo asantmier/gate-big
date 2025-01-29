@@ -9,6 +9,8 @@ func _ready():
 
 func _on_reprimand_issued():
 	%RepCount.text = str(GameData.max_reprimands - GameData.reprimands)
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("type")
 	show()
 
 

@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdgiymcvxt4ga"]
+
+[ext_resource type="Script" path="res://ui/gameplay/brief.gd" id="1_d3nwd"]
+[ext_resource type="PackedScene" uid="uid://rsrg7p7j464o" path="res://ui/gameplay/start_button.tscn" id="2_fee5r"]
+
+[node name="Brief" type="VBoxContainer" node_paths=PackedStringArray("show_on_finish")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -191.0
+offset_right = 256.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d3nwd")
+show_on_finish = NodePath("VBoxContainer/Start Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BigTitleLabel"
+theme_override_font_sizes/font_size = 40
+text = "[Message to all B.I.G personnel]"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="News" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BodyRichTextLabel"
+text = "Rate of newcomers has lessened thanks to the new regulations, and the Empire is slowly eliminating all threats in the planet. However, our spies have reported that some ship operators are bringing in more cargo than they should be, or even smuggling in illegal items.
+
+Starting from today, check the cargo of each ship, and ensure that no illegal goods are onboard, or that they are not carrying anymore cargo than stated in their manifest. If any ship does not abide with either of these regulations:
+
+Eliminate them."
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="Start Button" parent="VBoxContainer" instance=ExtResource("2_fee5r")]
+layout_mode = 2
+theme_type_variation = &"ContinueButton"

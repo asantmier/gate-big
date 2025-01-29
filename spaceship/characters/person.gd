@@ -53,6 +53,12 @@ func faction_count():
 	return sprites1.size()
 
 
+func get_factions_list():
+	var array : Array[int]
+	array.assign(range(faction_count()))
+	return array
+
+
 func random_faction():
 	return randi_range(0, faction_count() - 1)
 

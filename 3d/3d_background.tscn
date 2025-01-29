@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://cau15v47xi5kl"]
+
+[ext_resource type="Texture2D" uid="uid://dr85bx1p26tlp" path="res://3d/StarBackgroundv3.hdr" id="1_5ikid"]
+[ext_resource type="Texture2D" uid="uid://dnku8w6e3gouj" path="res://3d/PlanetMaterialv2.png" id="1_7hhkd"]
+[ext_resource type="Shader" path="res://shaders/acrpod.gdshader" id="2_govp3"]
+[ext_resource type="Script" path="res://3d/spin_component.gd" id="2_jsht0"]
+[ext_resource type="PackedScene" uid="uid://cd3h2t610o7k" path="res://3d/big_gun.tscn" id="4_vbv50"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a1b8j"]
+panorama = ExtResource("1_5ikid")
+energy_multiplier = 38.72
+
+[sub_resource type="Sky" id="Sky_5y1eu"]
+sky_material = SubResource("PanoramaSkyMaterial_a1b8j")
+
+[sub_resource type="Environment" id="Environment_5rpwq"]
+background_mode = 2
+sky = SubResource("Sky_5y1eu")
+sky_custom_fov = 75.1
+ambient_light_source = 2
+ambient_light_color = Color(0.446777, 0.446777, 0.446777, 1)
+ambient_light_energy = 3.59
+tonemap_mode = 2
+volumetric_fog_density = 0.1594
+
+[sub_resource type="SphereMesh" id="SphereMesh_bbno0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpr66"]
+albedo_texture = ExtResource("1_7hhkd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v85nq"]
+shader = ExtResource("2_govp3")
+shader_parameter/quantize_size = 2.0
+shader_parameter/handle_scale = false
+shader_parameter/handle_subpixels = true
+shader_parameter/dither_enabled = true
+shader_parameter/bayer_pattern = 3.0
+shader_parameter/divisions = 16.0
+shader_parameter/contrast = 1.0
+shader_parameter/shift = 0.0
+shader_parameter/grayscale = false
+shader_parameter/use_palette = false
+
+[node name="3D Background" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5rpwq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.895654, -0.121131, 0.427938, -0.183823, 0.976987, -0.108188, -0.404985, -0.175564, -0.897309, 0, 0, 0)
+fov = 45.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(48.8284, 2.38419e-06, -3.8147e-06, -3.33786e-06, 48.8284, 0, 1.14441e-05, 2.38419e-06, 48.8284, -25.4236, -6.14718, -110.035)
+mesh = SubResource("SphereMesh_bbno0")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_bpr66")
+
+[node name="SpinComponent" type="Node3D" parent="Camera3D/MeshInstance3D"]
+script = ExtResource("2_jsht0")
+speed = 3.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(0.355671, -0.294726, 0.886924, -0.281599, 0.871083, 0.402388, -0.891179, -0.392875, 0.226825, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Node3D2" parent="Camera3D" instance=ExtResource("4_vbv50")]
+transform = Transform3D(-3.25963e-09, 3.72529e-09, 0.078, 0.078, -2.79397e-09, -4.65661e-10, 4.65661e-09, 0.078, -3.72529e-09, -4.10066, -2.25916, -8.33381)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="PixelateFilter" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_v85nq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

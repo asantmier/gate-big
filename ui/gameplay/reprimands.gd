@@ -13,9 +13,9 @@ func _ready():
 
 
 func ship_evaluated(killed):
-	await EventBus.ship_left_gate
-	# Wait until the ship is gone to issue a reprimand
 	if (killed and not GameData.is_ship_bad()) or (not killed and GameData.is_ship_bad()):
+		# Wait until the ship is gone to issue a reprimand
+		await EventBus.ship_left_gate
 		GameData.issue_reprimand()
 	else:
 		# :)

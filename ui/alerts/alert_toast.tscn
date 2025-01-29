@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(556, -220)]
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -28,7 +28,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(556, -221)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0khts"]
@@ -44,7 +44,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 3.5, 4),
 "transitions": PackedFloat32Array(2, 1, 2, 1),
 "update": 0,
-"values": [Vector2(555, -200), Vector2(556, 304), Vector2(556, 304), Vector2(556, 1000)]
+"values": [Vector2(0, -543), Vector2(0, 0), Vector2(0, 0), Vector2(0, 539)]
 }
 
 [sub_resource type="Animation" id="Animation_5j8dy"]
@@ -59,7 +59,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(556, 299)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1u2lb"]
@@ -81,43 +81,36 @@ script = ExtResource("1_iqnk8")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -544.0
-offset_right = 20.0
-offset_bottom = -504.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="Reprimand Alert" parent="Control" instance=ExtResource("2_22rhs")]
 layout_mode = 1
+offset_top = -62.0
+offset_bottom = -22.0
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -545.0
-offset_right = 20.0
-offset_bottom = -505.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="Game Over Alert" parent="Control2" instance=ExtResource("3_ul83m")]
 layout_mode = 1
+offset_top = -37.0
+offset_bottom = -37.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1u2lb")
 }
 
+[connection signal="hidden" from="Control/Reprimand Alert" to="Control2/Game Over Alert" method="_on_reprimand_alert_hidden"]
 [connection signal="animation_finished" from="AnimationPlayer" to="Control/Reprimand Alert" method="_on_animation_player_animation_finished"]

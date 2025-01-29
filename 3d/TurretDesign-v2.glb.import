@@ -31,6 +31,41 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Material_0": {
+"use_external/enabled": true,
+"use_external/path": "res://3d/materials/Material_0.tres"
+},
+"Material_0.001": {
+"use_external/enabled": true,
+"use_external/path": "res://3d/materials/Material_0.001.tres"
+},
+"Material_0.002": {
+"use_external/enabled": true,
+"use_external/path": "res://3d/materials/Material_0.002.tres"
+},
+"Material_0.003": {
+"use_external/enabled": true,
+"use_external/path": "res://3d/materials/Material_0.003.tres"
+},
+"Material_1": {
+"use_external/enabled": true,
+"use_external/path": "res://3d/materials/Material_1.tres"
+},
+"Material_1.001": {
+"use_external/enabled": true,
+"use_external/path": "res://3d/materials/Material_1.001.tres"
+},
+"Material_1.002": {
+"use_external/enabled": true,
+"use_external/path": "res://3d/materials/Material_1.002.tres"
+},
+"Material_1.003": {
+"use_external/enabled": true,
+"use_external/path": "res://3d/materials/Material_1.003.tres"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
