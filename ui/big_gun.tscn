@@ -233,7 +233,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x5ttg")
 
-[node name="Node3D2" type="Node3D"]
+[node name="BIG Gun" type="Node3D"]
 transform = Transform3D(1.35953e-16, 3.11024e-09, 0.0711539, 0.0711539, -3.11024e-09, 0, 3.11024e-09, 0.0711539, -3.11024e-09, -4.29132, -2.10981, -5.4916)
 
 [node name="beveled_cuboid_004" type="MeshInstance3D" parent="."]

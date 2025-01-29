@@ -13,7 +13,7 @@ func do_thing():
 
 
 func _input(event):
-	if event is InputEventKey:
+	if OS.is_debug_build() and event is InputEventKey:
 		if event.keycode == KEY_F9:
 			do_thing()
 

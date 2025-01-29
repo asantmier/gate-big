@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dnku8w6e3gouj" path="res://3d/PlanetMaterialv2.png" id="1_7hhkd"]
 [ext_resource type="Shader" path="res://shaders/acrpod.gdshader" id="2_govp3"]
 [ext_resource type="Script" path="res://3d/spin_component.gd" id="2_jsht0"]
-[ext_resource type="PackedScene" uid="uid://cd3h2t610o7k" path="res://ui/node_3d_2.tscn" id="4_vbv50"]
+[ext_resource type="PackedScene" uid="uid://cd3h2t610o7k" path="res://ui/big_gun.tscn" id="4_vbv50"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a1b8j"]
 panorama = ExtResource("1_5ikid")
@@ -69,7 +69,7 @@ transform = Transform3D(-3.25963e-09, 3.72529e-09, 0.078, 0.078, -2.79397e-09, -
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -10
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="PixelateFilter" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_v85nq")
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,5 +77,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="Node3D" type="Node3D" parent="."]

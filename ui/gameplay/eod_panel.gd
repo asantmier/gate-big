@@ -2,7 +2,7 @@ extends Panel
 
 @export var report : Control
 @export var brief : Control
-@export var start_button : Control
+#@export var start_button : Control
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,6 +10,8 @@ func _ready():
 	EventBus.shift_started.connect(hide_panel)
 	EventBus.shift_ended.connect(show_panel)
 	EventBus.shift_ended.emit()
+	
+	report.hide()
 
 
 func hide_panel():
@@ -18,7 +20,7 @@ func hide_panel():
 
 func show_panel():
 	brief.hide()
-	start_button.hide()
+	#start_button.hide()
 	show()
 	display_report()
 

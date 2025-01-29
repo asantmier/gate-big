@@ -8,17 +8,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -231.0
+offset_top = -192.0
+offset_right = 232.0
+offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2hw74")
 
 [node name="title" type="Label" parent="."]
 layout_mode = 2
-theme_type_variation = &"TitleLabel"
+theme_type_variation = &"BigTitleLabel"
 text = "REPORT"
 horizontal_alignment = 1
 
@@ -27,37 +27,77 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="KilledTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"HeaderLabel"
+text = "Threats Eliminated"
+
+[node name="PassedTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"HeaderLabel"
+text = "Inspections Passed"
+
+[node name="MistakesTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
 theme_type_variation = &"HeaderLabel"
 text = "Mistakes"
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 10
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="KilledLabel" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"TitleLabel"
 text = "1"
+
+[node name="PassedLabel" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"TitleLabel"
+text = "1"
+
+[node name="MistakesLabel" type="Label" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"TitleLabel"
+text = "1"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="HBoxContainer2"]
 layout_mode = 2
-theme_type_variation = &"HeaderLabel"
+theme_type_variation = &"TitleLabel"
+theme_override_font_sizes/font_size = 48
 text = "Reprimands Remaining"
+visible_characters_behavior = 1
 
 [node name="ReprimandsLeft" type="Label" parent="HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 8
+theme_type_variation = &"ReprimandLabel"
 text = "3"
 
 [node name="HSeparator" type="HSeparator" parent="."]
@@ -65,6 +105,8 @@ layout_mode = 2
 
 [node name="CloseReport" type="Button" parent="."]
 layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"ContinueButton"
 text = "CONTINUE"
 
 [connection signal="pressed" from="CloseReport" to="." method="_on_close_report_pressed"]
