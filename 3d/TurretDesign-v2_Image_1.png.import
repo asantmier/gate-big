@@ -18,7 +18,7 @@ dest_files=["res://.godot/imported/TurretDesign-v2_Image_1.png-1cb6743e05678bef9
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -80,10 +80,11 @@ func randomize_cargo(smuggle = false):
 			if smuggle:
 				contraband.resize(randi_range(1, min(contraband.size(), bay.quantity)))
 				type_list.append_array(contraband)
-			for i in range(randi_range(0, min(legal_cargo.size(), bay.quantity - type_list.size()))):
-				var sel = legal_cargo.pick_random()
-				type_list.append(sel)
-				legal_cargo.erase(sel)
+			if bay.quantity > type_list.size():
+				for i in range(randi_range(1, min(legal_cargo.size(), bay.quantity - type_list.size()))):
+					var sel = legal_cargo.pick_random()
+					type_list.append(sel)
+					legal_cargo.erase(sel)
 			bay.set_types(type_list)
 			cargo_types.assign(GameConstants.set_merge(cargo_types, type_list))
 		

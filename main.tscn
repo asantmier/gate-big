@@ -850,7 +850,6 @@ layer = 6
 [node name="StartScreen" parent="Menu Canvas" instance=ExtResource("14_h3ekp")]
 
 [node name="Settings" parent="Menu Canvas" instance=ExtResource("13_oaq32")]
-visible = false
 
 [node name="HUD Canvas" type="CanvasLayer" parent="."]
 layer = 2

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/Starbackgroundv3.hdr-121a33c894d8357f4308b8f9
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
