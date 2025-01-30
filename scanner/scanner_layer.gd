@@ -19,8 +19,8 @@ func _input(event):
 			EventBus.passengers_viewed.emit()
 		if event.is_pressed() and not event.is_echo() and event.keycode == KEY_2:
 			EventBus.cargo_viewed.emit()
-		if event.is_pressed() and not event.is_echo() and event.keycode == KEY_3:
-			EventBus.systems_viewed.emit()
+		#if event.is_pressed() and not event.is_echo() and event.keycode == KEY_3:
+			#EventBus.systems_viewed.emit()
 
 
 func passengers():

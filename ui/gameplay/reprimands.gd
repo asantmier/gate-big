@@ -8,15 +8,23 @@ var last
 func _ready():
 	EventBus.ship_passed.connect(ship_evaluated.bind(false))
 	EventBus.ship_killed.connect(ship_evaluated.bind(true))
-	EventBus.reprimand_issued.connect(_on_reprimand_issued)
+	EventBus.reprimand_issued.connect(update_strikes)
+	EventBus.reprimand_revoked.connect(update_strikes)
+	EventBus.time_up.connect(_on_time_up)
 	last = 0
+
+
+func _on_time_up():
+	GameData.issue_reprimand()
 
 
 func ship_evaluated(killed):
 	if (killed and not GameData.is_ship_bad()) or (not killed and GameData.is_ship_bad()):
 		# Wait until the ship is gone to issue a reprimand
+		EventBus.lock_shift.emit()
 		await EventBus.ship_left_gate
 		GameData.issue_reprimand()
+		EventBus.unlock_shift.emit()
 	else:
 		# :)
 		pass
@@ -41,7 +49,3 @@ func update_strikes():
 		if last < 3:
 			$"Strike Three/AnimationPlayer".play("die_out")
 	last = current
-
-
-func _on_reprimand_issued():
-	update_strikes()

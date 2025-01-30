@@ -25,5 +25,6 @@ text = "time"
 script = ExtResource("1_cf3ol")
 
 [node name="Clock" type="Timer" parent="CenterContainer/Timer"]
+one_shot = true
 
 [connection signal="timeout" from="CenterContainer/Timer/Clock" to="CenterContainer/Timer" method="_on_clock_timeout"]

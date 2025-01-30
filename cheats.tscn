@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cov2xcvwuyp2w"]
+
+[ext_resource type="Script" path="res://cheats.gd" id="1_88pu6"]
+
+[node name="Cheats" type="CanvasLayer"]
+layer = 128
+script = ExtResource("1_88pu6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 63.0
+offset_bottom = 63.0
+
+[node name="Cheats" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Cheats"]
+layout_mode = 2
+
+[node name="Reprimand" type="Label" parent="PanelContainer/Cheats/HBoxContainer"]
+layout_mode = 2
+text = "Reprimand"
+
+[node name="rep add" type="Button" parent="PanelContainer/Cheats/HBoxContainer"]
+layout_mode = 2
+text = "+"
+
+[node name="rep sub" type="Button" parent="PanelContainer/Cheats/HBoxContainer"]
+layout_mode = 2
+text = "-"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/Cheats"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="PanelContainer/Cheats/HBoxContainer2"]
+layout_mode = 2
+text = "Time"
+
+[node name="t1" type="Button" parent="PanelContainer/Cheats/HBoxContainer2"]
+layout_mode = 2
+text = "5"
+
+[connection signal="pressed" from="PanelContainer/Cheats/HBoxContainer/rep add" to="." method="_on_rep_add_pressed"]
+[connection signal="pressed" from="PanelContainer/Cheats/HBoxContainer/rep sub" to="." method="_on_rep_sub_pressed"]
+[connection signal="pressed" from="PanelContainer/Cheats/HBoxContainer2/t1" to="." method="_on_t_1_pressed"]

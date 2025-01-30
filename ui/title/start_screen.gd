@@ -9,7 +9,7 @@ func _ready():
 	#if OS.is_debug_build() and hide_in_debug:
 	if GameConstants.skip_intro:
 		#GameConstants.skip_intro = true
-		EventBus.game_begun.emit()
+		EventBus.game_begun.emit.call_deferred()
 		hide()
 
 

@@ -113,6 +113,7 @@ grow_vertical = 2
 script = ExtResource("1_8tqw8")
 
 [node name="Strike Three" type="TextureRect" parent="Reprimands"]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_bj7wu")
@@ -156,6 +157,7 @@ texture = ExtResource("3_xfli0")
 texture_scale = 0.4
 
 [node name="Strike Two" type="TextureRect" parent="Reprimands"]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_bj7wu")
@@ -201,6 +203,7 @@ texture = ExtResource("3_xfli0")
 texture_scale = 0.4
 
 [node name="Strike One" type="TextureRect" parent="Reprimands"]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_bj7wu")

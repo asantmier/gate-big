@@ -18,6 +18,8 @@ var smuggled := 0
 var fattied := 0
 var processed := 0
 
+var shift_locked := 0
+
 var shift_rules := {
 	0: {
 		quota = 0,
@@ -33,8 +35,8 @@ var shift_rules := {
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	1: {
-		quota = 3,
-		time = 5,
+		quota = 1,
+		time = 10 * 60,
 		liars = 1, # Liars lie on their manifest
 		smugglers = 0, # Smugglers carry contraband or criminals
 		fatties = 0, # Fatties carry over the limit of passengers or cargo
@@ -107,8 +109,17 @@ func _ready():
 	EventBus.ship_left_gate.connect(_on_ship_left)
 	EventBus.shift_started.connect(_on_shift_started)
 	EventBus.game_begun.connect(set.bind("shift", 0))
+	EventBus.lock_shift.connect(add_lock)
+	EventBus.unlock_shift.connect(remove_lock)
 	allowed_smuggler = false
 	allowed_fatty = false
+
+
+func add_lock():
+	shift_locked += 1
+
+func remove_lock():
+	shift_locked -= 1
 
 
 func enable_smuggler():
@@ -161,7 +172,7 @@ func _on_ship_left():
 		EventBus.ship_summoned.emit()
 	else:
 		EventBus.quota_filled.emit()
-		EventBus.shift_ended.emit()
+		end_shift()
 
 
 func _on_shift_started():
@@ -339,8 +350,29 @@ func rand_sign():
 		return -1
 
 
+## Ends the shift, respecting locks
+func end_shift():
+	if GameData.reprimands >= GameData.max_reprimands: return # Don't go to next shift if game overed
+	
+	if shift_locked > 0:
+		var callback = func():
+			if GameData.reprimands >= GameData.max_reprimands: return # Don't go to next shift if game overed
+			EventBus.shift_ended.emit()
+		EventBus.unlock_shift.connect(callback, CONNECT_ONE_SHOT)
+	else:
+		EventBus.shift_ended.emit()
+
+
+## Issues a reprimand, handling life count and game overs
 func issue_reprimand():
 	reprimands += 1
 	EventBus.reprimand_issued.emit()
 	if GameData.reprimands >= GameData.max_reprimands:
 		EventBus.reprimand_limit_reached.emit()
+
+
+## Revokes a reprimand
+func revoke_reprimand():
+	if reprimands > 0:
+		reprimands -= 1
+		EventBus.reprimand_revoked.emit()

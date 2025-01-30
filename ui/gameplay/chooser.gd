@@ -5,6 +5,9 @@ func _ready():
 	EventBus.ship_focused.connect(reset)
 	EventBus.ship_passed.connect(disable_buttons)
 	EventBus.ship_killed.connect(disable_buttons)
+	EventBus.time_up.connect(disable_buttons)
+	EventBus.reprimand_limit_reached.connect(disable_buttons)
+	EventBus.shift_started.connect(disable_buttons)
 	reset()
 
 

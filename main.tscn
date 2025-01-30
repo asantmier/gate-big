@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c6jsdaxy71qto"]
+[gd_scene load_steps=47 format=3 uid="uid://c6jsdaxy71qto"]
 
 [ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship/spaceship.tscn" id="1_05mrr"]
 [ext_resource type="Script" path="res://start_animation.gd" id="1_lusjx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ns8lueen1kr0" path="res://effects/Explosion_002_Tile_8x8_256x256.png" id="3_hj608"]
 [ext_resource type="PackedScene" uid="uid://bcmk1c2cf8r6c" path="res://ui/gameplay/manifest.tscn" id="5_01fqa"]
 [ext_resource type="PackedScene" uid="uid://bum8ktu74fq31" path="res://ui/gameplay/rules.tscn" id="5_3yfl6"]
+[ext_resource type="PackedScene" uid="uid://cfwpyv74uxk76" path="res://show_on_start.tscn" id="5_tnlny"]
 [ext_resource type="PackedScene" uid="uid://ccnu0nds8r7jk" path="res://ui/gameplay/choice_buttons.tscn" id="5_ypbns"]
 [ext_resource type="PackedScene" uid="uid://cddviapsby3u" path="res://ui/gameplay/shift_counter.tscn" id="6_nkemw"]
 [ext_resource type="PackedScene" uid="uid://c4li4ei653p3y" path="res://ui/gameplay/shift_timer.tscn" id="6_s522t"]
@@ -26,6 +27,7 @@
 [ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="19_o0nrv"]
 [ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="20_axhhb"]
 [ext_resource type="PackedScene" uid="uid://cau15v47xi5kl" path="res://3d/3d_background.tscn" id="20_p7qnr"]
+[ext_resource type="PackedScene" uid="uid://cov2xcvwuyp2w" path="res://cheats.tscn" id="28_2ajui"]
 
 [sub_resource type="Animation" id="Animation_4srhk"]
 length = 0.001
@@ -249,18 +251,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("..:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_m5rqr"]
 resource_name = "end_day"
@@ -339,18 +329,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("..:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_1fwbb"]
@@ -819,6 +797,7 @@ shader_parameter/shake_color_rate = 0.02
 metadata/_edit_vertical_guides_ = [728.0, 24.0, 706.0]
 
 [node name="StartAnimation" type="AnimationPlayer" parent="."]
+reset_on_save = false
 root_node = NodePath("../3D Canvas")
 libraries = {
 "": SubResource("AnimationLibrary_3ay45")
@@ -848,8 +827,12 @@ render_target_update_mode = 4
 layer = 6
 
 [node name="StartScreen" parent="Menu Canvas" instance=ExtResource("14_h3ekp")]
+visible = false
 
 [node name="Settings" parent="Menu Canvas" instance=ExtResource("13_oaq32")]
+visible = false
+
+[node name="Show On Start" parent="Menu Canvas/Settings" instance=ExtResource("5_tnlny")]
 
 [node name="HUD Canvas" type="CanvasLayer" parent="."]
 layer = 2
@@ -992,7 +975,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="EOD Canvas" type="CanvasLayer" parent="."]
 layer = 3
-visible = false
 
 [node name="EODAnim" type="AnimationPlayer" parent="EOD Canvas"]
 root_node = NodePath("../ColorRect")
@@ -1002,6 +984,7 @@ libraries = {
 script = ExtResource("16_21155")
 
 [node name="EOD Panel" parent="EOD Canvas" instance=ExtResource("12_8bmx5")]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="EOD Canvas"]
 visible = false
@@ -1110,3 +1093,5 @@ vframes = 8
 
 [node name="MeltEffect" parent="." instance=ExtResource("18_4xoj3")]
 layer = 5
+
+[node name="Cheats" parent="." instance=ExtResource("28_2ajui")]

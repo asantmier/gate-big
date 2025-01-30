@@ -79,6 +79,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="title" type="Label" parent="Laws Display/VBoxContainer"]
 layout_mode = 2
@@ -86,43 +87,65 @@ theme_type_variation = &"TitleLabel"
 text = "TODAY'S LAWS"
 
 [node name="subtitle" type="Label" parent="Laws Display/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"SubtitleLabel"
-text = "KILL ON SIGHT"
+text = "DEADLY FORCE AUTHORIZED"
+
+[node name="HSeparator" type="HSeparator" parent="Laws Display/VBoxContainer"]
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Laws Display/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="header" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
-text = "Passenger Limit:"
+text = "LIMITS"
 
-[node name="passengerlimit" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Laws Display/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="header" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+text = "Passengers:"
+
+[node name="passengerlimit" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"BodyLabel"
 text = "22"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Laws Display/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="header" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer2"]
+[node name="header" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-theme_type_variation = &"HeaderLabel"
-text = "Cargo Limit:"
+theme_type_variation = &"BodyLabel"
+text = "Cargo:"
 
-[node name="cargolimit" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer2"]
+[node name="cargolimit" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"BodyLabel"
 text = "22"
+
+[node name="section title" type="Label" parent="Laws Display/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "BANNED"
 
 [node name="FactionsSection" type="VBoxContainer" parent="Laws Display/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
 [node name="section title" type="Label" parent="Laws Display/VBoxContainer/FactionsSection"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Banned Factions"
@@ -205,6 +228,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="section title" type="Label" parent="Laws Display/VBoxContainer/ContrabandSection"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Banned Goods"

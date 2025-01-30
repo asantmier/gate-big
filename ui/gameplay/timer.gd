@@ -5,7 +5,9 @@ extends Label
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.shift_started.connect(_on_shift_started)
-	EventBus.shift_ended.connect(_on_shift_ended)
+	EventBus.shift_ended.connect(stop_clock)
+	EventBus.reprimand_limit_reached.connect(stop_clock)
+	EventBus.cheat_time.connect($Clock.start)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,10 +19,11 @@ func _on_shift_started():
 	$Clock.start(GameData.get_shift_time())
 
 
-func _on_shift_ended():
+func stop_clock():
 	$Clock.stop()
 
 
 func _on_clock_timeout():
 	EventBus.time_up.emit()
+	GameData.end_shift()
 	print("yikes!")
