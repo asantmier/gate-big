@@ -43,7 +43,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("../EOD Canvas:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -791,7 +791,7 @@ _data = {
 shader = ExtResource("19_o0nrv")
 shader_parameter/resolution = Vector2(320, 180)
 shader_parameter/scan_line_amount = 0.1
-shader_parameter/warp_amount = 2.733
+shader_parameter/warp_amount = 0.433
 shader_parameter/noise_amount = 0.094
 shader_parameter/interference_amount = 0.949
 shader_parameter/grille_amount = 0.31
@@ -846,7 +846,6 @@ render_target_update_mode = 4
 
 [node name="Menu Canvas" type="CanvasLayer" parent="."]
 layer = 6
-visible = false
 
 [node name="StartScreen" parent="Menu Canvas" instance=ExtResource("14_h3ekp")]
 

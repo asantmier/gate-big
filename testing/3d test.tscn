@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bsvgl6nja1rwk" path="res://testing/resources/TurretDesign.obj" id="1_4cb8m"]
 [ext_resource type="PackedScene" uid="uid://jbpi4jptr7be" path="res://testing/resources/blasterD.glb" id="2_0xqr5"]
-[ext_resource type="Texture2D" uid="uid://dwfcfpca7xqg5" path="res://3d/StarBackground.hdr" id="2_f7q5i"]
+[ext_resource type="Texture2D" uid="uid://dr85bx1p26tlp" path="res://3d/Starbackgroundv3.hdr" id="2_ndbmq"]
 [ext_resource type="Shader" path="res://shaders/melt.gdshader" id="3_mavqu"]
 [ext_resource type="Shader" path="res://shaders/acrpod.gdshader" id="4_rwgae"]
 [ext_resource type="PackedScene" uid="uid://dbfyaqldwxd5j" path="res://testing/resources/TurretDesign-v1.gltf" id="5_fb6oy"]
@@ -11,7 +11,7 @@
 [ext_resource type="Material" uid="uid://beafludt47pmm" path="res://3d/materials/Material_1.tres" id="8_qiiuo"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_roqth"]
-panorama = ExtResource("2_f7q5i")
+panorama = ExtResource("2_ndbmq")
 energy_multiplier = 18.33
 
 [sub_resource type="Sky" id="Sky_t5b3w"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://inws64726gsr"]
+[gd_scene load_steps=17 format=3 uid="uid://inws64726gsr"]
 
 [ext_resource type="Script" path="res://addons/draggablesprite2d/src/draggablesprite2d.gd" id="1_8wqry"]
 [ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="2_yb01j"]
@@ -7,11 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bh4wvf6qs8yn" path="res://ui/textures/icons/cameraCargo.png" id="4_4o8ng"]
 [ext_resource type="Texture2D" uid="uid://bovttt0f6ncmj" path="res://ui/textures/icons/cameraNPC.png" id="5_1a4by"]
 [ext_resource type="Script" path="res://scanner/layer_label.gd" id="5_jx86f"]
-[ext_resource type="Texture2D" uid="uid://d3r00qot3jlev" path="res://scanner/art/scannerNew-1.png.png" id="8_805px"]
-[ext_resource type="Texture2D" uid="uid://dgvw6h7jbalv8" path="res://scanner/art/scannerNew-2.png.png" id="9_h15he"]
-[ext_resource type="Texture2D" uid="uid://b2i7he7ck1k73" path="res://scanner/art/scannerNew-3.png.png" id="10_in8aq"]
-[ext_resource type="Texture2D" uid="uid://c8gb1ofcs1wkq" path="res://scanner/art/scannerNew-4.png.png" id="11_5nyfe"]
-[ext_resource type="Texture2D" uid="uid://cfa23v7nbpo53" path="res://scanner/art/scannerNew-5.png.png" id="12_1bfpx"]
+[ext_resource type="Texture2D" uid="uid://dqoxnmhr0lxuu" path="res://scanner/art/scannerFrame-1.png.png" id="8_g8vap"]
+[ext_resource type="Texture2D" uid="uid://qtrs351by3ca" path="res://scanner/art/scannerFrame-2.png.png" id="9_wat5v"]
+[ext_resource type="Texture2D" uid="uid://oplumgkutw57" path="res://scanner/art/scannerFrame-3.png.png" id="10_77t4t"]
+[ext_resource type="Texture2D" uid="uid://deosex4ndqlpa" path="res://scanner/art/scannerFrame-4.png.png" id="11_tlcqe"]
+[ext_resource type="Texture2D" uid="uid://3su45hoa0ana" path="res://scanner/art/scannerFrame-5.png.png" id="12_a0s7l"]
+[ext_resource type="Texture2D" uid="uid://iv2ytevpdssk" path="res://scanner/art/scannerFrame-6.png.png" id="13_ypxum"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sswo8"]
 shader = ExtResource("2_yb01j")
@@ -34,23 +35,26 @@ shader_parameter/pixel_strength = -3.246
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_805px")
+"texture": ExtResource("8_g8vap")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_h15he")
+"texture": ExtResource("9_wat5v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_in8aq")
+"texture": ExtResource("10_77t4t")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_5nyfe")
+"texture": ExtResource("11_tlcqe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_1bfpx")
+"texture": ExtResource("12_a0s7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ypxum")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3khj"]
@@ -99,7 +103,7 @@ script = ExtResource("5_jx86f")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_72poh")
 autoplay = "default"
-frame = 4
+frame_progress = 0.86542
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

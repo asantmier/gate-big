@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://gjucrqpq8kk1"]
+
+[ext_resource type="Script" path="res://3d/spin_component.gd" id="1_q4dp0"]
+
+[node name="SpinComponent" type="Node3D"]
+script = ExtResource("1_q4dp0")
+speed = 3.0
+axis = 1
