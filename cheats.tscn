@@ -39,6 +39,24 @@ text = "Time"
 layout_mode = 2
 text = "5"
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/Cheats"]
+layout_mode = 2
+
+[node name="Shift" type="Label" parent="PanelContainer/Cheats/HBoxContainer3"]
+layout_mode = 2
+text = "Shift"
+
+[node name="shift final" type="Button" parent="PanelContainer/Cheats/HBoxContainer3"]
+layout_mode = 2
+text = "Final"
+
+[node name="shift end" type="Button" parent="PanelContainer/Cheats/HBoxContainer3"]
+layout_mode = 2
+text = "End"
+
 [connection signal="pressed" from="PanelContainer/Cheats/HBoxContainer/rep add" to="." method="_on_rep_add_pressed"]
 [connection signal="pressed" from="PanelContainer/Cheats/HBoxContainer/rep sub" to="." method="_on_rep_sub_pressed"]
 [connection signal="pressed" from="PanelContainer/Cheats/HBoxContainer2/t1" to="." method="_on_t_1_pressed"]
+[connection signal="pressed" from="PanelContainer/Cheats/HBoxContainer3/shift final" to="." method="_on_shift_final_pressed"]
+[connection signal="pressed" from="PanelContainer/Cheats/HBoxContainer3/shift end" to="." method="_on_t_1_pressed"]
+[connection signal="pressed" from="PanelContainer/Cheats/HBoxContainer3/shift end" to="." method="_on_shift_end_pressed"]

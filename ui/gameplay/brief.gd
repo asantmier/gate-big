@@ -55,7 +55,7 @@ func _on_visibility_changed():
 
 func _input(event):
 	if event.is_action_pressed("skip"):
-		if tween:
+		if tween and tween.is_valid():
 			tween.kill()
 			%News.visible_ratio = 1
 			show_on_finish.show()

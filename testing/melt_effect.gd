@@ -10,6 +10,7 @@ func do_thing():
 	show()
 	$AnimationPlayer.play("wait")
 	$AnimationPlayer.queue("melt")
+	$AnimationPlayer.queue("game_over")
 
 
 func _input(event):
@@ -19,5 +20,5 @@ func _input(event):
 
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "melt":
+	if anim_name == "game_over":
 		EventBus.game_lost.emit()

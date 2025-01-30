@@ -28,5 +28,6 @@ signal reprimand_limit_reached
 signal game_begun # Emitted when the start button is pressed
 signal game_lost # Emitted when the failure animation completes
 signal game_won # Emitted when the final brief button is pressed
+signal return_title
 
 signal cheat_time(length)

@@ -15,7 +15,9 @@ func _day_ended():
 
 
 func _on_game_won():
-	play("game_over_fade")
+	EventBus.return_title.emit()
+	call_deferred("play", "game_over_fade")
+	#play("game_over_fade")
 
 
 func _on_shift_started():

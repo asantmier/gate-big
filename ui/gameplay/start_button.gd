@@ -10,6 +10,7 @@ func _ready():
 func _on_pressed():
 	if GameData.is_final_shift():
 		EventBus.game_won.emit()
+		print("won game")
 	else:
 		EventBus.shift_started.emit()
 		EventBus.ship_summoned.emit()

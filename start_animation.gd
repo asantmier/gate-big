@@ -3,7 +3,7 @@ extends AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	EventBus.game_won.connect(_on_game_won)
+	EventBus.return_title.connect(_on_game_won)
 	play("RESET")
 	#if not GameConstants.skip_intro:
 	EventBus.game_begun.connect(_on_game_begun)

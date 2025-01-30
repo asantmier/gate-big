@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2pyxpuyinvfm"]
+[gd_scene load_steps=14 format=3 uid="uid://d2pyxpuyinvfm"]
 
 [ext_resource type="Script" path="res://testing/melt_effect.gd" id="1_gj5qp"]
 [ext_resource type="Shader" path="res://shaders/melt.gdshader" id="2_uqwx1"]
 [ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="4_c7tu1"]
+[ext_resource type="Texture2D" uid="uid://vh0r7wkbuf6j" path="res://ui/textures/bannerLose.png" id="4_vj5jp"]
+[ext_resource type="Texture2D" uid="uid://dtrmkwmrkaay6" path="res://ui/textures/bannerLoseBlink.png" id="5_5ndtq"]
 
 [sub_resource type="Animation" id="Animation_0iv4a"]
 length = 0.001
@@ -89,6 +91,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [5.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Blackout:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/AnimatedSprite2D:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_cfpfj"]
@@ -183,9 +209,62 @@ tracks/6/keys = {
 resource_name = "wait"
 length = 3.0
 
+[sub_resource type="Animation" id="Animation_88vjj"]
+resource_name = "game_over"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Blackout:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/AnimatedSprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wqoho"]
 _data = {
 "RESET": SubResource("Animation_0iv4a"),
+"game_over": SubResource("Animation_88vjj"),
 "melt": SubResource("Animation_cfpfj"),
 "wait": SubResource("Animation_tr12y")
 }
@@ -203,6 +282,20 @@ shader = ExtResource("2_uqwx1")
 shader_parameter/mask_softness = 1.4
 shader_parameter/mask_threshold = 0.6
 shader_parameter/sort = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xdq5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vj5jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5ndtq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="MeltEffect" type="CanvasLayer"]
 script = ExtResource("1_gj5qp")
@@ -234,5 +327,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Blackout" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_xdq5m")
+autoplay = "default"
+frame_progress = 0.53191
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

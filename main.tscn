@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c6jsdaxy71qto"]
+[gd_scene load_steps=50 format=3 uid="uid://c6jsdaxy71qto"]
 
 [ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship/spaceship.tscn" id="1_05mrr"]
 [ext_resource type="Script" path="res://start_animation.gd" id="1_lusjx"]
@@ -25,8 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://d2pyxpuyinvfm" path="res://effects/melt_effect.tscn" id="18_4xoj3"]
 [ext_resource type="Texture2D" uid="uid://dlv82m7aytnrb" path="res://ui/textures/interfaceBorderChain.png" id="18_47dfa"]
 [ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="19_o0nrv"]
+[ext_resource type="Texture2D" uid="uid://0xmqqvixl4mb" path="res://ui/textures/bannerWin.png" id="20_3ywll"]
 [ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="20_axhhb"]
 [ext_resource type="PackedScene" uid="uid://cau15v47xi5kl" path="res://3d/3d_background.tscn" id="20_p7qnr"]
+[ext_resource type="Texture2D" uid="uid://cmfd7yb5o5tsf" path="res://ui/textures/bannerWinBlink.png" id="21_g7pdj"]
 [ext_resource type="PackedScene" uid="uid://cov2xcvwuyp2w" path="res://cheats.tscn" id="28_2ajui"]
 
 [sub_resource type="Animation" id="Animation_4srhk"]
@@ -79,6 +81,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(728, 540)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Ship Animations/NinePatchRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_hjb8g"]
 resource_name = "prep"
@@ -130,6 +144,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(960, 540)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Ship Animations/NinePatchRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_n0uwe"]
@@ -193,6 +219,18 @@ tracks/4/keys = {
 "clips": PackedStringArray("end_day"),
 "times": PackedFloat32Array(2.56667)
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Ship Animations/NinePatchRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ay45"]
 _data = {
@@ -250,6 +288,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Control/AnimatedSprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_m5rqr"]
@@ -325,10 +375,34 @@ tracks/2/path = NodePath(".:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.366667, 2),
+"times": PackedFloat32Array(0, 0.8, 2),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Control/AnimatedSprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_1fwbb"]
@@ -357,6 +431,20 @@ _data = {
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rqsff"]
 light_mode = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1tchj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_3ywll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_g7pdj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="Animation" id="Animation_d6h4q"]
 length = 0.001
@@ -998,6 +1086,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.176419, 0.176419, 0.176419, 1)
 
+[node name="Control" type="Control" parent="EOD Canvas"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EOD Canvas/Control"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_1tchj")
+autoplay = "default"
+frame_progress = 0.432056
+
 [node name="Spaceship" parent="." instance=ExtResource("1_05mrr")]
 position = Vector2(363, 271)
 
@@ -1025,9 +1130,10 @@ anchor_left = 0.0197917
 anchor_top = 0.0981479
 anchor_right = 0.740625
 anchor_bottom = 0.872222
-offset_left = -3.24249e-05
-offset_top = 5.00013
-offset_bottom = 5.00012
+offset_left = 44.0
+offset_top = -502.0
+offset_right = 44.0
+offset_bottom = -502.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("18_47dfa")

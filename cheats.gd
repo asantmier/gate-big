@@ -21,3 +21,11 @@ func _on_rep_add_pressed():
 
 func _on_t_1_pressed():
 	EventBus.cheat_time.emit(5)
+
+
+func _on_shift_final_pressed():
+	GameData.final_shift = GameData.shift
+
+
+func _on_shift_end_pressed():
+	GameData.end_shift()
