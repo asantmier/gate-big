@@ -34,9 +34,11 @@ func display():
 	if tween:
 		tween.kill()
 	show_on_finish.hide()
+	$"VBoxContainer/News/Blinking Caret Component".stop()
 	tween = get_tree().create_tween()
 	tween.tween_property(%News, "visible_ratio", 1, GameConstants.get_typing_length(%News.text)).from(0)
 	tween.tween_callback(show_on_finish.show).set_delay(0.5)
+	tween.tween_callback($"VBoxContainer/News/Blinking Caret Component".play)
 
 
 func get_news() -> String:
@@ -57,6 +59,7 @@ func _input(event):
 			tween.kill()
 			%News.visible_ratio = 1
 			show_on_finish.show()
+			$"VBoxContainer/News/Blinking Caret Component".play()
 
 
 func _on_start_button_pressed():

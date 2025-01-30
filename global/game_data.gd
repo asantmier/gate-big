@@ -35,7 +35,7 @@ var shift_rules := {
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	1: {
-		quota = 1,
+		quota = 3,
 		time = 10 * 60,
 		liars = 1, # Liars lie on their manifest
 		smugglers = 0, # Smugglers carry contraband or criminals

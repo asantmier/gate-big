@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdgiymcvxt4ga"]
+[gd_scene load_steps=4 format=3 uid="uid://bdgiymcvxt4ga"]
 
 [ext_resource type="Script" path="res://ui/gameplay/brief.gd" id="1_d3nwd"]
 [ext_resource type="PackedScene" uid="uid://rsrg7p7j464o" path="res://ui/gameplay/start_button.tscn" id="2_fee5r"]
+[ext_resource type="PackedScene" uid="uid://clet7ci88y3e" path="res://blinking_caret_component.tscn" id="2_hcbfi"]
 
 [node name="Brief" type="VBoxContainer" node_paths=PackedStringArray("show_on_finish")]
 anchors_preset = 8
@@ -37,6 +38,9 @@ layout_mode = 2
 theme_type_variation = &"BodyRichTextLabel"
 text = "If you see this text something went wrong"
 fit_content = true
+
+[node name="Blinking Caret Component" parent="VBoxContainer/News" instance=ExtResource("2_hcbfi")]
+auto = false
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
