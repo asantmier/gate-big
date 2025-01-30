@@ -12,6 +12,7 @@ var cargo_types : Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	EventBus.ship_summoned.connect(scramble_ship)
+	#print(GameConstants.normalize_array([.5, .8, .3]))
 	#scramble_ship()
 
 
@@ -46,32 +47,78 @@ func scramble_ship():
 ## Randomizes the amount and type of cargo in each bay
 func randomize_cargo(smuggle = false):
 	cargo = 0
-	for bay in cargo_bays:
-		var legal_cargo = GameData.get_legal_cargo()
-		var contraband = GameData.get_illegal_cargo()
-		var type_list : Array[int]
-		type_list.append_array(legal_cargo)
-		if smuggle:
-			contraband.resize(randi_range(1, contraband.size()))
-			type_list.append_array(contraband)
-		#var random_types = bay.random_types(3)
-		#type_list = GameConstants.set_merge(type_list, random_types)
+	
+	var limit = GameData.get_cargo_limit()
+	var p_request = randi_range(limit / 2, limit)
+	if GameData.is_fatty:
+		p_request = randi_range(limit + 1, (limit + 1) * 1.2)
+	
+	# Constructs an array that represents the cargo to be in each bay
+	var c_count_arr = []
+	c_count_arr.resize(cargo_bays.size())
+	c_count_arr = c_count_arr.map(func(num): return 0)
+	var accepting_bays = range(cargo_bays.size())
+	var sum = 0
+	while sum < p_request and not accepting_bays.is_empty():
+		var bay = accepting_bays.pick_random()
+		c_count_arr[bay] += 1
+		if c_count_arr[bay] == cargo_bays[bay].get_max():
+			accepting_bays.erase(bay)
 		
-		bay.randomify()
-		bay.set_types(type_list)
+		sum = c_count_arr.reduce(func(accum, num): return accum + num)
+	
+	print("Filled ship with cargo: %s" % [c_count_arr])
+	
+	for bay in cargo_bays:
+		bay.quantity = c_count_arr.pop_front()
+		
+		if bay.quantity > 0:
+			# Set the types of cargo in the stack, being careful not to increase quantity
+			var legal_cargo = GameData.get_legal_cargo()
+			var contraband = GameData.get_illegal_cargo()
+			var type_list : Array[int]
+			if smuggle:
+				contraband.resize(randi_range(1, min(contraband.size(), bay.quantity)))
+				type_list.append_array(contraband)
+			for i in range(randi_range(0, min(legal_cargo.size(), bay.quantity - type_list.size()))):
+				var sel = legal_cargo.pick_random()
+				type_list.append(sel)
+				legal_cargo.erase(sel)
+			bay.set_types(type_list)
+			cargo_types.assign(GameConstants.set_merge(cargo_types, type_list))
+		
 		var num = bay.quantity
 		cargo += num
-		cargo_types.assign(GameConstants.set_merge(cargo_types, type_list))
 
 
 ## Adds a random amount of passengers to each floor with random factions
 func randomize_passengers(smuggle = false):
 	var passenger_list : Array
 	
+	var limit = GameData.get_passenger_limit()
+	var p_request = randi_range(min(limit / 2, floors.size() * 4), min(limit, floors.size() * 10))
+	if GameData.is_fatty:
+		p_request = randi_range(limit + 1, (limit + 1) * 1.2)
+	
+	# Constructs an array that represents each floor as a percentage of total passenger count
+	var p_count_arr = []
+	p_count_arr.resize(floors.size())
+	p_count_arr = p_count_arr.map(func(num): return randf())
+	p_count_arr = GameConstants.normalize_array(p_count_arr)
+	# Changes the array to the number of passengers on each floor
+	p_count_arr = p_count_arr.map(func(num): return int(num * p_request))
+	var sum = p_count_arr.reduce(func(accum, num): return accum + num)
+	if sum < p_request:
+		for i in range(p_request - sum):
+			p_count_arr[randi_range(0, p_count_arr.size() - 1)] += 1
+	
+	print("Filled ship with passengers: %s" % [p_count_arr])
+	
+	
 	passengers = 0
 	for floor in floors:
 		clear_floor(floor)
-		var num = randi_range(4, 10)
+		var num : int = p_count_arr.pop_front()
 		passengers += num
 		populate_floor(floor, num)
 		passenger_list.append_array(floor.get_children())

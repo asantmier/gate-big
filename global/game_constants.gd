@@ -2,6 +2,8 @@ extends Node
 
 signal volume_changed(percent)
 
+var skip_intro := true
+
 enum {GRIN, FLUFF, ZAPPLE, GREEN_ZAPPLE, AUSPICIOUS_MOO_DENG, OMINOUS_MOO_DENG, EGGPLANT}
 #enum {RED_FACTION, ORANGE_FACTION, YELLOW_FACTION, GREEN_FACTION, BLUE_FACTION, INDIGO_FACTION, PURPLE_FACTION}
 enum {BLUE_CY_FACTION, BLUE_MG_FACTION, BLUE_YL_FACTION,
@@ -18,6 +20,9 @@ var volume : float
 
 
 func _ready():
+	if not OS.is_debug_build():
+		skip_intro = false
+	
 	set_volume(0.5)
 	print("Debug = %s" % OS.is_debug_build())
 
@@ -53,3 +58,10 @@ func get_all_cargo_list() -> Array[int]:
 	var arr : Array[int]
 	arr.assign(range(0, 7))
 	return arr
+
+
+## normalizes the array so its elements sum to 1
+func normalize_array(array : Array) -> Array:
+	var mag = array.reduce(func(accum, num): return accum + num) as float
+	mag = mag
+	return array.map(func(num): return num / mag)

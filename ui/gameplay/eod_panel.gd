@@ -9,7 +9,8 @@ extends Panel
 func _ready():
 	EventBus.shift_started.connect(hide_panel)
 	EventBus.shift_ended.connect(show_panel)
-	EventBus.shift_ended.emit()
+	#EventBus.shift_ended.emit() # Commenting makes this panel not show up in the intro
+	show_panel()
 	
 	report.hide()
 
@@ -32,4 +33,3 @@ func display_report():
 
 func display_brief():
 	brief.show()
-	#start_button.show()

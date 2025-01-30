@@ -15,3 +15,6 @@ func update_laws():
 	%ContrabandSection.visible = not contraband.is_empty()
 	for i in %ContrabandList.get_child_count():
 		%ContrabandList.get_child(i).visible = i in contraband
+	
+	%passengerlimit.text = str(GameData.get_passenger_limit())
+	%cargolimit.text = str(GameData.get_cargo_limit())

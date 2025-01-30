@@ -90,6 +90,34 @@ layout_mode = 2
 theme_type_variation = &"SubtitleLabel"
 text = "KILL ON SIGHT"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Laws Display/VBoxContainer"]
+layout_mode = 2
+
+[node name="header" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Passenger Limit:"
+
+[node name="passengerlimit" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+text = "22"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Laws Display/VBoxContainer"]
+layout_mode = 2
+
+[node name="header" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Cargo Limit:"
+
+[node name="cargolimit" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+text = "22"
+
 [node name="FactionsSection" type="VBoxContainer" parent="Laws Display/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -106,67 +134,66 @@ size_flags_horizontal = 0
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
-custom_minimum_size = Vector2(50, 50)
+visible = false
+custom_minimum_size = Vector2(32, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_sp4yr")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect2" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
-custom_minimum_size = Vector2(50, 50)
+visible = false
+custom_minimum_size = Vector2(32, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_f13fi")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect3" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
-custom_minimum_size = Vector2(50, 50)
+visible = false
+custom_minimum_size = Vector2(32, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_4onq8")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect4" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(32, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_1n1q6")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect5" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(32, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_ebnug")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect6" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
-visible = false
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(32, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_6kfig")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect7" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
-visible = false
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(32, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_tdceb")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect8" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
-visible = false
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(32, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_ly5uk")
 expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect9" type="TextureRect" parent="Laws Display/VBoxContainer/FactionsSection/CriminalList"]
-visible = false
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(32, 48)
 layout_mode = 2
 texture = SubResource("AtlasTexture_totl1")
 expand_mode = 1
@@ -189,8 +216,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
-visible = false
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("9_vf2gs")
@@ -198,8 +224,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect2" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
-visible = false
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("10_2440i")
@@ -207,8 +232,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect3" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
-visible = false
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("11_av5cr")
@@ -216,7 +240,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect4" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("12_dqmui")
@@ -224,7 +248,8 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect5" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
-custom_minimum_size = Vector2(50, 50)
+visible = false
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("13_lvrvo")
@@ -232,7 +257,8 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect6" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
-custom_minimum_size = Vector2(50, 50)
+visible = false
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("14_xut7u")
@@ -240,7 +266,8 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="TextureRect7" type="TextureRect" parent="Laws Display/VBoxContainer/ContrabandSection/ContrabandList"]
-custom_minimum_size = Vector2(50, 50)
+visible = false
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("15_rd36l")

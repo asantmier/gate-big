@@ -7,7 +7,7 @@ signal cargo_viewed
 signal systems_viewed
 
 signal shift_started # Emitted when the shift begins, before the ship is summoned
-signal shift_ended
+signal shift_ended # Emitted on shift end AND WHEN THE GAME STARTS
 
 signal ship_passed # Emitted when the pass button is pressed
 signal ship_killed # Emitted when the kill button is pressed
@@ -24,3 +24,4 @@ signal reprimand_limit_reached
 
 signal game_begun # Emitted when the start button is pressed
 signal game_lost # Emitted when the failure animation completes
+signal game_won # Emitted when the final brief button is pressed
