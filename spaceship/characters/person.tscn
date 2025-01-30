@@ -199,7 +199,7 @@ sprites1 = Array[Texture2D]([ExtResource("2_2rmav"), ExtResource("3_btsld"), Ext
 sprites2 = Array[Texture2D]([ExtResource("11_a46v7"), ExtResource("12_f7ndj"), ExtResource("13_kohxu"), ExtResource("14_a3f5s"), ExtResource("15_7u4vr"), ExtResource("16_28h1b"), ExtResource("17_sandy"), ExtResource("18_bhbg8"), ExtResource("19_u4dmq")])
 
 [node name="Graphics" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("2_1m360")
 hframes = 4
 region_enabled = true

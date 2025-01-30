@@ -35,11 +35,14 @@ text = "is liar"
 layout_mode = 2
 text = "smuggler"
 
+[node name="IsFatty" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "is fatty"
+
 [node name="Factions" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "f
-"
+text = "factions"
 
 [node name="Cargos" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "c"
+text = "cargo"

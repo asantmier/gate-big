@@ -1,15 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvj3h0821p1jp"]
+[gd_scene load_steps=11 format=3 uid="uid://bvj3h0821p1jp"]
 
 [ext_resource type="Script" path="res://spaceship/spaceship_scrambler.gd" id="1_djm5r"]
-[ext_resource type="Texture2D" uid="uid://bpgaba4w2nsx" path="res://spaceship/art/ship.png" id="2_p5hg0"]
+[ext_resource type="Texture2D" uid="uid://ynpn1pvivw2t" path="res://spaceship/art/ship-01.png" id="2_kwopm"]
 [ext_resource type="Script" path="res://spaceship/floor.gd" id="3_k2ox5"]
 [ext_resource type="PackedScene" uid="uid://cfb2uf5ywokxq" path="res://spaceship/characters/person.tscn" id="4_1eh4u"]
 [ext_resource type="PackedScene" uid="uid://inws64726gsr" path="res://scanner/scanner.tscn" id="4_gabmw"]
 [ext_resource type="PackedScene" uid="uid://byxfcrlbsthwg" path="res://spaceship/cargo/cargo.tscn" id="5_2vomd"]
+[ext_resource type="PackedScene" uid="uid://b5gbaxvrkxdxu" path="res://spaceship/floor.tscn" id="5_5q0r4"]
+[ext_resource type="Texture2D" uid="uid://co6c3m87pi42p" path="res://spaceship/art/ship-01-ext.png" id="6_2jyw7"]
 
 [sub_resource type="Curve2D" id="Curve2D_21jmi"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -142, -32, 0, 0, 0, 0, 183, -30)
+"points": PackedVector2Array(0, 0, 0, 0, -138, 0, 0, 0, 0, 0, 277, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_c5yfh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -130, 0, 0, 0, 0, 0, 240, 0)
 }
 point_count = 2
 
@@ -18,30 +26,41 @@ position = Vector2(531, 278)
 
 [node name="Spaceship Scrambler" type="Node2D" parent="." node_paths=PackedStringArray("floors", "cargo_bays")]
 script = ExtResource("1_djm5r")
-floors = [NodePath("../Passengers/Floor")]
-cargo_bays = [NodePath("../Cargo/Cargo"), NodePath("../Cargo/Cargo2")]
+floors = [NodePath("../Passengers/Floor"), NodePath("../Passengers/Floor2")]
+cargo_bays = [NodePath("../Cargo/Cargo"), NodePath("../Cargo/Cargo2"), NodePath("../Cargo/Cargo3")]
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(1.4, 1.4)
-texture = ExtResource("2_p5hg0")
+texture = ExtResource("2_kwopm")
 
 [node name="Passengers" type="Node2D" parent="." groups=["passengers"]]
 
 [node name="Floor" type="Path2D" parent="Passengers"]
-position = Vector2(9, -25)
+position = Vector2(9, -61)
 curve = SubResource("Curve2D_21jmi")
 script = ExtResource("3_k2ox5")
 
 [node name="Person" parent="Passengers/Floor" node_paths=PackedStringArray("floor") instance=ExtResource("4_1eh4u")]
+position = Vector2(135, 0)
+floor = NodePath("..")
+
+[node name="Floor2" parent="Passengers" instance=ExtResource("5_5q0r4")]
+position = Vector2(0, 72)
+curve = SubResource("Curve2D_c5yfh")
+
+[node name="Person" parent="Passengers/Floor2" node_paths=PackedStringArray("floor") instance=ExtResource("4_1eh4u")]
 floor = NodePath("..")
 
 [node name="Cargo" type="Node2D" parent="." groups=["cargo"]]
 
 [node name="Cargo" parent="Cargo" instance=ExtResource("5_2vomd")]
-position = Vector2(-101, 83)
+position = Vector2(-87, 83)
 
 [node name="Cargo2" parent="Cargo" instance=ExtResource("5_2vomd")]
-position = Vector2(173, 79)
+position = Vector2(153, 83)
+
+[node name="Cargo3" parent="Cargo" instance=ExtResource("5_2vomd")]
+position = Vector2(-5, -50)
 
 [node name="Systems" type="Node2D" parent="." groups=["systems"]]
 
@@ -50,10 +69,8 @@ copy_mode = 2
 
 [node name="Sight Blocker" type="Sprite2D" parent="BackBufferCopy"]
 scale = Vector2(1.4, 1.4)
-texture = ExtResource("2_p5hg0")
+texture = ExtResource("6_2jyw7")
 
 [node name="Scanner Inserter" type="Node2D" parent="BackBufferCopy"]
 
 [node name="Scanner" parent="BackBufferCopy" instance=ExtResource("4_gabmw")]
-position = Vector2(0, 0)
-scale = Vector2(0.517328, 0.517328)

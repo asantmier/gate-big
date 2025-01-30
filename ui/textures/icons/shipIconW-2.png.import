@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bovttt0f6ncmj"
-path="res://.godot/imported/cameraNPC.png-160ab4ef16f756d91b21150c8eb5d1b2.ctex"
+uid="uid://drptngdbq2y58"
+path="res://.godot/imported/shipIconW-2.png-647572f7ab34d42d35554ab2ba07a30c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/textures/cameraNPC.png"
-dest_files=["res://.godot/imported/cameraNPC.png-160ab4ef16f756d91b21150c8eb5d1b2.ctex"]
+source_file="res://ui/textures/icons/shipIconW-2.png"
+dest_files=["res://.godot/imported/shipIconW-2.png-647572f7ab34d42d35554ab2ba07a30c.ctex"]
 
 [params]
 

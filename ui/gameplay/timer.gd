@@ -14,7 +14,7 @@ func _process(delta):
 
 
 func _on_shift_started():
-	$Clock.start(5 * 60)
+	$Clock.start(GameData.get_shift_time())
 
 
 func _on_shift_ended():
@@ -23,3 +23,4 @@ func _on_shift_ended():
 
 func _on_clock_timeout():
 	EventBus.time_up.emit()
+	print("yikes!")

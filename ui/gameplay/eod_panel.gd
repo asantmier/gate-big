@@ -9,9 +9,12 @@ extends Panel
 func _ready():
 	EventBus.shift_started.connect(hide_panel)
 	EventBus.shift_ended.connect(show_panel)
-	EventBus.shift_ended.emit()
+	show_panel()
 	
 	report.hide()
+	#EventBus.game_begun.connect(report.hide)
+	
+	EventBus.game_won.connect(hide_panel)
 
 
 func hide_panel():
@@ -20,9 +23,8 @@ func hide_panel():
 
 func show_panel():
 	brief.hide()
-	#start_button.hide()
-	show()
 	display_report()
+	show()
 
 
 func display_report():
@@ -32,4 +34,3 @@ func display_report():
 
 func display_brief():
 	brief.show()
-	#start_button.show()

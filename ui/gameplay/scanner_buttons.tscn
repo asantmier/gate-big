@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://ui/gameplay/layer_switcher.gd" id="1_5boje"]
 [ext_resource type="Script" path="res://ui/blinking_caret_component.gd" id="2_c4mb7"]
-[ext_resource type="Texture2D" uid="uid://bovttt0f6ncmj" path="res://ui/textures/cameraNPC.png" id="2_vm45y"]
-[ext_resource type="Texture2D" uid="uid://bh4wvf6qs8yn" path="res://ui/textures/cameraCargo.png" id="3_rgkr5"]
+[ext_resource type="Texture2D" uid="uid://bovttt0f6ncmj" path="res://ui/textures/icons/cameraNPC.png" id="2_vm45y"]
+[ext_resource type="Texture2D" uid="uid://bh4wvf6qs8yn" path="res://ui/textures/icons/cameraCargo.png" id="3_rgkr5"]
 
 [node name="Scanner Buttons" type="Control"]
 layout_mode = 3
