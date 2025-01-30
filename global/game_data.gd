@@ -41,7 +41,7 @@ var shift_rules := {
 		criminals = [],
 		contraband = [],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 50,
+		cargo_limit = 20,
 		passenger_limit = 50,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},

@@ -816,7 +816,7 @@ shader_parameter/shake_block_size = 19.82
 shader_parameter/shake_color_rate = 0.02
 
 [node name="Main" type="Node2D"]
-metadata/_edit_vertical_guides_ = [728.0]
+metadata/_edit_vertical_guides_ = [728.0, 24.0, 706.0]
 
 [node name="StartAnimation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../3D Canvas")
