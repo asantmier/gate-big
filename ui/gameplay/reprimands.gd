@@ -21,6 +21,7 @@ func _on_time_up():
 func ship_evaluated(killed):
 	if (killed and not GameData.is_ship_bad()) or (not killed and GameData.is_ship_bad()):
 		# Wait until the ship is gone to issue a reprimand
+		# The locking also ensures that the ship doesn't change until after the reprimand is processed
 		EventBus.lock_shift.emit()
 		await EventBus.ship_left_gate
 		GameData.issue_reprimand()

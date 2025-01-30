@@ -1,13 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvj3h0821p1jp"]
+[gd_scene load_steps=17 format=3 uid="uid://bvj3h0821p1jp"]
 
 [ext_resource type="Script" path="res://spaceship/spaceship_scrambler.gd" id="1_djm5r"]
+[ext_resource type="Texture2D" uid="uid://baeqx4xiwauk1" path="res://spaceship/art/ship-00.png" id="2_2ebkw"]
 [ext_resource type="Texture2D" uid="uid://ynpn1pvivw2t" path="res://spaceship/art/ship-01.png" id="2_kwopm"]
 [ext_resource type="Script" path="res://spaceship/floor.gd" id="3_k2ox5"]
 [ext_resource type="PackedScene" uid="uid://cfb2uf5ywokxq" path="res://spaceship/characters/person.tscn" id="4_1eh4u"]
 [ext_resource type="PackedScene" uid="uid://inws64726gsr" path="res://scanner/scanner.tscn" id="4_gabmw"]
+[ext_resource type="Texture2D" uid="uid://m5oq71ocwgn3" path="res://spaceship/art/ship-02.png" id="4_umyi2"]
 [ext_resource type="PackedScene" uid="uid://byxfcrlbsthwg" path="res://spaceship/cargo/cargo.tscn" id="5_2vomd"]
 [ext_resource type="PackedScene" uid="uid://b5gbaxvrkxdxu" path="res://spaceship/floor.tscn" id="5_5q0r4"]
+[ext_resource type="Texture2D" uid="uid://cngjd6en2gevm" path="res://spaceship/art/ship-08.png" id="5_wex3i"]
 [ext_resource type="Texture2D" uid="uid://co6c3m87pi42p" path="res://spaceship/art/ship-01-ext.png" id="6_2jyw7"]
+[ext_resource type="Texture2D" uid="uid://bp8guiecdthoa" path="res://spaceship/art/ship-00-ext.png" id="6_b0mjt"]
+[ext_resource type="Texture2D" uid="uid://8n4wfnlma6sb" path="res://spaceship/art/ship-02-ext.png" id="8_hmmga"]
+[ext_resource type="Texture2D" uid="uid://b5fof67uciptk" path="res://spaceship/art/ship-08-ext.png" id="9_1u805"]
 
 [sub_resource type="Curve2D" id="Curve2D_21jmi"]
 _data = {
@@ -24,10 +30,14 @@ point_count = 2
 [node name="Spaceship" type="Node2D"]
 position = Vector2(531, 278)
 
-[node name="Spaceship Scrambler" type="Node2D" parent="." node_paths=PackedStringArray("floors", "cargo_bays")]
+[node name="Spaceship Scrambler" type="Node2D" parent="." node_paths=PackedStringArray("floors", "cargo_bays", "background", "sight_blocker")]
 script = ExtResource("1_djm5r")
 floors = [NodePath("../Passengers/Floor"), NodePath("../Passengers/Floor2")]
 cargo_bays = [NodePath("../Cargo/Cargo"), NodePath("../Cargo/Cargo2"), NodePath("../Cargo/Cargo3")]
+background = NodePath("../Background")
+sight_blocker = NodePath("../BackBufferCopy/Sight Blocker")
+bg = Array[Texture2D]([ExtResource("2_2ebkw"), ExtResource("2_kwopm"), ExtResource("4_umyi2"), ExtResource("5_wex3i")])
+fg = Array[Texture2D]([ExtResource("6_b0mjt"), ExtResource("6_2jyw7"), ExtResource("8_hmmga"), ExtResource("9_1u805")])
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(1.4, 1.4)

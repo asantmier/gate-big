@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://bum8ktu74fq31"]
+[gd_scene load_steps=28 format=3 uid="uid://bum8ktu74fq31"]
 
 [ext_resource type="Script" path="res://ui/gameplay/laws_display.gd" id="1_8q1xl"]
 [ext_resource type="Texture2D" uid="uid://df72snr3y1u3e" path="res://spaceship/characters/textures/npc-bc.png" id="2_u243v"]
+[ext_resource type="PackedScene" uid="uid://d3qo0o47lmsuh" path="res://ui/gameplay/reprimand_blink_component.tscn" id="2_ucgbh"]
 [ext_resource type="Texture2D" uid="uid://dddhsyo13ipas" path="res://spaceship/characters/textures/npc-bm.png" id="3_hm1gk"]
 [ext_resource type="Texture2D" uid="uid://bxcsu5ow5a3wm" path="res://spaceship/characters/textures/npc-by.png" id="4_1dmky"]
 [ext_resource type="Texture2D" uid="uid://b2hgh28477xg7" path="res://spaceship/characters/textures/npc-gc.png" id="5_c0fb1"]
@@ -138,11 +139,17 @@ layout_mode = 2
 theme_type_variation = &"BodyLabel"
 text = "22"
 
+[node name="Reprimand Blink Component" parent="Laws Display/VBoxContainer/HBoxContainer" instance=ExtResource("2_ucgbh")]
+condition = "fatty"
+
 [node name="BannedSectionTitle" type="Label" parent="Laws Display/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "BANNED"
+
+[node name="Reprimand Blink Component" parent="Laws Display/VBoxContainer/BannedSectionTitle" instance=ExtResource("2_ucgbh")]
+condition = "smuggler"
 
 [node name="FactionsSection" type="VBoxContainer" parent="Laws Display/VBoxContainer"]
 unique_name_in_owner = true

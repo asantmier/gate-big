@@ -43,7 +43,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_p6ert"]
 resource_name = "type"
-length = 3.0
+length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

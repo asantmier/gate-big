@@ -19,6 +19,7 @@ var fattied := 0
 var processed := 0
 
 var shift_locked := 0
+signal unlocked
 
 var shift_rules := {
 	0: {
@@ -43,7 +44,7 @@ var shift_rules := {
 		criminals = [],
 		contraband = [],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 20,
+		cargo_limit = 50,
 		passenger_limit = 50,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
@@ -118,8 +119,11 @@ func _ready():
 func add_lock():
 	shift_locked += 1
 
+
 func remove_lock():
 	shift_locked -= 1
+	if shift_locked == 0:
+		unlocked.emit()
 
 
 func enable_smuggler():
@@ -168,8 +172,15 @@ func _on_ship_left():
 		fattied += 1
 	processed += 1
 	if processed < get_quota():
-		prep_next_ship()
-		EventBus.ship_summoned.emit()
+		if shift_locked > 0:
+			var callback = func():
+				if GameData.reprimands >= GameData.max_reprimands: return # Don't go to next shift if game overed
+				prep_next_ship()
+				EventBus.ship_summoned.emit()
+			unlocked.connect(callback, CONNECT_ONE_SHOT)
+		else:
+			prep_next_ship()
+			EventBus.ship_summoned.emit()
 	else:
 		EventBus.quota_filled.emit()
 		end_shift()
@@ -358,7 +369,7 @@ func end_shift():
 		var callback = func():
 			if GameData.reprimands >= GameData.max_reprimands: return # Don't go to next shift if game overed
 			EventBus.shift_ended.emit()
-		EventBus.unlock_shift.connect(callback, CONNECT_ONE_SHOT)
+		unlocked.connect(callback, CONNECT_ONE_SHOT)
 	else:
 		EventBus.shift_ended.emit()
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcmk1c2cf8r6c"]
+[gd_scene load_steps=4 format=3 uid="uid://bcmk1c2cf8r6c"]
 
 [ext_resource type="Script" path="res://ui/gameplay/manifest.gd" id="1_f28uf"]
 [ext_resource type="PackedScene" uid="uid://clet7ci88y3e" path="res://blinking_caret_component.tscn" id="2_xnypg"]
+[ext_resource type="PackedScene" uid="uid://d3qo0o47lmsuh" path="res://ui/gameplay/reprimand_blink_component.tscn" id="3_l3v36"]
 
 [node name="Manifest" type="Control"]
 layout_mode = 3
@@ -39,3 +40,5 @@ script = ExtResource("1_f28uf")
 
 [node name="Blinking Caret Component" parent="VBoxContainer/Manifest" instance=ExtResource("2_xnypg")]
 auto = false
+
+[node name="Reprimand Blink Component" parent="." instance=ExtResource("3_l3v36")]

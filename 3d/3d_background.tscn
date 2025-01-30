@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cau15v47xi5kl"]
+[gd_scene load_steps=24 format=4 uid="uid://cau15v47xi5kl"]
 
 [ext_resource type="Texture2D" uid="uid://dr85bx1p26tlp" path="res://3d/Starbackgroundv3.hdr" id="1_5ikid"]
 [ext_resource type="Texture2D" uid="uid://dnku8w6e3gouj" path="res://3d/PlanetMaterialv2.png" id="1_7hhkd"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://gjucrqpq8kk1" path="res://3d/spin_component.tscn" id="3_2w41c"]
 [ext_resource type="PackedScene" uid="uid://cd3h2t610o7k" path="res://3d/big_gun.tscn" id="4_vbv50"]
 [ext_resource type="Material" uid="uid://cikyiqiwldp1o" path="res://3d/gate_materials/Material.001.tres" id="5_xk4g6"]
+[ext_resource type="Script" path="res://3d/gate_flash.gd" id="8_78lr6"]
 [ext_resource type="Texture2D" uid="uid://brt8bowlalvlm" path="res://3d/gate_2_gateportal.png" id="8_gopwy"]
 [ext_resource type="Material" uid="uid://bvcraa0y6hukv" path="res://3d/gate_materials/Material.004.tres" id="9_kg4ur"]
 
@@ -126,7 +127,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_mstc6"]
 resource_name = "gate_flash"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -134,10 +134,10 @@ tracks/0/path = NodePath(".:surface_material_override/0:next_pass:albedo_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.8),
-"transitions": PackedFloat32Array(-0.5, 0.5, 1),
+"times": PackedFloat32Array(0, 0.4, 0.666667, 1),
+"transitions": PackedFloat32Array(-0.5, 0.5, 0.5, 1),
 "update": 0,
-"values": [Color(0.505563, 0.4982, 0.94, 0), Color(0.505563, 0.4982, 0.94, 1), Color(0.505563, 0.4982, 0.94, 0)]
+"values": [Color(0.505563, 0.4982, 0.94, 0), Color(0.505563, 0.4982, 0.94, 1), Color(0.505563, 0.4982, 0.94, 1), Color(0.505563, 0.4982, 0.94, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qgxgp"]
@@ -184,7 +184,7 @@ shadow_enabled = true
 transform = Transform3D(-3.25963e-09, 3.72529e-09, 0.078, 0.078, -2.79397e-09, -4.65661e-10, 4.65661e-09, 0.078, -3.72529e-09, -4.10066, -2.25916, -8.33381)
 
 [node name="gate_2" type="Node3D" parent="Camera3D"]
-transform = Transform3D(-6.72275, 1.49012e-07, -0.595378, -1.40823e-07, 6.74907, 1.31425e-07, 0.595379, 2.38419e-07, -6.72276, 10.1262, -0.757288, -22.2182)
+transform = Transform3D(-6.72275, 1.49012e-07, -0.595378, -1.40823e-07, 6.74907, 1.31425e-07, 0.595379, 2.38419e-07, -6.72276, 11.3668, -0.757288, -22.3281)
 
 [node name="Cube" type="MeshInstance3D" parent="Camera3D/gate_2"]
 mesh = SubResource("ArrayMesh_jkojh")
@@ -196,10 +196,11 @@ mesh = SubResource("ArrayMesh_ea52s")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("9_kg4ur")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/gate_2/Cylinder_002"]
+[node name="Gate Flash" type="AnimationPlayer" parent="Camera3D/gate_2/Cylinder_002"]
 libraries = {
 "": SubResource("AnimationLibrary_qgxgp")
 }
+script = ExtResource("8_78lr6")
 
 [node name="SpinComponent" parent="Camera3D/gate_2" instance=ExtResource("3_2w41c")]
 transform = Transform3D(-1.11759e-08, -0.0170713, 0, 0.985912, 2.91038e-10, -1.49012e-08, 0, -4.65661e-10, 0.985912, -0.16433, 2.98023e-08, 0)

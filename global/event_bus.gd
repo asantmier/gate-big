@@ -31,3 +31,5 @@ signal game_won # Emitted when the final brief button is pressed
 signal return_title
 
 signal cheat_time(length)
+
+signal gate_touched

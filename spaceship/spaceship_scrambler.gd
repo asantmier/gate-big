@@ -2,6 +2,10 @@ extends Node2D
 
 @export var floors : Array[Floor]
 @export var cargo_bays : Array[Cargo]
+@export var background : Sprite2D
+@export var sight_blocker : Sprite2D
+@export var bg : Array[Texture2D]
+@export var fg : Array[Texture2D]
 
 var passengers : int
 var cargo : int
@@ -27,6 +31,10 @@ func submit_manifest():
 
 
 func scramble_ship():
+	var ship_var = randi_range(0, bg.size() - 1)
+	background.texture = bg[ship_var]
+	sight_blocker.texture = fg[ship_var]
+	
 	var smuggle_people = false
 	var smuggle_cargo = false
 	if GameData.is_smuggler:
@@ -49,7 +57,7 @@ func randomize_cargo(smuggle = false):
 	cargo = 0
 	
 	var limit = GameData.get_cargo_limit()
-	var p_request = randi_range(limit / 2, limit)
+	var p_request = randi_range(min(limit / 2, cargo_bays.size() * 3), min(limit, cargo_bays.size() * 11))
 	if GameData.is_fatty:
 		p_request = randi_range(limit + 1, (limit + 1) * 1.2)
 	
