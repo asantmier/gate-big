@@ -2,7 +2,7 @@ extends Node
 
 signal volume_changed(percent)
 
-var skip_intro := true
+var skip_intro := false
 
 enum {GRIN, FLUFF, ZAPPLE, GREEN_ZAPPLE, EGGPLANT, AUSPICIOUS_MOO_DENG, OMINOUS_MOO_DENG}
 #enum {RED_FACTION, ORANGE_FACTION, YELLOW_FACTION, GREEN_FACTION, BLUE_FACTION, INDIGO_FACTION, PURPLE_FACTION}

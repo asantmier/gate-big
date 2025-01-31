@@ -35,3 +35,4 @@ signal cheat_debugger
 
 signal gate_touched
 signal cannon_fired
+signal successful_passage

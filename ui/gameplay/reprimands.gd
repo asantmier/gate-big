@@ -29,6 +29,7 @@ func ship_evaluated(killed):
 		EventBus.unlock_shift.emit()
 	else:
 		await EventBus.ship_left_gate
+		EventBus.successful_passage.emit()
 		$Success.play()
 
 

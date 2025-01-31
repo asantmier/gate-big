@@ -5,6 +5,7 @@ extends AnimationPlayer
 func _ready():
 	EventBus.ship_passed.connect(_on_ship_passed)
 	EventBus.ship_killed.connect(fire_gun)
+	EventBus.successful_passage.connect(good_job)
 
 
 func _on_ship_passed():
@@ -20,4 +21,8 @@ func _on_ship_passed():
 
 func fire_gun():
 	# play animation
-	pass
+	play("firing")
+
+
+func good_job():
+	play("good_job")

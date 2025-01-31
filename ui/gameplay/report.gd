@@ -78,8 +78,7 @@ func display():
 
 func _input(event):
 	if event.is_action_pressed("skip"):
-		if tween and tween.is_valid():
-			tween.custom_step(100)
+		skip()
 
 
 func _on_close_report_pressed():
@@ -92,8 +91,12 @@ func _on_visibility_changed():
 	if visible:
 		display()
 	else:
-		if tween:
-			tween.kill()
+		skip()
+
+
+func skip():
+	if tween and tween.is_valid():
+		tween.custom_step(1000)
 
 
 func _on_shift_start():

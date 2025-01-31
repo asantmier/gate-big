@@ -26,8 +26,8 @@ func _on_shift_started():
 
 
 func _on_shift_ended():
-	stop_clock()
 	monitoring = false
+	stop_clock()
 
 func stop_clock():
 	$Clock.stop()
