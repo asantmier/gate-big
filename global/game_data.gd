@@ -31,8 +31,8 @@ var shift_rules := {
 		criminals = [],
 		contraband = [],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 50,
-		passenger_limit = 50,
+		cargo_limit = 14,
+		passenger_limit = 14,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	1: {
@@ -46,7 +46,7 @@ var shift_rules := {
 		contraband = [],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
 		cargo_limit = 20,
-		passenger_limit = 20,
+		passenger_limit = 14,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	2: {
@@ -59,8 +59,8 @@ var shift_rules := {
 		criminals = [],
 		contraband = [],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 12,
-		passenger_limit = 8,
+		cargo_limit = 20,
+		passenger_limit = 14,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	3: {
@@ -70,10 +70,10 @@ var shift_rules := {
 		smugglers = 2, # Smugglers carry contraband or criminals
 		call_methods = ["enable_smuggler"],
 		fatties = 0, # Fatties carry over the limit of passengers or cargo
-		criminals = [GameConstants.BLUE_CY_FACTION, GameConstants.BLUE_MG_FACTION, GameConstants.BLUE_YL_FACTION],
+		criminals = [GameConstants.BLUE_MG_FACTION, GameConstants.GREEN_MG_FACTION, GameConstants.RED_MG_FACTION],
 		contraband = [GameConstants.GRIN, GameConstants.OMINOUS_MOO_DENG],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 16,
+		cargo_limit = 20,
 		passenger_limit = 12,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
@@ -83,24 +83,24 @@ var shift_rules := {
 		liars = 0, # Liars lie on their manifest
 		smugglers = 2, # Smugglers carry contraband or criminals
 		fatties = 1, # Fatties carry over the limit of passengers or cargo
-		criminals = [GameConstants.BLUE_CY_FACTION, GameConstants.BLUE_MG_FACTION, GameConstants.BLUE_YL_FACTION],
-		contraband = [GameConstants.GRIN, GameConstants.OMINOUS_MOO_DENG],
+		criminals = [GameConstants.RED_YL_FACTION, GameConstants.GREEN_MG_FACTION, GameConstants.GREEN_YL_FACTION, GameConstants.RED_MG_FACTION, GameConstants.BLUE_CY_FACTION],
+		contraband = [GameConstants.ZAPPLE, GameConstants.AUSPICIOUS_MOO_DENG],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 16,
+		cargo_limit = 24,
 		passenger_limit = 12,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	5: {
 		quota = 7,
 		time = 5 * 60,
-		liars = 1, # Liars lie on their manifest
+		liars = 0, # Liars lie on their manifest
 		smugglers = 1, # Smugglers carry contraband or criminals
 		fatties = 1, # Fatties carry over the limit of passengers or cargo
-		criminals = [GameConstants.BLUE_CY_FACTION, GameConstants.BLUE_MG_FACTION, GameConstants.BLUE_YL_FACTION],
-		contraband = [GameConstants.GRIN, GameConstants.OMINOUS_MOO_DENG],
-		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 20,
-		passenger_limit = 16,
+		criminals = [GameConstants.BLUE_CY_FACTION, GameConstants.RED_MG_FACTION, GameConstants.GREEN_CY_FACTION, GameConstants.GREEN_YL_FACTION],
+		contraband = [GameConstants.AUSPICIOUS_MOO_DENG, GameConstants.OMINOUS_MOO_DENG, GameConstants.EGGPLANT],
+		criminal_rate = 0.3, # % of passengers that will be criminals on a smuggler
+		cargo_limit = 30,
+		passenger_limit = 14,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	}
 }

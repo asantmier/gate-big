@@ -12,52 +12,47 @@ const intro_title : String = "[Welcome B.I.G. agent]"
 const final_title: String = "[Empire Secured]"
 const intro_message : String = "\
 You have been assigned as a probationary agent for B.I.G. For the next 5 days, you will be \
-inspecting ships trying to enter the planet KA-414. Each ship will provide a Manifest detailing the\
- contents of their ship. You must check this Manifest and make sure it abides by our ever changing \
-Laws.
-Use the Life and Cargo scanner to make sure that these ships are carrying exactly what is stated \
-in their Manifest. No more, no less. 
-If a ship properly follows the law, turn the key and press the Blue Button. If there are any \
-disparities, turn the key and press the Red Button to annihilate them with the B.I.G. Gun.
+inspecting ships trying to enter the planet KA-414 to ensure they abide our ever changing laws. \
+Each ship will provide a Manifest detailing the amount of passengers and cargo they carry. Ensure the manifest is correct.
+Use the Life and Cargo scanner to make sure that these ships are carrying exactly what \
+they claim. No more, no less. 
+If a ship follows the law, turn the key and press the Blue Button. If they \
+do not, turn the key and press the Red Button to annihilate them with the B.I.G. Gun.
 You have limited room for error.\n
 Secure the Empire, and make the Empire Great Again! 
 -Galactic Commander Tronel Dhump\
 "
 const outro_message : String = "You have successfully completed your probationary period as a B.I.G.\
  agent. For your performance, you will be considered for promotion to a full-time ship inspector.\n
-For now, keep working to secure the Empire!\
+For now, you are relieved of duty and may rest!\
 "
 const messages : Array[String]= [
 	"if you see this i fucked up (shift0)",
 	
-	"The rate of hostile entities entering the planet has greatly decreased thanks to the Empire’s\
-	 new directive. However, there is a major overcrowding problem with the influx of civilians \
-	trying to colonize the planet.
-Starting from today, each ship is required to send in a manifest, detailing the number of \
-passengers they have on-board. Inspect each ship to make sure that they do not carry more \
-passengers than stated in their manifest, nor exceed the maximum number of passengers they can be\
- carrying. If any ship does not abide with either of these regulations:\n
+	"The rate of hostile entities entering the planet has greatly decreased thanks to the Empire’s \
+new directive. However, there is a major overcrowding problem with the influx of civilians \
+trying to colonize the planet.
+Starting from today, ships exceeding the passenger or cargo limit must be eradicated to preserve \
+the peace. If any ship dares disobey:\n
 Eliminate them.",
 
-	"Rate of newcomers has lessened thanks to the new regulations. However, our spies have reported\
-	 that some ship operators are bringing in more cargo than they should be, or even smuggling in\
-	 illegal items.
-Starting from today, check the cargo of each ship, and ensure that no illegal goods are onboard, \
-nor are they carrying more cargo than stated in their manifest. If any ship does not abide with \
-either of these regulations:\n
+	"Rate of newcomers has lessened thanks to the new regulations. However, our spies have reported \
+that some ship operators are aiding enemies of the state, or even smuggling in illegal items.
+Starting from today, check the cargo of each ship, and ensure that no banned goods are onboard, \
+nor any banned factions. If any ship does not abide with our regulations:\n
 Eliminate them.",
 
 	"To all newly assigned B.I.G. agents, this is the penultimate day for your probationary period. \
-	You have all been doing good work so far, so keep up the pace.
+You have all been doing good work so far, so keep up the pace.
 For the time being, there are no new regulations to be added to the directive. Maintain all \
 current protocol and continue to meet your quotas.\n
 Fail to do so, and you will be decommissioned.",
 
 	"To all newly assigned B.I.G. agents, this is the final day for your probationary period. \
-	You have all been doing outstanding work. We expect no less.
-Once again, there are no new regulations, so maintain all current inspection protocols. Continue \
-to meet your quotas, and you will finally pass your probationary period and become full-fledged \
-workers of the B.I.G.\n
+You have all been doing outstanding work. We expect no less.
+There are no new regulations, so maintain all current inspection protocols.
+A large number of migrants is expected during your next shift. Act fast to meet your increased quota \
+and you will finally pass your probationary period and become full-fledged workers of the B.I.G.\n
 Fail to do so, and you will be decommissioned.",
 
 	"if you see this i fucked up (shift5)",
