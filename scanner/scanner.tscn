@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://inws64726gsr"]
+[gd_scene load_steps=20 format=3 uid="uid://inws64726gsr"]
 
 [ext_resource type="Script" path="res://addons/draggablesprite2d/src/draggablesprite2d.gd" id="1_8wqry"]
 [ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="2_yb01j"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bovttt0f6ncmj" path="res://ui/textures/icons/cameraNPC.png" id="5_1a4by"]
 [ext_resource type="Script" path="res://scanner/layer_label.gd" id="5_jx86f"]
 [ext_resource type="Texture2D" uid="uid://dqoxnmhr0lxuu" path="res://scanner/art/scannerFrame-1.png.png" id="8_g8vap"]
+[ext_resource type="Script" path="res://scanner/glitch_buffer.gd" id="8_wp1su"]
+[ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="9_ntkop"]
 [ext_resource type="Texture2D" uid="uid://qtrs351by3ca" path="res://scanner/art/scannerFrame-2.png.png" id="9_wat5v"]
 [ext_resource type="Texture2D" uid="uid://oplumgkutw57" path="res://scanner/art/scannerFrame-3.png.png" id="10_77t4t"]
 [ext_resource type="Texture2D" uid="uid://deosex4ndqlpa" path="res://scanner/art/scannerFrame-4.png.png" id="11_tlcqe"]
@@ -30,6 +32,14 @@ shader_parameter/roll_line_amount = 0.513
 shader_parameter/roll_speed = 1.705
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -3.246
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8fe7"]
+shader = ExtResource("9_ntkop")
+shader_parameter/shake_power = 0.01
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 50.0
+shader_parameter/shake_color_rate = 0.025
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_72poh"]
 animations = [{
@@ -100,6 +110,23 @@ theme_override_font_sizes/font_size = 28
 text = "layer"
 vertical_alignment = 2
 script = ExtResource("5_jx86f")
+
+[node name="GlitchBuffer" type="BackBufferCopy" parent="Sprite2D3"]
+copy_mode = 2
+script = ExtResource("8_wp1su")
+
+[node name="GlitchRect" type="ColorRect" parent="Sprite2D3/GlitchBuffer"]
+material = SubResource("ShaderMaterial_e8fe7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -118.0
+offset_right = -80.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.215902, 0.215902, 0.215902, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D3"]
 scale = Vector2(2, 2)

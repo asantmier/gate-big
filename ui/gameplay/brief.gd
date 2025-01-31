@@ -53,6 +53,7 @@ func _on_visibility_changed():
 	if visible:
 		display()
 
+
 func _input(event):
 	if event.is_action_pressed("skip"):
 		if tween and tween.is_valid():

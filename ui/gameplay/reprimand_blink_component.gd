@@ -5,6 +5,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	EventBus.time_up.connect(_on_time_out)
 	EventBus.reprimand_issued.connect(_on_reprimand_issued)
 
 
@@ -26,3 +27,10 @@ func play():
 	var callback = func(): EventBus.unlock_shift.emit()
 	tween.finished.connect(callback)
 	
+
+func _on_time_out():
+	# because time outs issue a reprimand, but aren't related to the player 
+	# mistaking the ship's legality, don't play the highlight animation
+	EventBus.reprimand_issued.disconnect(_on_reprimand_issued)
+	await EventBus.reprimand_issued
+	EventBus.reprimand_issued.connect(_on_reprimand_issued)

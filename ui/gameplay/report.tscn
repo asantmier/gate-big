@@ -34,24 +34,28 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="KilledTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"HeaderLabel"
 text = "Criminals eliminated"
 
 [node name="PassedTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"HeaderLabel"
 text = "Civilians passed"
 
 [node name="MistakesTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"HeaderLabel"
 text = "Errors in judgement"
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+[node name="StatsVSeparator" type="VSeparator" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -80,30 +84,59 @@ size_flags_vertical = 6
 theme_type_variation = &"TitleLabel"
 text = "1"
 
+[node name="OutOfTimeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_colors/font_color = Color(0.694118, 0.156863, 0.145098, 1)
+text = "Ran out of time"
+horizontal_alignment = 1
+
+[node name="FlawlessLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_colors/font_color = Color(0.248884, 0.603175, 0, 1)
+text = "Flawless!"
+horizontal_alignment = 1
+
+[node name="ForgivenessLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SubtitleLabel"
+theme_override_colors/font_color = Color(0.248884, 0.603175, 0, 1)
+text = "A reprimand has been rescinded in support of your hard work._"
+horizontal_alignment = 1
+autowrap_mode = 3
+visible_characters_behavior = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="ReprimandsBox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="HBoxContainer2"]
+[node name="ReprimandsTitle" type="Label" parent="ReprimandsBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TitleLabel"
 theme_override_font_sizes/font_size = 48
 text = "Reprimands Remaining"
 visible_characters_behavior = 1
 
-[node name="ReprimandsLeft" type="Label" parent="HBoxContainer2"]
+[node name="ReprimandsLeft" type="Label" parent="ReprimandsBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 theme_type_variation = &"ReprimandLabel"
 text = "3"
 
-[node name="HSeparator" type="HSeparator" parent="."]
-layout_mode = 2
-
 [node name="CloseReport" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"ContinueButton"
