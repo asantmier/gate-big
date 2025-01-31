@@ -7,7 +7,7 @@ var monitoring := false
 func _ready():
 	EventBus.shift_started.connect(_on_shift_started)
 	EventBus.shift_ended.connect(_on_shift_ended)
-	EventBus.reprimand_limit_reached.connect(stop_clock)
+	EventBus.reprimand_limit_reached.connect(_on_reprimand_limit_reached)
 	EventBus.cheat_time.connect($Clock.start)
 
 
@@ -28,6 +28,12 @@ func _on_shift_started():
 func _on_shift_ended():
 	monitoring = false
 	stop_clock()
+
+
+func _on_reprimand_limit_reached():
+	monitoring = false
+	stop_clock()
+
 
 func stop_clock():
 	$Clock.stop()

@@ -99,47 +99,48 @@ text = "DEADLY FORCE AUTHORIZED"
 [node name="HSeparator" type="HSeparator" parent="Laws Display/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Laws Display/VBoxContainer"]
+[node name="LimitsSection" type="HBoxContainer" parent="Laws Display/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Laws Display/VBoxContainer/LimitsSection"]
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "LIMITS"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Laws Display/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Laws Display/VBoxContainer/LimitsSection"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer"]
 layout_mode = 2
 
-[node name="header" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="header" type="Label" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"BodyLabel"
 text = "Passengers:"
 
-[node name="passengerlimit" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="passengerlimit" type="Label" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"BodyLabel"
 text = "22"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer"]
 layout_mode = 2
 
-[node name="header" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="header" type="Label" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_type_variation = &"BodyLabel"
 text = "Cargo:"
 
-[node name="cargolimit" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="cargolimit" type="Label" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"BodyLabel"
 text = "22"
 
-[node name="Reprimand Blink Component" parent="Laws Display/VBoxContainer/HBoxContainer" instance=ExtResource("2_ucgbh")]
+[node name="Reprimand Blink Component" parent="Laws Display/VBoxContainer/LimitsSection" instance=ExtResource("2_ucgbh")]
 condition = "fatty"
 
 [node name="BannedSectionTitle" type="Label" parent="Laws Display/VBoxContainer"]

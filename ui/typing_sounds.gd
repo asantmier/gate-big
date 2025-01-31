@@ -3,13 +3,15 @@ extends AudioStreamPlayer
 var tween : Tween
 
 func start_playing():
+	stop_playing()
 	tween = create_tween().set_loops()
 	tween.tween_callback(play_one)
 	tween.tween_interval(GameConstants.typing_speed * 5)
 
 
 func stop_playing():
-	tween.kill()
+	if tween:
+		tween.kill()
 
 
 func play_one():
