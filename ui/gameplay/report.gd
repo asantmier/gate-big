@@ -5,6 +5,7 @@ signal closed
 var passed_this_shift := 0
 var killed_this_shift := 0
 var mistakes_this_shift := 0
+var out_of_time := false
 
 var tween : Tween
 
@@ -16,15 +17,18 @@ func _ready():
 	EventBus.reprimand_issued.connect(_on_mistake)
 	EventBus.shift_started.connect(_on_shift_start)
 	EventBus.time_up.connect(_on_time_up)
-	display()
+	#display()
 
 
 func display():
+	%FlawlessLabel.hide()
+	%ForgivenessLabel.hide()
+	
 	%ReprimandsLeft.text = "%d" % (GameData.max_reprimands - GameData.reprimands)
 	%KilledLabel.text = "%d" % killed_this_shift
 	%PassedLabel.text = "%d" % passed_this_shift
 	%MistakesLabel.text = "%d" % mistakes_this_shift
-	if mistakes_this_shift == 0 and %OutOfTimeLabel.visible == false:
+	if mistakes_this_shift == 0 and not out_of_time:
 		%FlawlessLabel.show()
 		var has_reprimand = GameData.reprimands > 0
 		if has_reprimand:
@@ -52,15 +56,15 @@ func display():
 	if %OutOfTimeLabel.visible:
 		%OutOfTimeLabel.hide()
 		tween.tween_callback(%OutOfTimeLabel.show).set_delay(1)
-	tween.tween_callback(%BigHitSound.play)
+		tween.tween_callback(%BigHitSound.play)
 	if %FlawlessLabel.visible:
 		%FlawlessLabel.hide()
 		tween.tween_callback(%FlawlessLabel.show).set_delay(1)
-	tween.tween_callback(%BigHitSound.play)
+		tween.tween_callback(%BigHitSound.play)
 	if %ForgivenessLabel.visible:
 		%ForgivenessLabel.hide()
 		tween.tween_callback(%ForgivenessLabel.show).set_delay(1)
-	tween.tween_callback(%HitSound.play)
+		tween.tween_callback(%HitSound.play)
 	%ReprimandsTitle.hide()
 	tween.tween_callback(%ReprimandsTitle.show).set_delay(1)
 	tween.tween_callback(%BigHitSound.play)
@@ -88,13 +92,15 @@ func _on_visibility_changed():
 	if visible:
 		display()
 	else:
-		tween.kill()
+		if tween:
+			tween.kill()
 
 
 func _on_shift_start():
 	passed_this_shift = 0
 	killed_this_shift = 0
 	mistakes_this_shift = 0
+	out_of_time = false
 	%OutOfTimeLabel.hide()
 	%FlawlessLabel.hide()
 	%ForgivenessLabel.hide()
@@ -116,6 +122,7 @@ func _on_mistake():
 
 func _on_time_up():
 	# Since time up adds a mistake through the reprimand, this removes the mistake
+	out_of_time = true
 	%OutOfTimeLabel.show()
 	mistakes_this_shift -= 1
 

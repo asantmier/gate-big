@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2x1qlec4fdgi"]
+[gd_scene load_steps=6 format=3 uid="uid://c2x1qlec4fdgi"]
 
 [ext_resource type="Script" path="res://ui/alerts/game_over_alert.gd" id="1_owfi8"]
+[ext_resource type="PackedScene" uid="uid://ih6ee73tkegt" path="res://ui/typing_sounds.tscn" id="2_yyh1c"]
 
 [sub_resource type="Animation" id="Animation_xarwa"]
 length = 0.001
@@ -55,6 +56,29 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TypingSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.9, 1.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start_playing"
+}, {
+"args": [],
+"method": &"stop_playing"
+}, {
+"args": [],
+"method": &"start_playing"
+}, {
+"args": [],
+"method": &"stop_playing"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kd5am"]
@@ -112,3 +136,5 @@ visible_ratio = 0.0
 libraries = {
 "": SubResource("AnimationLibrary_kd5am")
 }
+
+[node name="TypingSounds" parent="." instance=ExtResource("2_yyh1c")]

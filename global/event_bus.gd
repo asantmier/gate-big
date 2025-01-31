@@ -34,3 +34,4 @@ signal cheat_time(length)
 signal cheat_debugger
 
 signal gate_touched
+signal cannon_fired

@@ -37,3 +37,8 @@ func _on_animation_finished(anim_name):
 
 func gate_touched():
 	EventBus.gate_touched.emit()
+
+
+func cannon_fire():
+	EventBus.cannon_fired.emit()
+	

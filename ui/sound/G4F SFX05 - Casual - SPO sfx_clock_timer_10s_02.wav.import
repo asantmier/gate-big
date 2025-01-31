@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bmisu8ixv50o5"
+path="res://.godot/imported/G4F SFX05 - Casual - SPO sfx_clock_timer_10s_02.wav-733bf7ac0f165a1d420b2d246307105b.sample"
+
+[deps]
+
+source_file="res://ui/sound/G4F SFX05 - Casual - SPO sfx_clock_timer_10s_02.wav"
+dest_files=["res://.godot/imported/G4F SFX05 - Casual - SPO sfx_clock_timer_10s_02.wav-733bf7ac0f165a1d420b2d246307105b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=1
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

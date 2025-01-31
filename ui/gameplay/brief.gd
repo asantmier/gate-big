@@ -1,12 +1,27 @@
 extends VBoxContainer
 
-const intro_message : String = "Rate of newcomers has lessened thanks to the new regulations, and \
-the Empire is slowly eliminating all threats in the planet. However, our spies have reported that \
-some ship operators are bringing in more cargo than they should be, or even smuggling in illegal items.\n
-Starting from today, check the cargo of each ship, and ensure that no illegal goods are onboard, \
-or that they are not carrying any more cargo than stated in their manifest. If any ship does \
-not abide with either of these regulations:\n
-Eliminate them."
+#const intro_message : String = "Rate of newcomers has lessened thanks to the new regulations, and \
+#the Empire is slowly eliminating all threats in the planet. However, our spies have reported that \
+#some ship operators are bringing in more cargo than they should be, or even smuggling in illegal items.\n
+#Starting from today, check the cargo of each ship, and ensure that no illegal goods are onboard, \
+#or that they are not carrying any more cargo than stated in their manifest. If any ship does \
+#not abide with either of these regulations:\n
+#Eliminate them."
+const usual_title := "[Message to all B.I.G personnel]"
+const intro_title : String = "[Welcome B.I.G agent]"
+const intro_message : String = "\
+You have been assigned as a probationary agent for B.I.G. For the next 5 days, you will be \
+inspecting ships trying to enter the planet Kaala. Each ship will provide a Manifest detailing the\
+ contents of their ship. You must check this Manifest and make sure it abides by our ever changing \
+Laws.
+Use the Life and Cargo scanner to make sure that these ships are carrying exactly what is stated \
+in their Manifest. No more, no less. 
+If a ship properly follows the law, turn the key and press the Blue Button. If there are any \
+disparities, turn the key and press the Red Button to annihilate them with the B.I.G Gun.
+You have limited room for error.\n
+Secure the Empire, and make the Empire Great Again! 
+-Galactic Commander Tronel Dhump\
+"
 const outro_message : String = "Bye"
 const messages : Array[String]= [
 	"shift0",
@@ -29,6 +44,7 @@ func _ready():
 
 
 func display():
+	%Title.text = get_title()
 	%News.text = get_news()
 	
 	if tween:
@@ -41,6 +57,14 @@ func display():
 	tween.tween_callback($TypingSounds.stop_playing)
 	tween.tween_callback(show_on_finish.show).set_delay(0.5)
 	tween.tween_callback($"VBoxContainer/News/Blinking Caret Component".play)
+
+
+func get_title() -> String:
+	if GameData.shift == 0:
+		return intro_title
+	#if GameData.is_final_shift():
+		#return outro_message
+	return usual_title
 
 
 func get_news() -> String:

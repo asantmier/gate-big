@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4li4ei653p3y"]
+[gd_scene load_steps=3 format=3 uid="uid://c4li4ei653p3y"]
 
 [ext_resource type="Script" path="res://ui/gameplay/timer.gd" id="1_cf3ol"]
+[ext_resource type="AudioStream" uid="uid://bmisu8ixv50o5" path="res://ui/sound/G4F SFX05 - Casual - SPO sfx_clock_timer_10s_02.wav" id="2_356fu"]
 
 [node name="Shift Timer" type="Control"]
 editor_description = "Adds time limit."
@@ -26,5 +27,8 @@ script = ExtResource("1_cf3ol")
 
 [node name="Clock" type="Timer" parent="CenterContainer/Timer"]
 one_shot = true
+
+[node name="RunningOut" type="AudioStreamPlayer" parent="CenterContainer/Timer"]
+stream = ExtResource("2_356fu")
 
 [connection signal="timeout" from="CenterContainer/Timer/Clock" to="CenterContainer/Timer" method="_on_clock_timeout"]

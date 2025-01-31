@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://hbq755h72fhp"
+path="res://.godot/imported/Electric, Pass-by, distorsion, motor, turning machine, accelerate, increase, decrease.wav-2ab8c40992b8b9b4e445dd6f69bd503d.sample"
+
+[deps]
+
+source_file="res://sounds/Electric, Pass-by, distorsion, motor, turning machine, accelerate, increase, decrease.wav"
+dest_files=["res://.godot/imported/Electric, Pass-by, distorsion, motor, turning machine, accelerate, increase, decrease.wav-2ab8c40992b8b9b4e445dd6f69bd503d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
