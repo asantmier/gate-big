@@ -78,8 +78,7 @@ func display():
 	%Title.text = get_title()
 	%News.text = get_news()
 	
-	if tween:
-		tween.kill()
+	skip()
 	show_on_finish.hide()
 	$"VBoxContainer/News/Blinking Caret Component".stop()
 	tween = get_tree().create_tween()
@@ -120,6 +119,7 @@ func _input(event):
 func skip():
 	if tween and tween.is_valid():
 		tween.custom_step(1000)
+		tween.kill()
 
 
 func _on_start_button_pressed():

@@ -35,6 +35,7 @@ func display():
 			%ForgivenessLabel.show()
 		GameData.revoke_reprimand()
 	
+	skip()
 	tween = create_tween()
 	%KilledLabel.hide()
 	tween.tween_callback(%KilledLabel.show).set_delay(1.5)
@@ -97,6 +98,7 @@ func _on_visibility_changed():
 func skip():
 	if tween and tween.is_valid():
 		tween.custom_step(1000)
+		tween.kill()
 
 
 func _on_shift_start():
