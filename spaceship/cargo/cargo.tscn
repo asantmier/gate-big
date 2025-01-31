@@ -1,68 +1,69 @@
 [gd_scene load_steps=12 format=3 uid="uid://byxfcrlbsthwg"]
 
 [ext_resource type="Script" path="res://spaceship/cargo/cargo.gd" id="1_bs7gi"]
-[ext_resource type="Texture2D" uid="uid://btq3hkmciulxj" path="res://spaceship/cargo/art/box_plain.png" id="2_2atxd"]
+[ext_resource type="Texture2D" uid="uid://btq3hkmciulxj" path="res://spaceship/cargo/art/old/box_plain.png" id="2_2atxd"]
 [ext_resource type="Texture2D" uid="uid://bkvuyvl3e832h" path="res://spaceship/cargo/art/box-1.png" id="3_6uk5h"]
 [ext_resource type="PackedScene" uid="uid://dqhavyaibby83" path="res://spaceship/cargo/draw_order.tscn" id="3_h1ymn"]
 [ext_resource type="Texture2D" uid="uid://bxt2kqe3te6sd" path="res://spaceship/cargo/art/box-2.png" id="4_0drjg"]
 [ext_resource type="PackedScene" uid="uid://bwm3282ujrvt1" path="res://spaceship/cargo/crate_tester.tscn" id="4_1b4fh"]
-[ext_resource type="Texture2D" uid="uid://cuh8u4v8y5akp" path="res://spaceship/cargo/art/box_var3.png" id="4_d0no0"]
-[ext_resource type="Texture2D" uid="uid://dpr0soo477wa0" path="res://spaceship/cargo/art/box_var4.png" id="5_3f5ri"]
-[ext_resource type="Texture2D" uid="uid://byu4p4ceft1pd" path="res://spaceship/cargo/art/box_var5.png" id="6_n4t0a"]
-[ext_resource type="Texture2D" uid="uid://dvtf6ytc38xwy" path="res://spaceship/cargo/art/box_var6.png" id="7_kglre"]
-[ext_resource type="Texture2D" uid="uid://dpqvn34mxsrkg" path="res://spaceship/cargo/art/box_var7.png" id="8_4rdg2"]
+[ext_resource type="Texture2D" uid="uid://lufi3wtdypqh" path="res://spaceship/cargo/art/box-3.png" id="5_jpw6s"]
+[ext_resource type="Texture2D" uid="uid://t0ykom7o0cvk" path="res://spaceship/cargo/art/box-4.png" id="6_ikfla"]
+[ext_resource type="Texture2D" uid="uid://baibeu2ip1ien" path="res://spaceship/cargo/art/box-5.png" id="7_u7fb4"]
+[ext_resource type="Texture2D" uid="uid://c3dpi13j3q087" path="res://spaceship/cargo/art/box-6.png" id="8_bbm6l"]
+[ext_resource type="Texture2D" uid="uid://b2e4ioh6ca3ll" path="res://spaceship/cargo/art/box-7.png" id="9_b4j2j"]
 
 [node name="Cargo" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_bs7gi")
 default_variant = ExtResource("2_2atxd")
-variants = Array[Texture2D]([ExtResource("3_6uk5h"), ExtResource("4_0drjg"), ExtResource("4_d0no0"), ExtResource("5_3f5ri"), ExtResource("6_n4t0a"), ExtResource("7_kglre"), ExtResource("8_4rdg2")])
+variants = Array[Texture2D]([ExtResource("3_6uk5h"), ExtResource("4_0drjg"), ExtResource("5_jpw6s"), ExtResource("6_ikfla"), ExtResource("7_u7fb4"), ExtResource("8_bbm6l"), ExtResource("9_b4j2j")])
 
 [node name="Node2D" type="Node2D" parent="."]
-scale = Vector2(0.35, 0.35)
+scale = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("2_2atxd")
+position = Vector2(2.85714, 0)
+texture = ExtResource("3_6uk5h")
 
 [node name="BoxPlain" type="Sprite2D" parent="Node2D"]
-position = Vector2(99, 0)
-texture = ExtResource("2_2atxd")
+position = Vector2(142.857, 0)
+texture = ExtResource("3_6uk5h")
 
 [node name="BoxPlain2" type="Sprite2D" parent="Node2D"]
-position = Vector2(-102, 0)
-texture = ExtResource("2_2atxd")
+position = Vector2(-142.857, 0)
+texture = ExtResource("3_6uk5h")
 
 [node name="BoxPlain4" type="Sprite2D" parent="Node2D"]
-position = Vector2(-101, -97)
-texture = ExtResource("2_2atxd")
+position = Vector2(-125.714, -128.571)
+texture = ExtResource("3_6uk5h")
 
 [node name="BoxPlain3" type="Sprite2D" parent="Node2D"]
-position = Vector2(200, 0)
-texture = ExtResource("2_2atxd")
+position = Vector2(285.714, 0)
+texture = ExtResource("3_6uk5h")
 
 [node name="BoxPlain6" type="Sprite2D" parent="Node2D"]
-position = Vector2(0, -96)
-texture = ExtResource("2_2atxd")
+position = Vector2(0, -128.571)
+texture = ExtResource("3_6uk5h")
 
 [node name="BoxPlain5" type="Sprite2D" parent="Node2D"]
-position = Vector2(97, -96)
-texture = ExtResource("2_2atxd")
+position = Vector2(131.429, -128.571)
+texture = ExtResource("3_6uk5h")
 
 [node name="BoxPlain8" type="Sprite2D" parent="Node2D"]
-position = Vector2(-54, -195)
-texture = ExtResource("2_2atxd")
+position = Vector2(-65.7143, -257.143)
+texture = ExtResource("3_6uk5h")
 
 [node name="BoxPlain9" type="Sprite2D" parent="Node2D"]
-position = Vector2(51, -193)
-texture = ExtResource("2_2atxd")
+position = Vector2(71.4286, -257.143)
+texture = ExtResource("3_6uk5h")
 
 [node name="BoxPlain7" type="Sprite2D" parent="Node2D"]
-position = Vector2(196, -95)
-texture = ExtResource("2_2atxd")
+position = Vector2(262.857, -128.571)
+texture = ExtResource("3_6uk5h")
 
 [node name="BoxPlain10" type="Sprite2D" parent="Node2D"]
-position = Vector2(153, -193)
-texture = ExtResource("2_2atxd")
+position = Vector2(211.429, -257.143)
+texture = ExtResource("3_6uk5h")
 
 [node name="Draw Order" parent="." node_paths=PackedStringArray("observed") instance=ExtResource("3_h1ymn")]
 enabled = false

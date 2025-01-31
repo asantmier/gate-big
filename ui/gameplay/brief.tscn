@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdgiymcvxt4ga"]
+[gd_scene load_steps=5 format=3 uid="uid://bdgiymcvxt4ga"]
 
 [ext_resource type="Script" path="res://ui/gameplay/brief.gd" id="1_d3nwd"]
 [ext_resource type="PackedScene" uid="uid://rsrg7p7j464o" path="res://ui/gameplay/start_button.tscn" id="2_fee5r"]
 [ext_resource type="PackedScene" uid="uid://clet7ci88y3e" path="res://blinking_caret_component.tscn" id="2_hcbfi"]
+[ext_resource type="PackedScene" uid="uid://ih6ee73tkegt" path="res://ui/typing_sounds.tscn" id="4_vf8ry"]
 
 [node name="Brief" type="VBoxContainer" node_paths=PackedStringArray("show_on_finish")]
 anchors_preset = 8
@@ -52,5 +53,7 @@ layout_mode = 2
 [node name="Start Button" parent="VBoxContainer" instance=ExtResource("2_fee5r")]
 layout_mode = 2
 theme_type_variation = &"ContinueButton"
+
+[node name="TypingSounds" parent="." instance=ExtResource("4_vf8ry")]
 
 [connection signal="pressed" from="VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]

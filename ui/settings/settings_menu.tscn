@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://joippmkja8hn"]
+[gd_scene load_steps=5 format=3 uid="uid://joippmkja8hn"]
 
 [ext_resource type="Script" path="res://ui/settings/settings_menu.gd" id="1_87x2t"]
 [ext_resource type="PackedScene" uid="uid://cvd26too57o7i" path="res://ui/settings/volume_control.tscn" id="2_lo44w"]
+[ext_resource type="PackedScene" uid="uid://b6lphuahubti5" path="res://ui/sound/prefab/hover_sound.tscn" id="3_e4ion"]
+[ext_resource type="PackedScene" uid="uid://b1ysgbquwacjd" path="res://ui/sound/prefab/press_sound.tscn" id="4_tdh50"]
 
 [node name="Settings Menu" type="Control"]
 process_mode = 3
@@ -58,5 +60,13 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "QUIT"
 
+[node name="HoverSound" parent="." instance=ExtResource("3_e4ion")]
+unique_name_in_owner = true
+
+[node name="PressSound" parent="." instance=ExtResource("4_tdh50")]
+unique_name_in_owner = true
+
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6lphuahubti5"]
+
+[ext_resource type="AudioStream" uid="uid://tl2ggcnjsm21" path="res://ui/sound/TM_GLITCH UI_Clicks dry_11.wav" id="1_jgvti"]
+
+[node name="HoverSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_jgvti")
+volume_db = -10.0

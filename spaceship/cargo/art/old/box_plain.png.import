@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btq3hkmciulxj"
-path="res://.godot/imported/box_plain.png-116c22c82be186f4e39e3b5384aa7b6a.ctex"
+path="res://.godot/imported/box_plain.png-d575923332b1d44758b9cd841d7ce4ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spaceship/cargo/art/box_plain.png"
-dest_files=["res://.godot/imported/box_plain.png-116c22c82be186f4e39e3b5384aa7b6a.ctex"]
+source_file="res://spaceship/cargo/art/old/box_plain.png"
+dest_files=["res://.godot/imported/box_plain.png-d575923332b1d44758b9cd841d7ce4ef.ctex"]
 
 [params]
 

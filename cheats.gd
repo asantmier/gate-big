@@ -29,3 +29,7 @@ func _on_shift_final_pressed():
 
 func _on_shift_end_pressed():
 	GameData.end_shift()
+
+
+func _on_debug_pressed():
+	EventBus.cheat_debugger.emit()

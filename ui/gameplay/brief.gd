@@ -10,7 +10,7 @@ Eliminate them."
 const outro_message : String = "Bye"
 const messages : Array[String]= [
 	"shift0",
-	"Shift 1 News!",
+	"Shift 1 News!",	
 	"Shift 2 News!",
 	"Shift 3 News!",
 	"Shift 4 News!",
@@ -36,7 +36,9 @@ func display():
 	show_on_finish.hide()
 	$"VBoxContainer/News/Blinking Caret Component".stop()
 	tween = get_tree().create_tween()
+	tween.tween_callback($TypingSounds.start_playing)
 	tween.tween_property(%News, "visible_ratio", 1, GameConstants.get_typing_length(%News.text)).from(0)
+	tween.tween_callback($TypingSounds.stop_playing)
 	tween.tween_callback(show_on_finish.show).set_delay(0.5)
 	tween.tween_callback($"VBoxContainer/News/Blinking Caret Component".play)
 
@@ -57,10 +59,7 @@ func _on_visibility_changed():
 func _input(event):
 	if event.is_action_pressed("skip"):
 		if tween and tween.is_valid():
-			tween.kill()
-			%News.visible_ratio = 1
-			show_on_finish.show()
-			$"VBoxContainer/News/Blinking Caret Component".play()
+			tween.custom_step(100)
 
 
 func _on_start_button_pressed():

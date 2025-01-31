@@ -15,6 +15,11 @@ func _ready():
 
 
 func _on_button_pressed():
+	%PressSound.play()
 	EventBus.game_begun.emit()
 	$AnimationPlayer.play("fade_out")
 	#hide()
+
+
+func _on_button_mouse_entered():
+	%HoverSound.play()

@@ -24,7 +24,9 @@ func _on_ship_focused():
 		tween.kill()
 	$"Blinking Caret Component".stop()
 	tween = get_tree().create_tween()
+	tween.tween_callback(%TypingSounds.start_playing)
 	tween.tween_property(self, "visible_ratio", 1, GameConstants.get_typing_length(text)).from(0)
+	tween.tween_callback(%TypingSounds.stop_playing)
 	tween.tween_callback($"Blinking Caret Component".play)
 
 

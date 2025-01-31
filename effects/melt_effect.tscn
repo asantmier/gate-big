@@ -351,6 +351,6 @@ grow_vertical = 2
 visible = false
 sprite_frames = SubResource("SpriteFrames_xdq5m")
 autoplay = "default"
-frame_progress = 0.399965
+frame_progress = 0.244478
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

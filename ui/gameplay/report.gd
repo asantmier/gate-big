@@ -33,7 +33,7 @@ func display():
 	
 	tween = create_tween()
 	%KilledLabel.hide()
-	tween.tween_callback(%KilledLabel.show).set_delay(0.5)
+	tween.tween_callback(%KilledLabel.show).set_delay(1.5)
 	%StatsVSeparator.hide()
 	tween.tween_callback(%StatsVSeparator.show)
 	%KilledTitle.hide()
@@ -70,6 +70,7 @@ func _input(event):
 
 
 func _on_close_report_pressed():
+	%PressSound.play()
 	hide()
 	closed.emit()
 
@@ -106,3 +107,7 @@ func _on_time_up():
 	# Since time up adds a mistake through the reprimand, this removes the mistake
 	%OutOfTimeLabel.show()
 	mistakes_this_shift -= 1
+
+
+func _on_close_report_mouse_entered():
+	%HoverSound.play()

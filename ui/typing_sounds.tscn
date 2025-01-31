@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ih6ee73tkegt"]
+
+[ext_resource type="AudioStream" uid="uid://d2vnglw1l7ggm" path="res://ui/sound/Typewriter_02.wav" id="1_bh3a4"]
+[ext_resource type="Script" path="res://ui/typing_sounds.gd" id="2_ua31t"]
+
+[node name="TypingSounds" type="AudioStreamPlayer"]
+stream = ExtResource("1_bh3a4")
+volume_db = -30.0
+max_polyphony = 4
+script = ExtResource("2_ua31t")
