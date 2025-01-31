@@ -17,17 +17,20 @@ func _ready():
 	EventBus.game_won.connect(hide_panel)
 
 func on_game_begun():
+	$Ambience.play()
 	report.hide()
 	brief.show()
 	show()
 
 func hide_panel():
 	hide()
+	$Ambience.stop()
 
 
 func show_panel():
 	brief.hide()
 	display_report()
+	$Ambience.play()
 	show()
 
 

@@ -41,11 +41,12 @@ var shift_rules := {
 		liars = 1, # Liars lie on their manifest
 		smugglers = 0, # Smugglers carry contraband or criminals
 		fatties = 0, # Fatties carry over the limit of passengers or cargo
+		call_methods = [],
 		criminals = [],
 		contraband = [],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 50,
-		passenger_limit = 50,
+		cargo_limit = 20,
+		passenger_limit = 20,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	2: {
@@ -281,7 +282,8 @@ func get_ships_remaining() -> int:
 ## Produces random lies matching the ship info dictionary
 func get_lies() -> Dictionary:
 	return {
-		Passengers = randi_range(1, 3) * rand_sign()
+		"Passengers" = randi_range(1, 3) * rand_sign(),
+		"Cargo" =  randi_range(1, 3) * rand_sign()
 	}
 
 

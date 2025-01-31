@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvj3h0821p1jp"]
+[gd_scene load_steps=17 format=3 uid="uid://bvj3h0821p1jp"]
 
 [ext_resource type="Script" path="res://spaceship/spaceship_scrambler.gd" id="1_djm5r"]
 [ext_resource type="Texture2D" uid="uid://baeqx4xiwauk1" path="res://spaceship/art/ship-00.png" id="2_2ebkw"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bp8guiecdthoa" path="res://spaceship/art/ship-00-ext.png" id="6_b0mjt"]
 [ext_resource type="Texture2D" uid="uid://8n4wfnlma6sb" path="res://spaceship/art/ship-02-ext.png" id="8_hmmga"]
 [ext_resource type="Texture2D" uid="uid://b5fof67uciptk" path="res://spaceship/art/ship-08-ext.png" id="9_1u805"]
-[ext_resource type="Texture2D" uid="uid://ry1llh8t6gx2" path="res://spaceship/cargo/art/box-1-32.png" id="14_30d2d"]
 
 [sub_resource type="Curve2D" id="Curve2D_21jmi"]
 _data = {
@@ -73,14 +72,9 @@ position = Vector2(153, 83)
 [node name="Cargo3" parent="Cargo" instance=ExtResource("5_2vomd")]
 position = Vector2(-5, -50)
 
-[node name="Box-1-32" type="Sprite2D" parent="Cargo"]
-position = Vector2(-1, 19)
-texture = ExtResource("14_30d2d")
-
 [node name="Systems" type="Node2D" parent="." groups=["systems"]]
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]
-visible = false
 copy_mode = 2
 
 [node name="Sight Blocker" type="Sprite2D" parent="BackBufferCopy"]

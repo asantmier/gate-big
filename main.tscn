@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c6jsdaxy71qto"]
+[gd_scene load_steps=57 format=3 uid="uid://c6jsdaxy71qto"]
 
 [ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship/spaceship.tscn" id="1_05mrr"]
 [ext_resource type="Script" path="res://start_animation.gd" id="1_lusjx"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cxxklybhjyqnk" path="res://effects/warning_light.tscn" id="14_kpccf"]
 [ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alerts/alert_toast.tscn" id="14_n7f0v"]
 [ext_resource type="Script" path="res://eod_anim.gd" id="16_21155"]
+[ext_resource type="AudioStream" uid="uid://bmpuy73qrwasv" path="res://sounds/SPACESHIP-INTERIORS-ALARM-7.wav" id="17_kveu6"]
 [ext_resource type="PackedScene" uid="uid://d8rwc8vp2xyf" path="res://scanner/scanner_layer.tscn" id="17_oofxi"]
 [ext_resource type="PackedScene" uid="uid://d2pyxpuyinvfm" path="res://effects/melt_effect.tscn" id="18_4xoj3"]
 [ext_resource type="Texture2D" uid="uid://dlv82m7aytnrb" path="res://ui/textures/interfaceBorderChain.png" id="18_47dfa"]
@@ -29,7 +30,13 @@
 [ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="20_axhhb"]
 [ext_resource type="PackedScene" uid="uid://cau15v47xi5kl" path="res://3d/3d_background.tscn" id="20_p7qnr"]
 [ext_resource type="Texture2D" uid="uid://cmfd7yb5o5tsf" path="res://ui/textures/bannerWinBlink.png" id="21_g7pdj"]
+[ext_resource type="AudioStream" uid="uid://bxdufrx27g0yv" path="res://scanner/sounds/Electric, Switch ON OFF, power, turn-on, medium frequency, motor, pulse, hum.wav" id="27_e8i8q"]
 [ext_resource type="PackedScene" uid="uid://cov2xcvwuyp2w" path="res://cheats.tscn" id="28_2ajui"]
+[ext_resource type="AudioStream" uid="uid://dgelmxi464gck" path="res://scanner/sounds/Button_Press-007.wav" id="28_bibgy"]
+[ext_resource type="AudioStream" uid="uid://cq15xcttf4ggp" path="res://spaceship/sounds/Ship Arriving.wav" id="29_epog7"]
+[ext_resource type="AudioStream" uid="uid://c7hxlew0ivjoq" path="res://spaceship/sounds/Ship Leaving.wav" id="30_mt2k7"]
+[ext_resource type="AudioStream" uid="uid://b4cod162qkoiy" path="res://sounds/ambience very heavy-hearted aggressive suspenceful drone type pad.wav" id="36_lsao2"]
+[ext_resource type="Script" path="res://ambience.gd" id="37_6f6rs"]
 
 [sub_resource type="Animation" id="Animation_4srhk"]
 length = 0.001
@@ -568,6 +575,54 @@ tracks/9/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Ship Animations/ScanOnSound:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Ship Animations/ScanOffSound:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Ship Animations/ShipArrive:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Ship Animations/ShipLeave:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_bh3g8"]
 resource_name = "explode"
@@ -692,6 +747,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(19, 63), Vector2(19, 63), Vector2(19, -430)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Ship Animations/ScanOffSound:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_wwb0r"]
 resource_name = "float_in"
@@ -767,6 +834,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Ship Animations/ScanOnSound:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.13333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ship Animations/ShipArrive:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_7e5mx"]
@@ -857,6 +948,30 @@ tracks/6/keys = {
 "args": [],
 "method": &"gate_touched"
 }]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ship Animations/ScanOffSound:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Ship Animations/ShipLeave:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.46667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vwmg2"]
@@ -1071,6 +1186,9 @@ mouse_filter = 2
 
 [node name="Warning Light" parent="HUD Canvas/Warning Lights/Control4" instance=ExtResource("14_kpccf")]
 
+[node name="Alarm" type="AudioStreamPlayer" parent="HUD Canvas/Warning Lights"]
+stream = ExtResource("17_kveu6")
+
 [node name="Alert Toast" parent="HUD Canvas" instance=ExtResource("14_n7f0v")]
 anchors_preset = -1
 anchor_right = 0.758333
@@ -1201,6 +1319,20 @@ offset_right = 750.0
 offset_bottom = 472.0
 color = Color(0.215902, 0.215902, 0.215902, 1)
 
+[node name="ScanOnSound" type="AudioStreamPlayer" parent="Ship Animations"]
+stream = ExtResource("27_e8i8q")
+volume_db = -10.0
+
+[node name="ScanOffSound" type="AudioStreamPlayer" parent="Ship Animations"]
+stream = ExtResource("28_bibgy")
+volume_db = -10.0
+
+[node name="ShipArrive" type="AudioStreamPlayer" parent="Ship Animations"]
+stream = ExtResource("29_epog7")
+
+[node name="ShipLeave" type="AudioStreamPlayer" parent="Ship Animations"]
+stream = ExtResource("30_mt2k7")
+
 [node name="Explosion" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(433, 254)
@@ -1215,3 +1347,8 @@ vframes = 8
 layer = 5
 
 [node name="Cheats" parent="." instance=ExtResource("28_2ajui")]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_lsao2")
+volume_db = -10.0
+script = ExtResource("37_6f6rs")

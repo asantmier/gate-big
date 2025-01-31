@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq20r02rb6i1u"]
+[gd_scene load_steps=7 format=3 uid="uid://bq20r02rb6i1u"]
 
 [ext_resource type="Script" path="res://ui/gameplay/report.gd" id="1_2hw74"]
 [ext_resource type="PackedScene" uid="uid://b6lphuahubti5" path="res://ui/sound/prefab/hover_sound.tscn" id="2_dbqty"]
 [ext_resource type="PackedScene" uid="uid://b1ysgbquwacjd" path="res://ui/sound/prefab/press_sound.tscn" id="3_0fohq"]
+[ext_resource type="PackedScene" uid="uid://cge5tjfjglyiq" path="res://ui/sound/prefab/hit_sound.tscn" id="4_y6y07"]
+[ext_resource type="PackedScene" uid="uid://06my0baqgjx8" path="res://ui/sound/prefab/big_hit_sound.tscn" id="5_rdgo6"]
+[ext_resource type="PackedScene" uid="uid://cm3b4cvx0tm0e" path="res://ui/sound/prefab/huge_hit_sound.tscn" id="6_7q00l"]
 
 [node name="Report" type="VBoxContainer"]
 custom_minimum_size = Vector2(469.99, 0)
@@ -149,6 +152,15 @@ text = "CONTINUE"
 unique_name_in_owner = true
 
 [node name="PressSound" parent="CloseReport" instance=ExtResource("3_0fohq")]
+unique_name_in_owner = true
+
+[node name="HitSound" parent="." instance=ExtResource("4_y6y07")]
+unique_name_in_owner = true
+
+[node name="BigHitSound" parent="." instance=ExtResource("5_rdgo6")]
+unique_name_in_owner = true
+
+[node name="HugeHitSound" parent="." instance=ExtResource("6_7q00l")]
 unique_name_in_owner = true
 
 [connection signal="mouse_entered" from="CloseReport" to="." method="_on_close_report_mouse_entered"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm3b4cvx0tm0e"]
+
+[ext_resource type="AudioStream" uid="uid://ccvmbfibtmfvf" path="res://ui/sound/Stab_Punch_Hit_136.wav" id="1_dxm7m"]
+
+[node name="HugeHitSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_dxm7m")
+volume_db = 6.0
+pitch_scale = 0.72

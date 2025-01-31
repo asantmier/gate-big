@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl5krru57e30e"]
+[gd_scene load_steps=10 format=3 uid="uid://bl5krru57e30e"]
 
 [ext_resource type="Script" path="res://ui/gameplay/reprimands.gd" id="1_8tqw8"]
 [ext_resource type="Texture2D" uid="uid://qymhsv6rrxwl" path="res://ui/textures/lifeCounter1.png" id="2_bj7wu"]
 [ext_resource type="Texture2D" uid="uid://janijl4qrydh" path="res://effects/2d_lights_and_shadows_neutral_point_light.webp" id="3_xfli0"]
 [ext_resource type="Texture2D" uid="uid://c2ux0orcnlc35" path="res://ui/textures/lifeCounter2.png" id="4_wrdkg"]
+[ext_resource type="AudioStream" uid="uid://dncx0kle3hk1" path="res://sounds/Success.wav" id="5_tj008"]
 
 [sub_resource type="Animation" id="Animation_7el1g"]
 length = 0.001
@@ -247,3 +248,7 @@ range_layer_min = -4
 range_layer_max = 5
 texture = ExtResource("3_xfli0")
 texture_scale = 0.4
+
+[node name="Success" type="AudioStreamPlayer" parent="Reprimands"]
+stream = ExtResource("5_tj008")
+volume_db = -5.0

@@ -1,7 +1,9 @@
 extends HBoxContainer
 
 
-var last
+var life1 = true
+var life2 = true
+var life3 = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,7 +13,6 @@ func _ready():
 	EventBus.reprimand_issued.connect(update_strikes)
 	EventBus.reprimand_revoked.connect(update_strikes)
 	EventBus.time_up.connect(_on_time_up)
-	last = 0
 
 
 func _on_time_up():
@@ -27,26 +28,33 @@ func ship_evaluated(killed):
 		GameData.issue_reprimand()
 		EventBus.unlock_shift.emit()
 	else:
-		# :)
-		pass
+		await EventBus.ship_left_gate
+		$Success.play()
 
 
 func update_strikes():
 	var current = GameData.reprimands
-	if current == 0:
-		if last >= 3:
-			$"Strike Three/AnimationPlayer".play("illuminate")
-		if last >= 2:
-			$"Strike Two/AnimationPlayer".play("illuminate")
-		if last >= 1:
-			$"Strike One/AnimationPlayer".play("illuminate")
-	if current >= 1: # At least 1 reprimand
-		if last < 1: # Did not already have 1 reprimand
+	if life1:
+		if current >= 1:
 			$"Strike One/AnimationPlayer".play("die_out")
-	if current >= 2:
-		if last < 2:
+			life1 = false
+	else:
+		if current < 1:
+			$"Strike One/AnimationPlayer".play("illuminate")
+			life1 = true
+	if life2:
+		if current >= 2:
 			$"Strike Two/AnimationPlayer".play("die_out")
-	if current >= 3:
-		if last < 3:
+			life2 = false
+	else:
+		if current < 2:
+			$"Strike Two/AnimationPlayer".play("illuminate")
+			life2 = true
+	if life3:
+		if current >= 3:
 			$"Strike Three/AnimationPlayer".play("die_out")
-	last = current
+			life3 = false
+	else:
+		if current < 3:
+			$"Strike Three/AnimationPlayer".play("illuminate")
+			life3 = true

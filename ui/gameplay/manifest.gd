@@ -14,10 +14,15 @@ func _on_ship_focused():
 	var lies := {}
 	if GameData.is_liar:
 		lies = GameData.get_lies()
+	var passenger = GameData.ship_info.Passengers + lies.get("Passengers", 0)
+	var cargo = GameData.ship_info.Cargo + lies.get("Cargo", 0)
+	if GameData.is_fatty:
+		passenger = randi_range(GameData.get_passenger_limit() - 5, GameData.get_passenger_limit())
+		cargo = randi_range(GameData.get_cargo_limit() - 5, GameData.get_cargo_limit())
 	text = ""
-	text += "Passengers: %d" % (GameData.ship_info.Passengers + lies.get("Passengers", 0))
+	text += "Passengers: %d" % passenger
 	text += "\n"
-	text += "Cargo: %d" % (GameData.ship_info.Cargo + lies.get("Cargo", 0))
+	text += "Cargo: %d" % cargo
 	
 	
 	if tween:

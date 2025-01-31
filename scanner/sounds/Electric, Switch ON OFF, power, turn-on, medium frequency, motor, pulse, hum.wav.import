@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxdufrx27g0yv"
+path="res://.godot/imported/Electric, Switch ON OFF, power, turn-on, medium frequency, motor, pulse, hum.wav-3bc8d2c3dfe13af7333d0b4b73930617.sample"
+
+[deps]
+
+source_file="res://scanner/sounds/Electric, Switch ON OFF, power, turn-on, medium frequency, motor, pulse, hum.wav"
+dest_files=["res://.godot/imported/Electric, Switch ON OFF, power, turn-on, medium frequency, motor, pulse, hum.wav-3bc8d2c3dfe13af7333d0b4b73930617.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

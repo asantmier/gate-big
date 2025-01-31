@@ -29,6 +29,10 @@ signal released
 @export var origin := Vector2.ZERO
 
 @export var boundaries : Rect2
+@export var soundCurve : Curve
+@export var maxsoundspeed : float
+
+var current_speed : float = 0
 
 
 ## The Sprite node that will be used to display the texture
@@ -76,14 +80,18 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		EventBus.ship_focused.connect(_on_ship_focused)
 		EventBus.ship_unfocused.connect(_on_ship_unfocused)
-		
 
 
 func _process(delta) -> void:
+	if not Engine.is_editor_hint():
+		current_speed = current_speed - delta * smoothstep(0, maxsoundspeed, current_speed)
 	# If the input_method is down and the object is and can be grabbed, update it's position
 	if Input.is_mouse_button_pressed(input_method) and is_grabbed and grabbable:
+		var old_pos = position
 		position = get_global_mouse_position() + grabbed_offset
 		snap_boundaries()
+		var speed = old_pos.distance_to(position)
+		current_speed = current_speed + delta * speed * smoothstep(current_speed, maxsoundspeed, speed) - delta * smoothstep(0, maxsoundspeed, current_speed)
 		mb_pressed = true
 	# Otherwise, if the mouse button was pressed on the previous frame but now isn't, the object is released
 	if not Input.is_mouse_button_pressed(input_method) and mb_pressed:
@@ -91,6 +99,9 @@ func _process(delta) -> void:
 			position = origin
 		mb_pressed = false
 		is_grabbed = false
+	
+	if not Engine.is_editor_hint():
+		play_sound(current_speed / maxsoundspeed)
 
 
 func snap_boundaries():
@@ -166,8 +177,15 @@ func _on_child_exiting_tree(child) -> void:
 
 func _on_ship_focused():
 	position = Vector2.ZERO
+	$AudioStreamPlayer.play()
+	$TurnOnSound.play()
 	show()
 
 
 func _on_ship_unfocused():
+	$AudioStreamPlayer.stop()
 	hide()
+
+
+func play_sound(factor):
+	$AudioStreamPlayer.volume_db = linear_to_db(soundCurve.sample_baked(factor))

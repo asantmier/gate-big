@@ -38,29 +38,38 @@ func display():
 	tween.tween_callback(%StatsVSeparator.show)
 	%KilledTitle.hide()
 	tween.tween_callback(%KilledTitle.show)
+	tween.tween_callback(%HitSound.play)
 	%PassedLabel.hide()
 	tween.tween_callback(%PassedLabel.show).set_delay(0.5)
 	%PassedTitle.hide()
 	tween.tween_callback(%PassedTitle.show)
+	tween.tween_callback(%HitSound.play)
 	%MistakesLabel.hide()
 	tween.tween_callback(%MistakesLabel.show).set_delay(0.5)
 	%MistakesTitle.hide()
 	tween.tween_callback(%MistakesTitle.show)
+	tween.tween_callback(%HitSound.play)
 	if %OutOfTimeLabel.visible:
 		%OutOfTimeLabel.hide()
 		tween.tween_callback(%OutOfTimeLabel.show).set_delay(1)
+	tween.tween_callback(%BigHitSound.play)
 	if %FlawlessLabel.visible:
 		%FlawlessLabel.hide()
 		tween.tween_callback(%FlawlessLabel.show).set_delay(1)
+	tween.tween_callback(%BigHitSound.play)
 	if %ForgivenessLabel.visible:
 		%ForgivenessLabel.hide()
-		tween.tween_callback(%ForgivenessLabel.show).set_delay(0.5)
+		tween.tween_callback(%ForgivenessLabel.show).set_delay(1)
+	tween.tween_callback(%HitSound.play)
 	%ReprimandsTitle.hide()
 	tween.tween_callback(%ReprimandsTitle.show).set_delay(1)
+	tween.tween_callback(%BigHitSound.play)
 	%ReprimandsLeft.hide()
 	tween.tween_callback(%ReprimandsLeft.show).set_delay(1)
+	tween.tween_callback(%HugeHitSound.play)
 	%CloseReport.hide()
 	tween.tween_callback(%CloseReport.show).set_delay(1)
+	#tween.tween_callback(%HitSound.play)
 
 
 func _input(event):
@@ -78,6 +87,8 @@ func _on_close_report_pressed():
 func _on_visibility_changed():
 	if visible:
 		display()
+	else:
+		tween.kill()
 
 
 func _on_shift_start():

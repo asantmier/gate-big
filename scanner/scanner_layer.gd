@@ -24,18 +24,21 @@ func _input(event):
 
 
 func passengers():
+	$AudioStreamPlayer.play()
 	get_tree().call_group("cargo", "hide")
 	get_tree().call_group("passengers", "show")
 	get_tree().call_group("systems", "hide")
 
 
 func cargo():
+	$AudioStreamPlayer.play()
 	get_tree().call_group("cargo", "show")
 	get_tree().call_group("passengers", "hide")
 	get_tree().call_group("systems", "hide")
 
 
 func systems():
+	$AudioStreamPlayer.play()
 	get_tree().call_group("cargo", "hide")
 	get_tree().call_group("passengers", "hide")
 	get_tree().call_group("systems", "show")

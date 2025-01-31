@@ -11,13 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://b5hb6lwiln0en" path="res://spaceship/characters/textures/npc-rc.png" id="8_dj5co"]
 [ext_resource type="Texture2D" uid="uid://dtwax6b4ifh0q" path="res://spaceship/characters/textures/npc-rm.png" id="9_f5000"]
 [ext_resource type="Texture2D" uid="uid://c7sargdmlhkg2" path="res://spaceship/characters/textures/npc-ry.png" id="10_f70b2"]
-[ext_resource type="Texture2D" uid="uid://bkvuyvl3e832h" path="res://spaceship/cargo/art/box-1.png" id="12_ct252"]
-[ext_resource type="Texture2D" uid="uid://bxt2kqe3te6sd" path="res://spaceship/cargo/art/box-2.png" id="13_pe3j5"]
-[ext_resource type="Texture2D" uid="uid://lufi3wtdypqh" path="res://spaceship/cargo/art/box-3.png" id="14_vmnyg"]
-[ext_resource type="Texture2D" uid="uid://t0ykom7o0cvk" path="res://spaceship/cargo/art/box-4.png" id="15_ld1i5"]
-[ext_resource type="Texture2D" uid="uid://baibeu2ip1ien" path="res://spaceship/cargo/art/box-5.png" id="16_7agi1"]
-[ext_resource type="Texture2D" uid="uid://c3dpi13j3q087" path="res://spaceship/cargo/art/box-6.png" id="17_u45m4"]
-[ext_resource type="Texture2D" uid="uid://b2e4ioh6ca3ll" path="res://spaceship/cargo/art/box-7.png" id="18_5irhe"]
+[ext_resource type="Texture2D" uid="uid://bg8jslow58fwc" path="res://spaceship/cargo/art/box-1-32.png" id="12_k1idm"]
+[ext_resource type="Texture2D" uid="uid://80kssuroofwo" path="res://spaceship/cargo/art/box-2-32.png" id="13_a70qf"]
+[ext_resource type="Texture2D" uid="uid://8tjonxr4clyi" path="res://spaceship/cargo/art/box-3-32.png" id="14_tshgy"]
+[ext_resource type="Texture2D" uid="uid://b3y6kux6t0sbr" path="res://spaceship/cargo/art/box-4-32.png" id="15_g8pk1"]
+[ext_resource type="Texture2D" uid="uid://ctb1q82gxhjb" path="res://spaceship/cargo/art/box-5-32.png" id="16_wwp7m"]
+[ext_resource type="Texture2D" uid="uid://cky1x4nuan7k3" path="res://spaceship/cargo/art/box-6-32.png" id="17_3p5mo"]
+[ext_resource type="Texture2D" uid="uid://c1vs1msv5ya4b" path="res://spaceship/cargo/art/box-7-32.png" id="18_8yg61"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sp4yr"]
 atlas = ExtResource("2_u243v")
@@ -254,7 +254,7 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("12_ct252")
+texture = ExtResource("12_k1idm")
 expand_mode = 1
 stretch_mode = 4
 
@@ -262,7 +262,7 @@ stretch_mode = 4
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("13_pe3j5")
+texture = ExtResource("13_a70qf")
 expand_mode = 1
 stretch_mode = 4
 
@@ -270,7 +270,7 @@ stretch_mode = 4
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("14_vmnyg")
+texture = ExtResource("14_tshgy")
 expand_mode = 1
 stretch_mode = 4
 
@@ -278,7 +278,7 @@ stretch_mode = 4
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("15_ld1i5")
+texture = ExtResource("15_g8pk1")
 expand_mode = 1
 stretch_mode = 4
 
@@ -287,7 +287,7 @@ visible = false
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("16_7agi1")
+texture = ExtResource("16_wwp7m")
 expand_mode = 1
 stretch_mode = 4
 
@@ -296,7 +296,7 @@ visible = false
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("17_u45m4")
+texture = ExtResource("17_3p5mo")
 expand_mode = 1
 stretch_mode = 4
 
@@ -305,6 +305,6 @@ visible = false
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("18_5irhe")
+texture = ExtResource("18_8yg61")
 expand_mode = 1
 stretch_mode = 4

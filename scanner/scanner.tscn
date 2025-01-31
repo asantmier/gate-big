@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://inws64726gsr"]
+[gd_scene load_steps=23 format=3 uid="uid://inws64726gsr"]
 
 [ext_resource type="Script" path="res://addons/draggablesprite2d/src/draggablesprite2d.gd" id="1_8wqry"]
 [ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="2_yb01j"]
@@ -15,6 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://deosex4ndqlpa" path="res://scanner/art/scannerFrame-4.png.png" id="11_tlcqe"]
 [ext_resource type="Texture2D" uid="uid://3su45hoa0ana" path="res://scanner/art/scannerFrame-5.png.png" id="12_a0s7l"]
 [ext_resource type="Texture2D" uid="uid://iv2ytevpdssk" path="res://scanner/art/scannerFrame-6.png.png" id="13_ypxum"]
+[ext_resource type="AudioStream" uid="uid://dsy05jyqiddr1" path="res://scanner/sounds/ScannerMove.wav" id="16_7xg1k"]
+[ext_resource type="AudioStream" uid="uid://dr56fw4sql605" path="res://scanner/sounds/StartSelect,UI,set57,camera mechanics,servo,clicks clacks,meaty,operative,forward.wav" id="17_2eif8"]
+
+[sub_resource type="Curve" id="Curve_mvkfn"]
+_data = [Vector2(0, 0.0543644), 0.0, 0.0, 0, 0, Vector2(1, 0.163859), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sswo8"]
 shader = ExtResource("2_yb01j")
@@ -75,6 +81,8 @@ z_index = 3
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_8wqry")
 boundaries = Rect2(-34, 5, 800, 525)
+soundCurve = SubResource("Curve_mvkfn")
+maxsoundspeed = 2.0
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_sswo8")
@@ -137,3 +145,10 @@ frame_progress = 0.86542
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_t3khj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_7xg1k")
+
+[node name="TurnOnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_2eif8")
+volume_db = -5.0

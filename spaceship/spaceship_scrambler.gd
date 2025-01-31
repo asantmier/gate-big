@@ -112,7 +112,7 @@ func randomize_passengers(smuggle = false):
 	# Constructs an array that represents each floor as a percentage of total passenger count
 	var p_count_arr = []
 	p_count_arr.resize(floors.size())
-	p_count_arr = p_count_arr.map(func(num): return randf())
+	p_count_arr = p_count_arr.map(func(num): return randf_range(0.3, 0.7))
 	p_count_arr = GameConstants.normalize_array(p_count_arr)
 	# Changes the array to the number of passengers on each floor
 	p_count_arr = p_count_arr.map(func(num): return int(num * p_request))
