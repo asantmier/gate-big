@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq20r02rb6i1u"]
+[gd_scene load_steps=7 format=3 uid="uid://bq20r02rb6i1u"]
 
 [ext_resource type="Script" path="res://ui/gameplay/report.gd" id="1_2hw74"]
+[ext_resource type="PackedScene" uid="uid://b6lphuahubti5" path="res://ui/sound/prefab/hover_sound.tscn" id="2_dbqty"]
+[ext_resource type="PackedScene" uid="uid://b1ysgbquwacjd" path="res://ui/sound/prefab/press_sound.tscn" id="3_0fohq"]
+[ext_resource type="PackedScene" uid="uid://cge5tjfjglyiq" path="res://ui/sound/prefab/hit_sound.tscn" id="4_y6y07"]
+[ext_resource type="PackedScene" uid="uid://06my0baqgjx8" path="res://ui/sound/prefab/big_hit_sound.tscn" id="5_rdgo6"]
+[ext_resource type="PackedScene" uid="uid://cm3b4cvx0tm0e" path="res://ui/sound/prefab/huge_hit_sound.tscn" id="6_7q00l"]
 
 [node name="Report" type="VBoxContainer"]
+custom_minimum_size = Vector2(469.99, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -34,24 +40,28 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="KilledTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"HeaderLabel"
 text = "Criminals eliminated"
 
 [node name="PassedTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"HeaderLabel"
 text = "Civilians passed"
 
 [node name="MistakesTitle" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"HeaderLabel"
 text = "Errors in judgement"
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+[node name="StatsVSeparator" type="VSeparator" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -80,33 +90,78 @@ size_flags_vertical = 6
 theme_type_variation = &"TitleLabel"
 text = "1"
 
+[node name="OutOfTimeLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_colors/font_color = Color(0.694118, 0.156863, 0.145098, 1)
+text = "Ran out of time"
+horizontal_alignment = 1
+
+[node name="FlawlessLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_colors/font_color = Color(0.248884, 0.603175, 0, 1)
+text = "Flawless!"
+horizontal_alignment = 1
+
+[node name="ForgivenessLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SubtitleLabel"
+theme_override_colors/font_color = Color(0.248884, 0.603175, 0, 1)
+text = "A reprimand has been rescinded in support of your hard work._"
+horizontal_alignment = 1
+autowrap_mode = 3
+visible_characters_behavior = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="ReprimandsBox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="HBoxContainer2"]
+[node name="ReprimandsTitle" type="Label" parent="ReprimandsBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TitleLabel"
 theme_override_font_sizes/font_size = 48
 text = "Reprimands Remaining"
 visible_characters_behavior = 1
 
-[node name="ReprimandsLeft" type="Label" parent="HBoxContainer2"]
+[node name="ReprimandsLeft" type="Label" parent="ReprimandsBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 theme_type_variation = &"ReprimandLabel"
 text = "3"
 
-[node name="HSeparator" type="HSeparator" parent="."]
-layout_mode = 2
-
 [node name="CloseReport" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"ContinueButton"
 text = "CONTINUE"
 
+[node name="HoverSound" parent="CloseReport" instance=ExtResource("2_dbqty")]
+unique_name_in_owner = true
+
+[node name="PressSound" parent="CloseReport" instance=ExtResource("3_0fohq")]
+unique_name_in_owner = true
+
+[node name="HitSound" parent="." instance=ExtResource("4_y6y07")]
+unique_name_in_owner = true
+
+[node name="BigHitSound" parent="." instance=ExtResource("5_rdgo6")]
+unique_name_in_owner = true
+
+[node name="HugeHitSound" parent="." instance=ExtResource("6_7q00l")]
+unique_name_in_owner = true
+
+[connection signal="mouse_entered" from="CloseReport" to="." method="_on_close_report_mouse_entered"]
 [connection signal="pressed" from="CloseReport" to="." method="_on_close_report_pressed"]

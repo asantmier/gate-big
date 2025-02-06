@@ -19,23 +19,26 @@ func _input(event):
 			EventBus.passengers_viewed.emit()
 		if event.is_pressed() and not event.is_echo() and event.keycode == KEY_2:
 			EventBus.cargo_viewed.emit()
-		if event.is_pressed() and not event.is_echo() and event.keycode == KEY_3:
-			EventBus.systems_viewed.emit()
+		#if event.is_pressed() and not event.is_echo() and event.keycode == KEY_3:
+			#EventBus.systems_viewed.emit()
 
 
 func passengers():
+	$AudioStreamPlayer.play()
 	get_tree().call_group("cargo", "hide")
 	get_tree().call_group("passengers", "show")
 	get_tree().call_group("systems", "hide")
 
 
 func cargo():
+	$AudioStreamPlayer.play()
 	get_tree().call_group("cargo", "show")
 	get_tree().call_group("passengers", "hide")
 	get_tree().call_group("systems", "hide")
 
 
 func systems():
+	$AudioStreamPlayer.play()
 	get_tree().call_group("cargo", "hide")
 	get_tree().call_group("passengers", "hide")
 	get_tree().call_group("systems", "show")

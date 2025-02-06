@@ -2,6 +2,10 @@ extends Node2D
 
 @export var floors : Array[Floor]
 @export var cargo_bays : Array[Cargo]
+@export var background : Sprite2D
+@export var sight_blocker : Sprite2D
+@export var bg : Array[Texture2D]
+@export var fg : Array[Texture2D]
 
 var passengers : int
 var cargo : int
@@ -27,6 +31,10 @@ func submit_manifest():
 
 
 func scramble_ship():
+	var ship_var = randi_range(0, bg.size() - 1)
+	background.texture = bg[ship_var]
+	sight_blocker.texture = fg[ship_var]
+	
 	var smuggle_people = false
 	var smuggle_cargo = false
 	if GameData.is_smuggler:
@@ -49,7 +57,7 @@ func randomize_cargo(smuggle = false):
 	cargo = 0
 	
 	var limit = GameData.get_cargo_limit()
-	var p_request = randi_range(limit / 2, limit)
+	var p_request = randi_range(min(limit / 2, cargo_bays.size() * 3), min(limit, cargo_bays.size() * 11))
 	if GameData.is_fatty:
 		p_request = randi_range(limit + 1, (limit + 1) * 1.2)
 	
@@ -80,10 +88,11 @@ func randomize_cargo(smuggle = false):
 			if smuggle:
 				contraband.resize(randi_range(1, min(contraband.size(), bay.quantity)))
 				type_list.append_array(contraband)
-			for i in range(randi_range(0, min(legal_cargo.size(), bay.quantity - type_list.size()))):
-				var sel = legal_cargo.pick_random()
-				type_list.append(sel)
-				legal_cargo.erase(sel)
+			if bay.quantity > type_list.size():
+				for i in range(randi_range(1, min(legal_cargo.size(), bay.quantity - type_list.size()))):
+					var sel = legal_cargo.pick_random()
+					type_list.append(sel)
+					legal_cargo.erase(sel)
 			bay.set_types(type_list)
 			cargo_types.assign(GameConstants.set_merge(cargo_types, type_list))
 		
@@ -103,7 +112,7 @@ func randomize_passengers(smuggle = false):
 	# Constructs an array that represents each floor as a percentage of total passenger count
 	var p_count_arr = []
 	p_count_arr.resize(floors.size())
-	p_count_arr = p_count_arr.map(func(num): return randf())
+	p_count_arr = p_count_arr.map(func(num): return randf_range(0.3, 0.7))
 	p_count_arr = GameConstants.normalize_array(p_count_arr)
 	# Changes the array to the number of passengers on each floor
 	p_count_arr = p_count_arr.map(func(num): return int(num * p_request))

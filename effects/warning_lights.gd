@@ -9,5 +9,6 @@ func _ready():
 
 func play():
 	show()
+	$Alarm.play()
 	get_tree().call_group("warn_light", "stop")
 	get_tree().call_group("warn_light", "play", "pulse")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dglx7vtn56qmp"]
+[gd_scene load_steps=11 format=3 uid="uid://dglx7vtn56qmp"]
 
 [ext_resource type="PackedScene" uid="uid://cvd26too57o7i" path="res://ui/settings/volume_control.tscn" id="1_jf7gg"]
 [ext_resource type="Script" path="res://ui/title/start_screen.gd" id="1_lxddx"]
 [ext_resource type="FontFile" uid="uid://dl35yckdfyvv2" path="res://ui/fonts/Sixtyfour/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf" id="2_437so"]
+[ext_resource type="PackedScene" uid="uid://b6lphuahubti5" path="res://ui/sound/prefab/hover_sound.tscn" id="3_5wwyo"]
+[ext_resource type="PackedScene" uid="uid://b1ysgbquwacjd" path="res://ui/sound/prefab/press_sound.tscn" id="4_g1cc1"]
 
 [sub_resource type="FontVariation" id="FontVariation_2jhol"]
 base_font = ExtResource("2_437so")
@@ -197,7 +199,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = SubResource("FontVariation_2jhol")
 theme_override_font_sizes/font_size = 20
-text = "BEME INTERGALATIC GATE"
+text = "BEAM INTERGALATIC GATE"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
@@ -216,6 +218,12 @@ grow_vertical = 2
 theme_type_variation = &"ContinueButton"
 theme_override_font_sizes/font_size = 50
 text = "BEGIN"
+
+[node name="HoverSound" parent="Button" instance=ExtResource("3_5wwyo")]
+unique_name_in_owner = true
+
+[node name="PressSound" parent="Button" instance=ExtResource("4_g1cc1")]
+unique_name_in_owner = true
 
 [node name="Volume Control" parent="." instance=ExtResource("1_jf7gg")]
 layout_mode = 1
@@ -251,4 +259,5 @@ libraries = {
 "": SubResource("AnimationLibrary_yrlvq")
 }
 
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

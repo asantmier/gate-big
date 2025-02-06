@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ysgbquwacjd"]
+
+[ext_resource type="AudioStream" uid="uid://0pb3ph7ijduf" path="res://ui/sound/SBsfi1_Select Click 014.wav" id="1_h1t4w"]
+
+[node name="PressSound" type="AudioStreamPlayer"]
+stream = ExtResource("1_h1t4w")

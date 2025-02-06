@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dr85bx1p26tlp"
-path.bptc="res://.godot/imported/StarBackgroundv3.hdr-95e2f88ff904683b3ceafbabd930cc2b.bptc.ctex"
+path="res://.godot/imported/Starbackgroundv3.hdr-121a33c894d8357f4308b8f9bec82bf5.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://3d/StarBackgroundv3.hdr"
-dest_files=["res://.godot/imported/StarBackgroundv3.hdr-95e2f88ff904683b3ceafbabd930cc2b.bptc.ctex"]
+source_file="res://3d/Starbackgroundv3.hdr"
+dest_files=["res://.godot/imported/Starbackgroundv3.hdr-121a33c894d8357f4308b8f9bec82bf5.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

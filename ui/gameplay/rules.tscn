@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://bum8ktu74fq31"]
+[gd_scene load_steps=28 format=3 uid="uid://bum8ktu74fq31"]
 
 [ext_resource type="Script" path="res://ui/gameplay/laws_display.gd" id="1_8q1xl"]
 [ext_resource type="Texture2D" uid="uid://df72snr3y1u3e" path="res://spaceship/characters/textures/npc-bc.png" id="2_u243v"]
+[ext_resource type="PackedScene" uid="uid://d3qo0o47lmsuh" path="res://ui/gameplay/reprimand_blink_component.tscn" id="2_ucgbh"]
 [ext_resource type="Texture2D" uid="uid://dddhsyo13ipas" path="res://spaceship/characters/textures/npc-bm.png" id="3_hm1gk"]
 [ext_resource type="Texture2D" uid="uid://bxcsu5ow5a3wm" path="res://spaceship/characters/textures/npc-by.png" id="4_1dmky"]
 [ext_resource type="Texture2D" uid="uid://b2hgh28477xg7" path="res://spaceship/characters/textures/npc-gc.png" id="5_c0fb1"]
@@ -9,14 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://bsqx6liytm12a" path="res://spaceship/characters/textures/npc-gy.png" id="7_tms0g"]
 [ext_resource type="Texture2D" uid="uid://b5hb6lwiln0en" path="res://spaceship/characters/textures/npc-rc.png" id="8_dj5co"]
 [ext_resource type="Texture2D" uid="uid://dtwax6b4ifh0q" path="res://spaceship/characters/textures/npc-rm.png" id="9_f5000"]
-[ext_resource type="Texture2D" uid="uid://bo5xwhxcsyn74" path="res://spaceship/cargo/art/box_var1.png" id="9_vf2gs"]
-[ext_resource type="Texture2D" uid="uid://beg10fkop3mb4" path="res://spaceship/cargo/art/box_var2.png" id="10_2440i"]
 [ext_resource type="Texture2D" uid="uid://c7sargdmlhkg2" path="res://spaceship/characters/textures/npc-ry.png" id="10_f70b2"]
-[ext_resource type="Texture2D" uid="uid://cuh8u4v8y5akp" path="res://spaceship/cargo/art/box_var3.png" id="11_av5cr"]
-[ext_resource type="Texture2D" uid="uid://dpr0soo477wa0" path="res://spaceship/cargo/art/box_var4.png" id="12_dqmui"]
-[ext_resource type="Texture2D" uid="uid://byu4p4ceft1pd" path="res://spaceship/cargo/art/box_var5.png" id="13_lvrvo"]
-[ext_resource type="Texture2D" uid="uid://dvtf6ytc38xwy" path="res://spaceship/cargo/art/box_var6.png" id="14_xut7u"]
-[ext_resource type="Texture2D" uid="uid://dpqvn34mxsrkg" path="res://spaceship/cargo/art/box_var7.png" id="15_rd36l"]
+[ext_resource type="Texture2D" uid="uid://bg8jslow58fwc" path="res://spaceship/cargo/art/box-1-32.png" id="12_k1idm"]
+[ext_resource type="Texture2D" uid="uid://80kssuroofwo" path="res://spaceship/cargo/art/box-2-32.png" id="13_a70qf"]
+[ext_resource type="Texture2D" uid="uid://8tjonxr4clyi" path="res://spaceship/cargo/art/box-3-32.png" id="14_tshgy"]
+[ext_resource type="Texture2D" uid="uid://b3y6kux6t0sbr" path="res://spaceship/cargo/art/box-4-32.png" id="15_g8pk1"]
+[ext_resource type="Texture2D" uid="uid://ctb1q82gxhjb" path="res://spaceship/cargo/art/box-5-32.png" id="16_wwp7m"]
+[ext_resource type="Texture2D" uid="uid://cky1x4nuan7k3" path="res://spaceship/cargo/art/box-6-32.png" id="17_3p5mo"]
+[ext_resource type="Texture2D" uid="uid://c1vs1msv5ya4b" path="res://spaceship/cargo/art/box-7-32.png" id="18_8yg61"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sp4yr"]
 atlas = ExtResource("2_u243v")
@@ -79,6 +80,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HSeparator2" type="HSeparator" parent="Laws Display/VBoxContainer"]
+layout_mode = 2
 
 [node name="title" type="Label" parent="Laws Display/VBoxContainer"]
 layout_mode = 2
@@ -86,43 +91,73 @@ theme_type_variation = &"TitleLabel"
 text = "TODAY'S LAWS"
 
 [node name="subtitle" type="Label" parent="Laws Display/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"SubtitleLabel"
-text = "KILL ON SIGHT"
+text = "DEADLY FORCE AUTHORIZED"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Laws Display/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Laws Display/VBoxContainer"]
 layout_mode = 2
 
-[node name="header" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer"]
+[node name="LimitsSection" type="HBoxContainer" parent="Laws Display/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Laws Display/VBoxContainer/LimitsSection"]
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
-text = "Passenger Limit:"
+text = "LIMITS"
 
-[node name="passengerlimit" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Laws Display/VBoxContainer/LimitsSection"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer"]
+layout_mode = 2
+
+[node name="header" type="Label" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+text = "Passengers:"
+
+[node name="passengerlimit" type="Label" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"BodyLabel"
 text = "22"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Laws Display/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer"]
 layout_mode = 2
 
-[node name="header" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer2"]
+[node name="header" type="Label" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-theme_type_variation = &"HeaderLabel"
-text = "Cargo Limit:"
+theme_type_variation = &"BodyLabel"
+text = "Cargo:"
 
-[node name="cargolimit" type="Label" parent="Laws Display/VBoxContainer/HBoxContainer2"]
+[node name="cargolimit" type="Label" parent="Laws Display/VBoxContainer/LimitsSection/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"BodyLabel"
 text = "22"
+
+[node name="Reprimand Blink Component" parent="Laws Display/VBoxContainer/LimitsSection" instance=ExtResource("2_ucgbh")]
+condition = "fatty"
+
+[node name="BannedSectionTitle" type="Label" parent="Laws Display/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "BANNED"
+
+[node name="Reprimand Blink Component" parent="Laws Display/VBoxContainer/BannedSectionTitle" instance=ExtResource("2_ucgbh")]
+condition = "smuggler"
 
 [node name="FactionsSection" type="VBoxContainer" parent="Laws Display/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
 [node name="section title" type="Label" parent="Laws Display/VBoxContainer/FactionsSection"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Banned Factions"
@@ -205,6 +240,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="section title" type="Label" parent="Laws Display/VBoxContainer/ContrabandSection"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
 text = "Banned Goods"
@@ -219,7 +255,7 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("9_vf2gs")
+texture = ExtResource("12_k1idm")
 expand_mode = 1
 stretch_mode = 4
 
@@ -227,7 +263,7 @@ stretch_mode = 4
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("10_2440i")
+texture = ExtResource("13_a70qf")
 expand_mode = 1
 stretch_mode = 4
 
@@ -235,7 +271,7 @@ stretch_mode = 4
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("11_av5cr")
+texture = ExtResource("14_tshgy")
 expand_mode = 1
 stretch_mode = 4
 
@@ -243,7 +279,7 @@ stretch_mode = 4
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("12_dqmui")
+texture = ExtResource("15_g8pk1")
 expand_mode = 1
 stretch_mode = 4
 
@@ -252,7 +288,7 @@ visible = false
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("13_lvrvo")
+texture = ExtResource("16_wwp7m")
 expand_mode = 1
 stretch_mode = 4
 
@@ -261,7 +297,7 @@ visible = false
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("14_xut7u")
+texture = ExtResource("17_3p5mo")
 expand_mode = 1
 stretch_mode = 4
 
@@ -270,6 +306,6 @@ visible = false
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("15_rd36l")
+texture = ExtResource("18_8yg61")
 expand_mode = 1
 stretch_mode = 4

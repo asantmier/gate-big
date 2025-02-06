@@ -33,3 +33,12 @@ func _on_animation_finished(anim_name):
 			EventBus.ship_left_gate.emit()
 		"explode":
 			EventBus.ship_left_gate.emit()
+
+
+func gate_touched():
+	EventBus.gate_touched.emit()
+
+
+func cannon_fire():
+	EventBus.cannon_fired.emit()
+	

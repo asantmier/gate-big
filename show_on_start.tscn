@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfwpyv74uxk76"]
+
+[ext_resource type="Script" path="res://show_on_start.gd" id="1_18vmb"]
+
+[node name="Show On Start" type="Node"]
+script = ExtResource("1_18vmb")

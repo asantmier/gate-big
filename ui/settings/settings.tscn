@@ -1,10 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6t5m8euq2j0f"]
+[gd_scene load_steps=12 format=3 uid="uid://b6t5m8euq2j0f"]
 
+[ext_resource type="Script" path="res://ui/settings/settings_container.gd" id="1_g6on4"]
 [ext_resource type="Texture2D" uid="uid://b18nq43yegev" path="res://ui/textures/settings/pauseIconBlink.png" id="1_hkljg"]
 [ext_resource type="PackedScene" uid="uid://joippmkja8hn" path="res://ui/settings/settings_menu.tscn" id="1_lsbsr"]
 [ext_resource type="Texture2D" uid="uid://bglc5tklisags" path="res://ui/textures/settings/volume3.png" id="1_mkw26"]
 [ext_resource type="PackedScene" uid="uid://cvd26too57o7i" path="res://ui/settings/volume_control.tscn" id="2_ady04"]
 [ext_resource type="Texture2D" uid="uid://c3lepnlmdpmvr" path="res://ui/textures/settings/pauseIcon.png" id="2_oqhx5"]
+[ext_resource type="PackedScene" uid="uid://b6lphuahubti5" path="res://ui/sound/prefab/hover_sound.tscn" id="7_iqvuq"]
+[ext_resource type="PackedScene" uid="uid://b1ysgbquwacjd" path="res://ui/sound/prefab/press_sound.tscn" id="8_a22w7"]
+
+[sub_resource type="Animation" id="Animation_2f5tt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_hkljg")]
+}
 
 [sub_resource type="Animation" id="Animation_y42me"]
 resource_name = "blink"
@@ -23,21 +41,6 @@ tracks/0/keys = {
 "values": [ExtResource("1_hkljg"), ExtResource("2_oqhx5")]
 }
 
-[sub_resource type="Animation" id="Animation_2f5tt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture_normal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_hkljg")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o228p"]
 _data = {
 "RESET": SubResource("Animation_2f5tt"),
@@ -54,25 +57,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="SettingsContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 59.0
 offset_bottom = 135.0
 theme_override_constants/separation = 0
+script = ExtResource("1_g6on4")
 
-[node name="Settings Button" type="TextureButton" parent="VBoxContainer"]
+[node name="Settings Button" type="TextureButton" parent="SettingsContainer"]
 process_mode = 3
 layout_mode = 2
 texture_normal = ExtResource("1_hkljg")
 texture_pressed = ExtResource("2_oqhx5")
 texture_hover = ExtResource("2_oqhx5")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Settings Button"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SettingsContainer/Settings Button"]
 libraries = {
 "": SubResource("AnimationLibrary_o228p")
 }
 
-[node name="Volume Button" type="TextureButton" parent="VBoxContainer"]
+[node name="Volume Button" type="TextureButton" parent="SettingsContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -81,7 +85,7 @@ texture_normal = ExtResource("1_mkw26")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Volume Control" parent="VBoxContainer/Volume Button" instance=ExtResource("2_ady04")]
+[node name="Volume Control" parent="SettingsContainer/Volume Button" instance=ExtResource("2_ady04")]
 custom_minimum_size = Vector2(50, 34.67)
 layout_mode = 1
 anchors_preset = 4
@@ -95,8 +99,18 @@ size_flags_horizontal = 3
 
 [node name="Settings Menu" parent="." node_paths=PackedStringArray("settings_animation", "volume_slider") instance=ExtResource("1_lsbsr")]
 layout_mode = 1
-settings_animation = NodePath("../VBoxContainer/Settings Button/AnimationPlayer")
-volume_slider = NodePath("../VBoxContainer/Volume Button/Volume Control")
+settings_animation = NodePath("../SettingsContainer/Settings Button/AnimationPlayer")
+volume_slider = NodePath("../SettingsContainer/Volume Button/Volume Control")
 
-[connection signal="pressed" from="VBoxContainer/Settings Button" to="Settings Menu" method="toggle"]
-[connection signal="pressed" from="VBoxContainer/Volume Button" to="Settings Menu" method="_on_volume_button_pressed"]
+[node name="HoverSound" parent="." instance=ExtResource("7_iqvuq")]
+unique_name_in_owner = true
+
+[node name="PressSound" parent="." instance=ExtResource("8_a22w7")]
+unique_name_in_owner = true
+
+[connection signal="mouse_entered" from="SettingsContainer/Settings Button" to="SettingsContainer" method="_on_settings_button_mouse_entered"]
+[connection signal="pressed" from="SettingsContainer/Settings Button" to="SettingsContainer" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="SettingsContainer/Settings Button" to="Settings Menu" method="toggle"]
+[connection signal="mouse_entered" from="SettingsContainer/Volume Button" to="SettingsContainer" method="_on_volume_button_mouse_entered"]
+[connection signal="pressed" from="SettingsContainer/Volume Button" to="SettingsContainer" method="_on_volume_button_pressed"]
+[connection signal="pressed" from="SettingsContainer/Volume Button" to="Settings Menu" method="_on_volume_button_pressed"]

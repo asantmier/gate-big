@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3qo0o47lmsuh"]
+
+[ext_resource type="Script" path="res://ui/gameplay/reprimand_blink_component.gd" id="1_ltc0e"]
+
+[node name="Reprimand Blink Component" type="Node"]
+script = ExtResource("1_ltc0e")

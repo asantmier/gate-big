@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcmk1c2cf8r6c"]
+[gd_scene load_steps=5 format=3 uid="uid://bcmk1c2cf8r6c"]
 
 [ext_resource type="Script" path="res://ui/gameplay/manifest.gd" id="1_f28uf"]
+[ext_resource type="PackedScene" uid="uid://clet7ci88y3e" path="res://blinking_caret_component.tscn" id="2_xnypg"]
+[ext_resource type="PackedScene" uid="uid://d3qo0o47lmsuh" path="res://ui/gameplay/reprimand_blink_component.tscn" id="3_l3v36"]
+[ext_resource type="PackedScene" uid="uid://ih6ee73tkegt" path="res://ui/typing_sounds.tscn" id="4_0nrb7"]
 
 [node name="Manifest" type="Control"]
 layout_mode = 3
@@ -21,7 +24,12 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLabel"
-text = "Manifest"
+text = "Ship Manifest"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+custom_minimum_size = Vector2(137.485, 0)
+layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="Manifest" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -30,3 +38,11 @@ theme_type_variation = &"BodyLabel"
 text = "this is where the manifest information will be"
 autowrap_mode = 2
 script = ExtResource("1_f28uf")
+
+[node name="Blinking Caret Component" parent="VBoxContainer/Manifest" instance=ExtResource("2_xnypg")]
+auto = false
+
+[node name="Reprimand Blink Component" parent="." instance=ExtResource("3_l3v36")]
+
+[node name="TypingSounds" parent="." instance=ExtResource("4_0nrb7")]
+unique_name_in_owner = true

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdgiymcvxt4ga"]
+[gd_scene load_steps=5 format=3 uid="uid://bdgiymcvxt4ga"]
 
 [ext_resource type="Script" path="res://ui/gameplay/brief.gd" id="1_d3nwd"]
 [ext_resource type="PackedScene" uid="uid://rsrg7p7j464o" path="res://ui/gameplay/start_button.tscn" id="2_fee5r"]
+[ext_resource type="PackedScene" uid="uid://clet7ci88y3e" path="res://blinking_caret_component.tscn" id="2_hcbfi"]
+[ext_resource type="PackedScene" uid="uid://ih6ee73tkegt" path="res://ui/typing_sounds.tscn" id="4_vf8ry"]
 
 [node name="Brief" type="VBoxContainer" node_paths=PackedStringArray("show_on_finish")]
 anchors_preset = 8
@@ -9,10 +11,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -191.0
-offset_right = 256.0
-offset_bottom = 192.0
+offset_left = -309.0
+offset_top = -222.0
+offset_right = 309.0
+offset_bottom = 223.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d3nwd")
@@ -21,7 +23,8 @@ show_on_finish = NodePath("VBoxContainer/Start Button")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"BigTitleLabel"
 theme_override_font_sizes/font_size = 40
@@ -38,6 +41,9 @@ theme_type_variation = &"BodyRichTextLabel"
 text = "If you see this text something went wrong"
 fit_content = true
 
+[node name="Blinking Caret Component" parent="VBoxContainer/News" instance=ExtResource("2_hcbfi")]
+auto = false
+
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
@@ -48,5 +54,7 @@ layout_mode = 2
 [node name="Start Button" parent="VBoxContainer" instance=ExtResource("2_fee5r")]
 layout_mode = 2
 theme_type_variation = &"ContinueButton"
+
+[node name="TypingSounds" parent="." instance=ExtResource("4_vf8ry")]
 
 [connection signal="pressed" from="VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]

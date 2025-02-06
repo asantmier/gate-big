@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c6jsdaxy71qto"]
+[gd_scene load_steps=59 format=3 uid="uid://c6jsdaxy71qto"]
 
 [ext_resource type="PackedScene" uid="uid://bvj3h0821p1jp" path="res://spaceship/spaceship.tscn" id="1_05mrr"]
 [ext_resource type="Script" path="res://start_animation.gd" id="1_lusjx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ns8lueen1kr0" path="res://effects/Explosion_002_Tile_8x8_256x256.png" id="3_hj608"]
 [ext_resource type="PackedScene" uid="uid://bcmk1c2cf8r6c" path="res://ui/gameplay/manifest.tscn" id="5_01fqa"]
 [ext_resource type="PackedScene" uid="uid://bum8ktu74fq31" path="res://ui/gameplay/rules.tscn" id="5_3yfl6"]
+[ext_resource type="PackedScene" uid="uid://cfwpyv74uxk76" path="res://show_on_start.tscn" id="5_tnlny"]
 [ext_resource type="PackedScene" uid="uid://ccnu0nds8r7jk" path="res://ui/gameplay/choice_buttons.tscn" id="5_ypbns"]
 [ext_resource type="PackedScene" uid="uid://cddviapsby3u" path="res://ui/gameplay/shift_counter.tscn" id="6_nkemw"]
 [ext_resource type="PackedScene" uid="uid://c4li4ei653p3y" path="res://ui/gameplay/shift_timer.tscn" id="6_s522t"]
@@ -20,12 +21,24 @@
 [ext_resource type="PackedScene" uid="uid://cxxklybhjyqnk" path="res://effects/warning_light.tscn" id="14_kpccf"]
 [ext_resource type="PackedScene" uid="uid://gu8os0cv80kw" path="res://ui/alerts/alert_toast.tscn" id="14_n7f0v"]
 [ext_resource type="Script" path="res://eod_anim.gd" id="16_21155"]
+[ext_resource type="AudioStream" uid="uid://bmpuy73qrwasv" path="res://sounds/SPACESHIP-INTERIORS-ALARM-7.wav" id="17_kveu6"]
 [ext_resource type="PackedScene" uid="uid://d8rwc8vp2xyf" path="res://scanner/scanner_layer.tscn" id="17_oofxi"]
 [ext_resource type="PackedScene" uid="uid://d2pyxpuyinvfm" path="res://effects/melt_effect.tscn" id="18_4xoj3"]
 [ext_resource type="Texture2D" uid="uid://dlv82m7aytnrb" path="res://ui/textures/interfaceBorderChain.png" id="18_47dfa"]
 [ext_resource type="Shader" path="res://scanner/crt alt.gdshader" id="19_o0nrv"]
+[ext_resource type="Texture2D" uid="uid://0xmqqvixl4mb" path="res://ui/textures/bannerWin.png" id="20_3ywll"]
 [ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="20_axhhb"]
 [ext_resource type="PackedScene" uid="uid://cau15v47xi5kl" path="res://3d/3d_background.tscn" id="20_p7qnr"]
+[ext_resource type="Texture2D" uid="uid://cmfd7yb5o5tsf" path="res://ui/textures/bannerWinBlink.png" id="21_g7pdj"]
+[ext_resource type="AudioStream" uid="uid://bxdufrx27g0yv" path="res://scanner/sounds/Electric, Switch ON OFF, power, turn-on, medium frequency, motor, pulse, hum.wav" id="27_e8i8q"]
+[ext_resource type="PackedScene" uid="uid://cov2xcvwuyp2w" path="res://cheats.tscn" id="28_2ajui"]
+[ext_resource type="AudioStream" uid="uid://dgelmxi464gck" path="res://scanner/sounds/Button_Press-007.wav" id="28_bibgy"]
+[ext_resource type="AudioStream" uid="uid://cq15xcttf4ggp" path="res://spaceship/sounds/Ship Arriving.wav" id="29_epog7"]
+[ext_resource type="AudioStream" uid="uid://c7hxlew0ivjoq" path="res://spaceship/sounds/Ship Leaving.wav" id="30_mt2k7"]
+[ext_resource type="AudioStream" uid="uid://hbq755h72fhp" path="res://sounds/Electric, Pass-by, distorsion, motor, turning machine, accelerate, increase, decrease.wav" id="32_5lub5"]
+[ext_resource type="AudioStream" uid="uid://chlfjm2ox0nya" path="res://sounds/EXPLDsgn_Explosion Rumble Distorted_07_SFRMS_SCIWPNS.wav" id="33_hq8f5"]
+[ext_resource type="AudioStream" uid="uid://b4cod162qkoiy" path="res://sounds/ambience very heavy-hearted aggressive suspenceful drone type pad.wav" id="36_lsao2"]
+[ext_resource type="Script" path="res://ambience.gd" id="37_6f6rs"]
 
 [sub_resource type="Animation" id="Animation_4srhk"]
 length = 0.001
@@ -43,7 +56,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("../EOD Canvas:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -76,6 +89,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(728, 540)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Ship Animations/NinePatchRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_hjb8g"]
@@ -128,6 +153,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(960, 540)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Ship Animations/NinePatchRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_n0uwe"]
@@ -191,6 +228,18 @@ tracks/4/keys = {
 "clips": PackedStringArray("end_day"),
 "times": PackedFloat32Array(2.56667)
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Ship Animations/NinePatchRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ay45"]
 _data = {
@@ -252,7 +301,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("..:visible")
+tracks/4/path = NodePath("../Control/AnimatedSprite2D:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -335,7 +384,7 @@ tracks/2/path = NodePath(".:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.366667, 2),
+"times": PackedFloat32Array(0, 0.8, 2),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -351,6 +400,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Control/AnimatedSprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_1fwbb"]
@@ -379,6 +440,20 @@ _data = {
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rqsff"]
 light_mode = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1tchj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_3ywll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_g7pdj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="Animation" id="Animation_d6h4q"]
 length = 0.001
@@ -502,30 +577,114 @@ tracks/9/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Ship Animations/ScanOnSound:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Ship Animations/ScanOffSound:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Ship Animations/ShipArrive:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Ship Animations/ShipLeave:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Ship Animations/Explosion:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Ship Animations/Explosion:volume_db")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Ship Animations/Explosion2:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_bh3g8"]
 resource_name = "explode"
-length = 4.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Explosion:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2.3, 3.9),
+"times": PackedFloat32Array(3, 4.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 63]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Explosion:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.3, 3.9),
+"times": PackedFloat32Array(3, 4.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -537,7 +696,7 @@ tracks/2/path = NodePath("Ship Animations/Blind Canvas/ColorRect:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2.03333, 2.93333),
+"times": PackedFloat32Array(2.73333, 4.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -549,7 +708,7 @@ tracks/3/path = NodePath("Ship Animations/Blind Canvas/ColorRect:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(2.03333, 2.43333, 2.53333, 2.93333),
+"times": PackedFloat32Array(2.73333, 3.13333, 4, 4.4),
 "transitions": PackedFloat32Array(0.5, -2, 2, -2),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -561,7 +720,7 @@ tracks/4/path = NodePath("Spaceship:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 2.5),
+"times": PackedFloat32Array(0, 3.2),
 "transitions": PackedFloat32Array(0, 0),
 "update": 1,
 "values": [Vector2(363, 271), Vector2(-373, 271)]
@@ -625,6 +784,68 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 2, 1),
 "update": 0,
 "values": [Vector2(19, 63), Vector2(19, 63), Vector2(19, -430)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Ship Animations/ScanOffSound:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Ship Animations")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"cannon_fire"
+}]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Ship Animations/Explosion:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2.83333, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Ship Animations/Explosion:volume_db")
+tracks/13/interp = 2
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(5.7, 6),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [0.0, -29.444]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Ship Animations/Explosion2:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(3.16667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_wwb0r"]
@@ -702,6 +923,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Ship Animations/ScanOnSound:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.13333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ship Animations/ShipArrive:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_7e5mx"]
 resource_name = "float_out"
@@ -776,7 +1021,45 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.833333, 1.3),
 "transitions": PackedFloat32Array(1, 2, 1),
 "update": 0,
-"values": [Vector2(19, 63), Vector2(19, 63), Vector2(19, -430)]
+"values": [Vector2(19, 58), Vector2(19, 58), Vector2(19, -430)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Ship Animations")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3.03333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"gate_touched"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ship Animations/ScanOffSound:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Ship Animations/ShipLeave:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.46667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vwmg2"]
@@ -791,7 +1074,7 @@ _data = {
 shader = ExtResource("19_o0nrv")
 shader_parameter/resolution = Vector2(320, 180)
 shader_parameter/scan_line_amount = 0.1
-shader_parameter/warp_amount = 2.733
+shader_parameter/warp_amount = 0.433
 shader_parameter/noise_amount = 0.094
 shader_parameter/interference_amount = 0.949
 shader_parameter/grille_amount = 0.31
@@ -816,9 +1099,10 @@ shader_parameter/shake_block_size = 19.82
 shader_parameter/shake_color_rate = 0.02
 
 [node name="Main" type="Node2D"]
-metadata/_edit_vertical_guides_ = [728.0]
+metadata/_edit_vertical_guides_ = [728.0, 24.0, 706.0]
 
 [node name="StartAnimation" type="AnimationPlayer" parent="."]
+reset_on_save = false
 root_node = NodePath("../3D Canvas")
 libraries = {
 "": SubResource("AnimationLibrary_3ay45")
@@ -846,20 +1130,23 @@ render_target_update_mode = 4
 
 [node name="Menu Canvas" type="CanvasLayer" parent="."]
 layer = 6
-visible = false
 
 [node name="StartScreen" parent="Menu Canvas" instance=ExtResource("14_h3ekp")]
+visible = false
 
 [node name="Settings" parent="Menu Canvas" instance=ExtResource("13_oaq32")]
 visible = false
+
+[node name="Show On Start" parent="Menu Canvas/Settings" instance=ExtResource("5_tnlny")]
 
 [node name="HUD Canvas" type="CanvasLayer" parent="."]
 layer = 2
 
 [node name="Scanner Buttons" parent="HUD Canvas" instance=ExtResource("9_r58rm")]
 anchor_left = 0.25
-anchor_top = 0.825926
+anchor_top = 0.838889
 anchor_right = 0.509375
+anchor_bottom = 0.988889
 
 [node name="Right Panel" type="Panel" parent="HUD Canvas"]
 anchors_preset = -1
@@ -987,6 +1274,9 @@ mouse_filter = 2
 
 [node name="Warning Light" parent="HUD Canvas/Warning Lights/Control4" instance=ExtResource("14_kpccf")]
 
+[node name="Alarm" type="AudioStreamPlayer" parent="HUD Canvas/Warning Lights"]
+stream = ExtResource("17_kveu6")
+
 [node name="Alert Toast" parent="HUD Canvas" instance=ExtResource("14_n7f0v")]
 anchors_preset = -1
 anchor_right = 0.758333
@@ -994,7 +1284,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="EOD Canvas" type="CanvasLayer" parent="."]
 layer = 3
-visible = false
 
 [node name="EODAnim" type="AnimationPlayer" parent="EOD Canvas"]
 root_node = NodePath("../ColorRect")
@@ -1004,6 +1293,7 @@ libraries = {
 script = ExtResource("16_21155")
 
 [node name="EOD Panel" parent="EOD Canvas" instance=ExtResource("12_8bmx5")]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="EOD Canvas"]
 visible = false
@@ -1016,6 +1306,23 @@ offset_bottom = -598.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[node name="Control" type="Control" parent="EOD Canvas"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EOD Canvas/Control"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_1tchj")
+autoplay = "default"
+frame_progress = 0.333197
 
 [node name="Spaceship" parent="." instance=ExtResource("1_05mrr")]
 position = Vector2(363, 271)
@@ -1100,6 +1407,27 @@ offset_right = 750.0
 offset_bottom = 472.0
 color = Color(0.215902, 0.215902, 0.215902, 1)
 
+[node name="ScanOnSound" type="AudioStreamPlayer" parent="Ship Animations"]
+stream = ExtResource("27_e8i8q")
+volume_db = -10.0
+
+[node name="ScanOffSound" type="AudioStreamPlayer" parent="Ship Animations"]
+stream = ExtResource("28_bibgy")
+volume_db = -10.0
+
+[node name="ShipArrive" type="AudioStreamPlayer" parent="Ship Animations"]
+stream = ExtResource("29_epog7")
+
+[node name="ShipLeave" type="AudioStreamPlayer" parent="Ship Animations"]
+stream = ExtResource("30_mt2k7")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="Ship Animations"]
+stream = ExtResource("32_5lub5")
+
+[node name="Explosion2" type="AudioStreamPlayer" parent="Ship Animations"]
+stream = ExtResource("33_hq8f5")
+volume_db = -6.0
+
 [node name="Explosion" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(433, 254)
@@ -1112,3 +1440,10 @@ vframes = 8
 
 [node name="MeltEffect" parent="." instance=ExtResource("18_4xoj3")]
 layer = 5
+
+[node name="Cheats" parent="." instance=ExtResource("28_2ajui")]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_lsao2")
+volume_db = -10.0
+script = ExtResource("37_6f6rs")

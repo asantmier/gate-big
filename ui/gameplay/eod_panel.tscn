@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2hnd1pwc8lfw"]
+[gd_scene load_steps=10 format=3 uid="uid://b2hnd1pwc8lfw"]
 
 [ext_resource type="Script" path="res://ui/gameplay/eod_panel.gd" id="1_owx02"]
 [ext_resource type="PackedScene" uid="uid://bq20r02rb6i1u" path="res://ui/gameplay/report.tscn" id="2_eab7v"]
 [ext_resource type="Shader" path="res://shaders/retro_tv.gdshader" id="2_nep1p"]
 [ext_resource type="Texture2D" uid="uid://dehkh875at58l" path="res://icon.svg" id="2_rw3s8"]
 [ext_resource type="PackedScene" uid="uid://bdgiymcvxt4ga" path="res://ui/gameplay/brief.tscn" id="5_afgpm"]
+[ext_resource type="AudioStream" uid="uid://cwndfi5vdxnaj" path="res://sounds/AMB_INT_Industrial_Building_Server_Room.wav" id="6_dsw1d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vijx1"]
 bg_color = Color(0.14, 0.14, 0.14, 0.733333)
@@ -67,3 +68,7 @@ offset_left = -244.0
 offset_top = -172.0
 offset_right = 244.0
 offset_bottom = 222.0
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_dsw1d")
+volume_db = -15.0

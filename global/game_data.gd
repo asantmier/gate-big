@@ -18,6 +18,9 @@ var smuggled := 0
 var fattied := 0
 var processed := 0
 
+var shift_locked := 0
+signal unlocked
+
 var shift_rules := {
 	0: {
 		quota = 0,
@@ -28,21 +31,22 @@ var shift_rules := {
 		criminals = [],
 		contraband = [],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 50,
-		passenger_limit = 50,
+		cargo_limit = 14,
+		passenger_limit = 14,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	1: {
 		quota = 3,
-		time = 5,
+		time = 10 * 60,
 		liars = 1, # Liars lie on their manifest
 		smugglers = 0, # Smugglers carry contraband or criminals
 		fatties = 0, # Fatties carry over the limit of passengers or cargo
+		call_methods = [],
 		criminals = [],
 		contraband = [],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 50,
-		passenger_limit = 50,
+		cargo_limit = 20,
+		passenger_limit = 14,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	2: {
@@ -51,12 +55,12 @@ var shift_rules := {
 		liars = 1, # Liars lie on their manifest
 		smugglers = 0, # Smugglers carry contraband or criminals
 		fatties = 2, # Fatties carry over the limit of passengers or cargo
-		call_methods = ["enable_smuggler"],
+		call_methods = ["enable_fatty"],
 		criminals = [],
 		contraband = [],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 12,
-		passenger_limit = 8,
+		cargo_limit = 20,
+		passenger_limit = 14,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	3: {
@@ -64,12 +68,12 @@ var shift_rules := {
 		time = 5 * 60,
 		liars = 0, # Liars lie on their manifest
 		smugglers = 2, # Smugglers carry contraband or criminals
-		call_methods = ["enable_fatty"],
+		call_methods = ["enable_smuggler"],
 		fatties = 0, # Fatties carry over the limit of passengers or cargo
-		criminals = [GameConstants.BLUE_CY_FACTION, GameConstants.BLUE_MG_FACTION, GameConstants.BLUE_YL_FACTION],
+		criminals = [GameConstants.BLUE_MG_FACTION, GameConstants.GREEN_MG_FACTION, GameConstants.RED_MG_FACTION],
 		contraband = [GameConstants.GRIN, GameConstants.OMINOUS_MOO_DENG],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 16,
+		cargo_limit = 20,
 		passenger_limit = 12,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
@@ -79,24 +83,24 @@ var shift_rules := {
 		liars = 0, # Liars lie on their manifest
 		smugglers = 2, # Smugglers carry contraband or criminals
 		fatties = 1, # Fatties carry over the limit of passengers or cargo
-		criminals = [GameConstants.BLUE_CY_FACTION, GameConstants.BLUE_MG_FACTION, GameConstants.BLUE_YL_FACTION],
-		contraband = [GameConstants.GRIN, GameConstants.OMINOUS_MOO_DENG],
+		criminals = [GameConstants.RED_YL_FACTION, GameConstants.GREEN_MG_FACTION, GameConstants.GREEN_YL_FACTION, GameConstants.RED_MG_FACTION, GameConstants.BLUE_CY_FACTION],
+		contraband = [GameConstants.ZAPPLE, GameConstants.AUSPICIOUS_MOO_DENG],
 		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 16,
+		cargo_limit = 24,
 		passenger_limit = 12,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	},
 	5: {
 		quota = 7,
 		time = 5 * 60,
-		liars = 1, # Liars lie on their manifest
+		liars = 0, # Liars lie on their manifest
 		smugglers = 1, # Smugglers carry contraband or criminals
 		fatties = 1, # Fatties carry over the limit of passengers or cargo
-		criminals = [GameConstants.BLUE_CY_FACTION, GameConstants.BLUE_MG_FACTION, GameConstants.BLUE_YL_FACTION],
-		contraband = [GameConstants.GRIN, GameConstants.OMINOUS_MOO_DENG],
-		criminal_rate = 0.4, # % of passengers that will be criminals on a smuggler
-		cargo_limit = 20,
-		passenger_limit = 16,
+		criminals = [GameConstants.BLUE_CY_FACTION, GameConstants.RED_MG_FACTION, GameConstants.GREEN_CY_FACTION, GameConstants.GREEN_YL_FACTION],
+		contraband = [GameConstants.AUSPICIOUS_MOO_DENG, GameConstants.OMINOUS_MOO_DENG, GameConstants.EGGPLANT],
+		criminal_rate = 0.3, # % of passengers that will be criminals on a smuggler
+		cargo_limit = 30,
+		passenger_limit = 14,
 		incarceration_rate = 0.6, # % of ships that will be bad
 	}
 }
@@ -107,8 +111,20 @@ func _ready():
 	EventBus.ship_left_gate.connect(_on_ship_left)
 	EventBus.shift_started.connect(_on_shift_started)
 	EventBus.game_begun.connect(set.bind("shift", 0))
+	EventBus.lock_shift.connect(add_lock)
+	EventBus.unlock_shift.connect(remove_lock)
 	allowed_smuggler = false
 	allowed_fatty = false
+
+
+func add_lock():
+	shift_locked += 1
+
+
+func remove_lock():
+	shift_locked -= 1
+	if shift_locked == 0:
+		unlocked.emit()
 
 
 func enable_smuggler():
@@ -157,11 +173,18 @@ func _on_ship_left():
 		fattied += 1
 	processed += 1
 	if processed < get_quota():
-		prep_next_ship()
-		EventBus.ship_summoned.emit()
+		if shift_locked > 0:
+			var callback = func():
+				if GameData.reprimands >= GameData.max_reprimands: return # Don't go to next shift if game overed
+				prep_next_ship()
+				EventBus.ship_summoned.emit()
+			unlocked.connect(callback, CONNECT_ONE_SHOT)
+		else:
+			prep_next_ship()
+			EventBus.ship_summoned.emit()
 	else:
 		EventBus.quota_filled.emit()
-		EventBus.shift_ended.emit()
+		end_shift()
 
 
 func _on_shift_started():
@@ -259,7 +282,8 @@ func get_ships_remaining() -> int:
 ## Produces random lies matching the ship info dictionary
 func get_lies() -> Dictionary:
 	return {
-		Passengers = randi_range(1, 3) * rand_sign()
+		"Passengers" = randi_range(1, 3) * rand_sign(),
+		"Cargo" =  randi_range(1, 3) * rand_sign()
 	}
 
 
@@ -339,8 +363,29 @@ func rand_sign():
 		return -1
 
 
+## Ends the shift, respecting locks
+func end_shift():
+	if GameData.reprimands >= GameData.max_reprimands: return # Don't go to next shift if game overed
+	
+	if shift_locked > 0:
+		var callback = func():
+			if GameData.reprimands >= GameData.max_reprimands: return # Don't go to next shift if game overed
+			EventBus.shift_ended.emit()
+		unlocked.connect(callback, CONNECT_ONE_SHOT)
+	else:
+		EventBus.shift_ended.emit()
+
+
+## Issues a reprimand, handling life count and game overs
 func issue_reprimand():
 	reprimands += 1
 	EventBus.reprimand_issued.emit()
 	if GameData.reprimands >= GameData.max_reprimands:
 		EventBus.reprimand_limit_reached.emit()
+
+
+## Revokes a reprimand
+func revoke_reprimand():
+	if reprimands > 0:
+		reprimands -= 1
+		EventBus.reprimand_revoked.emit()

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://jogl7ysig2qn"]
+
+[ext_resource type="Script" path="res://one_off_sound.gd" id="1_lf8vc"]
+
+[node name="OneOffSound" type="AudioStreamPlayer"]
+autoplay = true
+script = ExtResource("1_lf8vc")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

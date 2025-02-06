@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://clet7ci88y3e"]
+
+[ext_resource type="Script" path="res://ui/blinking_caret_component.gd" id="1_1xev8"]
+
+[node name="Blinking Caret Component" type="Node"]
+script = ExtResource("1_1xev8")

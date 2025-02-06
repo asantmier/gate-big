@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4cod162qkoiy"
+path="res://.godot/imported/ambience very heavy-hearted aggressive suspenceful drone type pad.wav-f4af4b6050d88fdd45a3228c60af107c.sample"
+
+[deps]
+
+source_file="res://sounds/ambience very heavy-hearted aggressive suspenceful drone type pad.wav"
+dest_files=["res://.godot/imported/ambience very heavy-hearted aggressive suspenceful drone type pad.wav-f4af4b6050d88fdd45a3228c60af107c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
